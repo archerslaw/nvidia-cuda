@@ -1,6 +1,6 @@
 #!/bin/sh
 
-log="/var/log/nvidia_install.log"
+log="/root/nvidia_install.log"
 
 driver_version="390.46"
 cuda_version="9.0.176"
@@ -135,8 +135,8 @@ fi
 
 str=$(lsb_release -i | awk -F':' '{print $2}')
 os=$(echo $str | sed 's/ //g')
-if [ "$os" = "RHEL" ]; then
-    os="centos"
+if [ "$os" = "RedHatEnterpriseServer" ]; then
+    os="redhat"
     str=$(lsb_release -r | awk -F'[:.]' '{print $2}')
     version=$(echo $str | sed 's/ //g')
     release="rhel${version}"
@@ -152,7 +152,7 @@ echo "version:$version" >> $log 2>&1
 
 echo "create_nvidia_repo_centos" >> $log 2>&1
 #curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-7.repo
-curl -o /etc/yum.repos.d/nvidia-CentOS.repo http://119.3.60.246/ecs/linux/nvidia-CentOS.repo
+curl -o /etc/yum.repos.d/nvidia-RHEL.repo http://119.3.60.246/ecs/linux/nvidia-RHEL.repo
 yum install epel -y >> $log 2>&1
 
 #sed -e 's!^mirrorlist=!#mirrorlist=!g' -e 's!^#baseurl=!baseurl=!g' -e 's!//download\.fedoraproject\.org/pub!//mirrors.myhuaweicloud.com!g' -i /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel-testing.repo
