@@ -1,0 +1,17 @@
+[ecs-cuda]
+name=ecs-cuda-$basearch
+baseurl=http://119.3.60.246/ecs/linux/rpm/cuda/7/$basearch/
+enabled=1
+gpgcheck=0
+ 
+[ecs-driver]
+name=ecs-driver-$basearch
+baseurl=http://119.3.60.246/ecs/linux/rpm/driver/7/$basearch/
+enabled=1
+gpgcheck=0
+
+[ecs-package]
+name=ecs-package-$basearch
+baseurl=http://119.3.60.246/ecs/linux/rpm/package/7/$basearch/
+enabled=1
+gpgcheck=0
