@@ -198,4 +198,4 @@ echo "add auto enable Persistence Mode when start vm..." >> $log 2>&1
 enable_pm
 
 echo "reboot......" >> $log 2>&1
-#reboot
+reboot
