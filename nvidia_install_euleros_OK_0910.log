@@ -1,0 +1,1101 @@
+install nvidia driver and cuda begin ......
+driver version: 390.46
+cuda version: 9.0.176
+release:rhel7
+version:7
+create_nvidia_repo_centos
+No package epel available.
+Error: Nothing to do
+Cleaning repos: EulerOS-base base ecs-cuda ecs-driver
+              : nvidia-diag-driver-local-390.46
+Cleaning up everything
+Metadata Cache Created
+++ uname -r
++ kernel_version=3.10.0-514.44.5.10.h121.x86_64
++ echo '******exec "uname -r": 3.10.0-514.44.5.10.h121.x86_64'
+******exec "uname -r": 3.10.0-514.44.5.10.h121.x86_64
++ echo '******exec "rpm -qa | grep kernel-devel | grep 3.10.0-514.44.5.10.h121.x86_64 | wc -l"'
+******exec "rpm -qa | grep kernel-devel | grep 3.10.0-514.44.5.10.h121.x86_64 | wc -l"
+++ rpm -qa
+++ grep kernel-devel
+++ wc -l
+++ grep 3.10.0-514.44.5.10.h121.x86_64
++ kernel_devel_num=1
++ echo '******kernel_devel_num=1'
+******kernel_devel_num=1
++ '[' 1 -eq 0 ']'
+******install kernel-devel begin time: 1536586289, end time: 1536586290, use time: 1 s
+++ yum list
+++ grep nvidia
+++ grep rhel7
+++ wc -l
+++ grep 390.46
+++ grep driver
++ driver_file_num=1
++ '[' 1 -eq 1 ']'
+++ grep nvidia
+++ grep rhel7
+++ awk '-F ' '{print $1}'
+++ yum list
+++ grep 390.46
+++ grep driver
++ driver_file=nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
++ echo '******exec "yum list |grep nvidia | grep driver |grep rhel7 |grep 390.46 | awk -F'\'' '\'' '\''{print $1}'\''":'
+******exec "yum list |grep nvidia | grep driver |grep rhel7 |grep 390.46 | awk -F' ' '{print $1}'":
++ echo nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
++ echo '******exec "yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64" '
+******exec "yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64" 
++ yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+Package nvidia-diag-driver-local-repo-rhel7-390.46-1.0-1.x86_64 already installed and latest version
+Nothing to do
++ echo '******exec "yum clean all && yum install -y cuda-drivers" '
+******exec "yum clean all && yum install -y cuda-drivers" 
++ yum clean all
+Cleaning repos: EulerOS-base base ecs-cuda ecs-driver
+              : nvidia-diag-driver-local-390.46
+Cleaning up everything
++ yum install -y cuda-drivers
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda-drivers.x86_64 0:390.46-1 will be installed
+--> Processing Dependency: xorg-x11-drv-nvidia-libs(x86-64) >= 1:390.46 for package: cuda-drivers-390.46-1.x86_64
+--> Processing Dependency: xorg-x11-drv-nvidia-gl(x86-64) >= 1:390.46 for package: cuda-drivers-390.46-1.x86_64
+--> Processing Dependency: xorg-x11-drv-nvidia-devel(x86-64) >= 1:390.46 for package: cuda-drivers-390.46-1.x86_64
+--> Processing Dependency: xorg-x11-drv-nvidia >= 1:390.46 for package: cuda-drivers-390.46-1.x86_64
+--> Processing Dependency: nvidia-kmod >= 1:390.46 for package: cuda-drivers-390.46-1.x86_64
+--> Running transaction check
+---> Package nvidia-kmod.x86_64 1:390.46-2.el7 will be installed
+---> Package xorg-x11-drv-nvidia.x86_64 1:390.46-1.el7 will be installed
+---> Package xorg-x11-drv-nvidia-devel.x86_64 1:390.46-1.el7 will be installed
+---> Package xorg-x11-drv-nvidia-gl.x86_64 1:390.46-1.el7 will be installed
+---> Package xorg-x11-drv-nvidia-libs.x86_64 1:390.46-1.el7 will be installed
+--> Processing Dependency: libpangocairo-1.0.so.0()(64bit) for package: 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64
+--> Processing Dependency: libpango-1.0.so.0()(64bit) for package: 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64
+--> Processing Dependency: libgtk-x11-2.0.so.0()(64bit) for package: 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64
+--> Processing Dependency: libgdk_pixbuf-2.0.so.0()(64bit) for package: 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64
+--> Processing Dependency: libgdk-x11-2.0.so.0()(64bit) for package: 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64
+--> Processing Dependency: libcairo.so.2()(64bit) for package: 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64
+--> Processing Dependency: libatk-1.0.so.0()(64bit) for package: 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64
+--> Running transaction check
+---> Package atk.x86_64 0:2.14.0-1 will be installed
+---> Package cairo.x86_64 0:1.14.2-1.h1 will be installed
+--> Processing Dependency: libpng15.so.15(PNG15_0)(64bit) for package: cairo-1.14.2-1.h1.x86_64
+--> Processing Dependency: libpng15.so.15()(64bit) for package: cairo-1.14.2-1.h1.x86_64
+--> Processing Dependency: libpixman-1.so.0()(64bit) for package: cairo-1.14.2-1.h1.x86_64
+--> Processing Dependency: libfontconfig.so.1()(64bit) for package: cairo-1.14.2-1.h1.x86_64
+--> Processing Dependency: libXrender.so.1()(64bit) for package: cairo-1.14.2-1.h1.x86_64
+--> Processing Dependency: libGL.so.1()(64bit) for package: cairo-1.14.2-1.h1.x86_64
+--> Processing Dependency: libEGL.so.1()(64bit) for package: cairo-1.14.2-1.h1.x86_64
+---> Package gdk-pixbuf2.x86_64 0:2.31.6-3.h3 will be installed
+--> Processing Dependency: libtiff.so.5(LIBTIFF_4.0)(64bit) for package: gdk-pixbuf2-2.31.6-3.h3.x86_64
+--> Processing Dependency: libjpeg.so.62(LIBJPEG_6.2)(64bit) for package: gdk-pixbuf2-2.31.6-3.h3.x86_64
+--> Processing Dependency: libtiff.so.5()(64bit) for package: gdk-pixbuf2-2.31.6-3.h3.x86_64
+--> Processing Dependency: libjpeg.so.62()(64bit) for package: gdk-pixbuf2-2.31.6-3.h3.x86_64
+--> Processing Dependency: libjasper.so.1()(64bit) for package: gdk-pixbuf2-2.31.6-3.h3.x86_64
+---> Package gtk2.x86_64 0:2.24.28-8 will be installed
+--> Processing Dependency: libXrandr >= 1.2.99.4-2 for package: gtk2-2.24.28-8.x86_64
+--> Processing Dependency: hicolor-icon-theme for package: gtk2-2.24.28-8.x86_64
+--> Processing Dependency: libXrandr.so.2()(64bit) for package: gtk2-2.24.28-8.x86_64
+--> Processing Dependency: libXinerama.so.1()(64bit) for package: gtk2-2.24.28-8.x86_64
+--> Processing Dependency: libXi.so.6()(64bit) for package: gtk2-2.24.28-8.x86_64
+--> Processing Dependency: libXfixes.so.3()(64bit) for package: gtk2-2.24.28-8.x86_64
+--> Processing Dependency: libXdamage.so.1()(64bit) for package: gtk2-2.24.28-8.x86_64
+--> Processing Dependency: libXcursor.so.1()(64bit) for package: gtk2-2.24.28-8.x86_64
+--> Processing Dependency: libXcomposite.so.1()(64bit) for package: gtk2-2.24.28-8.x86_64
+---> Package pango.x86_64 0:1.36.8-2 will be installed
+--> Processing Dependency: libthai(x86-64) >= 0.1.9 for package: pango-1.36.8-2.x86_64
+--> Processing Dependency: libthai.so.0(LIBTHAI_0.1)(64bit) for package: pango-1.36.8-2.x86_64
+--> Processing Dependency: libthai.so.0()(64bit) for package: pango-1.36.8-2.x86_64
+--> Processing Dependency: libharfbuzz.so.0()(64bit) for package: pango-1.36.8-2.x86_64
+--> Processing Dependency: libXft.so.2()(64bit) for package: pango-1.36.8-2.x86_64
+--> Running transaction check
+---> Package fontconfig.x86_64 0:2.10.95-10 will be installed
+--> Processing Dependency: fontpackages-filesystem for package: fontconfig-2.10.95-10.x86_64
+---> Package harfbuzz.x86_64 0:0.9.36-1 will be installed
+--> Processing Dependency: libgraphite2.so.3()(64bit) for package: harfbuzz-0.9.36-1.x86_64
+---> Package hicolor-icon-theme.noarch 0:0.12-7 will be installed
+---> Package jasper-libs.x86_64 0:1.900.1-31.h1 will be installed
+---> Package libXcomposite.x86_64 0:0.4.4-4.1 will be installed
+---> Package libXcursor.x86_64 0:1.1.14-8.h1 will be installed
+---> Package libXdamage.x86_64 0:1.1.4-4.1 will be installed
+---> Package libXfixes.x86_64 0:5.0.3-1 will be installed
+---> Package libXft.x86_64 0:2.3.2-2 will be installed
+---> Package libXi.x86_64 0:1.7.9-1 will be installed
+---> Package libXinerama.x86_64 0:1.1.3-2.1 will be installed
+---> Package libXrandr.x86_64 0:1.5.1-2 will be installed
+---> Package libXrender.x86_64 0:0.9.10-1 will be installed
+---> Package libjpeg-turbo.x86_64 0:1.2.90-5 will be installed
+---> Package libpng.x86_64 2:1.5.13-7.h1 will be installed
+---> Package libthai.x86_64 0:0.1.14-9 will be installed
+---> Package libtiff.x86_64 0:4.0.3-27.h6 will be installed
+--> Processing Dependency: libjbig.so.2.0()(64bit) for package: libtiff-4.0.3-27.h6.x86_64
+---> Package mesa-libEGL.x86_64 0:11.2.2-2.20160614 will be installed
+--> Processing Dependency: mesa-libgbm = 11.2.2-2.20160614 for package: mesa-libEGL-11.2.2-2.20160614.x86_64
+--> Processing Dependency: libxshmfence.so.1()(64bit) for package: mesa-libEGL-11.2.2-2.20160614.x86_64
+--> Processing Dependency: libgbm.so.1()(64bit) for package: mesa-libEGL-11.2.2-2.20160614.x86_64
+--> Processing Dependency: libdrm.so.2()(64bit) for package: mesa-libEGL-11.2.2-2.20160614.x86_64
+---> Package mesa-libGL.x86_64 0:11.2.2-2.20160614 will be installed
+--> Processing Dependency: mesa-libglapi = 11.2.2-2.20160614 for package: mesa-libGL-11.2.2-2.20160614.x86_64
+--> Processing Dependency: libglapi.so.0()(64bit) for package: mesa-libGL-11.2.2-2.20160614.x86_64
+--> Processing Dependency: libXxf86vm.so.1()(64bit) for package: mesa-libGL-11.2.2-2.20160614.x86_64
+---> Package pixman.x86_64 0:0.32.6-3 will be installed
+--> Running transaction check
+---> Package fontpackages-filesystem.noarch 0:1.44-8 will be installed
+---> Package graphite2.x86_64 0:1.3.10-1.h2 will be installed
+---> Package jbigkit-libs.x86_64 0:2.0-11 will be installed
+---> Package libXxf86vm.x86_64 0:1.1.4-1 will be installed
+---> Package libdrm.x86_64 0:2.4.74-1 will be installed
+--> Processing Dependency: libpciaccess.so.0()(64bit) for package: libdrm-2.4.74-1.x86_64
+---> Package libxshmfence.x86_64 0:1.2-1 will be installed
+---> Package mesa-libgbm.x86_64 0:11.2.2-2.20160614 will be installed
+---> Package mesa-libglapi.x86_64 0:11.2.2-2.20160614 will be installed
+--> Running transaction check
+---> Package libpciaccess.x86_64 0:0.13.4-2.h1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package         Arch   Version           Repository                       Size
+================================================================================
+Installing:
+ cuda-drivers    x86_64 390.46-1          nvidia-diag-driver-local-390.46 2.9 k
+Installing for dependencies:
+ atk             x86_64 2.14.0-1          EulerOS-base                    251 k
+ cairo           x86_64 1.14.2-1.h1       EulerOS-base                    711 k
+ fontconfig      x86_64 2.10.95-10        EulerOS-base                    229 k
+ fontpackages-filesystem
+                 noarch 1.44-8            EulerOS-base                     10 k
+ gdk-pixbuf2     x86_64 2.31.6-3.h3       EulerOS-base                    560 k
+ graphite2       x86_64 1.3.10-1.h2       EulerOS-base                    116 k
+ gtk2            x86_64 2.24.28-8         EulerOS-base                    3.4 M
+ harfbuzz        x86_64 0.9.36-1          EulerOS-base                    157 k
+ hicolor-icon-theme
+                 noarch 0.12-7            EulerOS-base                     43 k
+ jasper-libs     x86_64 1.900.1-31.h1     EulerOS-base                    151 k
+ jbigkit-libs    x86_64 2.0-11            EulerOS-base                     47 k
+ libXcomposite   x86_64 0.4.4-4.1         EulerOS-base                     23 k
+ libXcursor      x86_64 1.1.14-8.h1       EulerOS-base                     31 k
+ libXdamage      x86_64 1.1.4-4.1         EulerOS-base                     21 k
+ libXfixes       x86_64 5.0.3-1           EulerOS-base                     19 k
+ libXft          x86_64 2.3.2-2           EulerOS-base                     58 k
+ libXi           x86_64 1.7.9-1           EulerOS-base                     40 k
+ libXinerama     x86_64 1.1.3-2.1         EulerOS-base                     14 k
+ libXrandr       x86_64 1.5.1-2           EulerOS-base                     28 k
+ libXrender      x86_64 0.9.10-1          EulerOS-base                     26 k
+ libXxf86vm      x86_64 1.1.4-1           EulerOS-base                     18 k
+ libdrm          x86_64 2.4.74-1          EulerOS-base                    147 k
+ libjpeg-turbo   x86_64 1.2.90-5          EulerOS-base                    134 k
+ libpciaccess    x86_64 0.13.4-2.h1       EulerOS-base                     26 k
+ libpng          x86_64 2:1.5.13-7.h1     EulerOS-base                    213 k
+ libthai         x86_64 0.1.14-9          EulerOS-base                    187 k
+ libtiff         x86_64 4.0.3-27.h6       EulerOS-base                    171 k
+ libxshmfence    x86_64 1.2-1             EulerOS-base                    7.4 k
+ mesa-libEGL     x86_64 11.2.2-2.20160614 EulerOS-base                     86 k
+ mesa-libGL      x86_64 11.2.2-2.20160614 EulerOS-base                    162 k
+ mesa-libgbm     x86_64 11.2.2-2.20160614 EulerOS-base                     42 k
+ mesa-libglapi   x86_64 11.2.2-2.20160614 EulerOS-base                     40 k
+ nvidia-kmod     x86_64 1:390.46-2.el7    nvidia-diag-driver-local-390.46 9.6 M
+ pango           x86_64 1.36.8-2          EulerOS-base                    287 k
+ pixman          x86_64 0.32.6-3          EulerOS-base                    255 k
+ xorg-x11-drv-nvidia
+                 x86_64 1:390.46-1.el7    nvidia-diag-driver-local-390.46 4.7 M
+ xorg-x11-drv-nvidia-devel
+                 x86_64 1:390.46-1.el7    nvidia-diag-driver-local-390.46 121 k
+ xorg-x11-drv-nvidia-gl
+                 x86_64 1:390.46-1.el7    nvidia-diag-driver-local-390.46  21 M
+ xorg-x11-drv-nvidia-libs
+                 x86_64 1:390.46-1.el7    nvidia-diag-driver-local-390.46  33 M
+
+Transaction Summary
+================================================================================
+Install  1 Package (+39 Dependent packages)
+
+Total download size: 75 M
+Installed size: 221 M
+Downloading packages:
+warning: /var/nvidia-diag-driver-local-repo-390.46/cuda-drivers-390.46-1.x86_64.rpm: Header V3 RSA/SHA512 Signature, key ID 7fa2af80: NOKEY
+Public key for cuda-drivers-390.46-1.x86_64.rpm is not installed
+--------------------------------------------------------------------------------
+Total                                               57 MB/s |  75 MB  00:01     
+Retrieving key from file:///var/nvidia-diag-driver-local-repo-390.46/7fa2af80.pub
+Importing GPG key 0x7FA2AF80:
+ Userid     : "cudatools <cudatools@nvidia.com>"
+ Fingerprint: ae09 fe4b bd22 3a84 b2cc fce3 f60f 4b3d 7fa2 af80
+ Package    : nvidia-diag-driver-local-repo-rhel7-390.46-1.0-1.x86_64 (@ecs-driver)
+ From       : /var/nvidia-diag-driver-local-repo-390.46/7fa2af80.pub
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : libXrender-0.9.10-1.x86_64                                  1/40 
+  Installing : libXfixes-5.0.3-1.x86_64                                    2/40 
+  Installing : libjpeg-turbo-1.2.90-5.x86_64                               3/40 
+  Installing : libXdamage-1.1.4-4.1.x86_64                                 4/40 
+  Installing : mesa-libglapi-11.2.2-2.20160614.x86_64                      5/40 
+  Installing : 2:libpng-1.5.13-7.h1.x86_64                                 6/40 
+  Installing : 1:nvidia-kmod-390.46-2.el7.x86_64                           7/40 
+
+Creating symlink /var/lib/dkms/nvidia/390.46/source ->
+                 /usr/src/nvidia-390.46
+
+DKMS: add completed.
+
+Kernel preparation unnecessary for this kernel.  Skipping...
+
+Building module:
+cleaning build area...
+'make' -j8 NV_EXCLUDE_BUILD_MODULES='' KERNEL_UNAME=3.10.0-514.44.5.10.h121.x86_64 modules.........................
+cleaning build area...
+
+DKMS: build completed.
+
+nvidia.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/3.10.0-514.44.5.10.h121.x86_64/kernel/drivers/video/
+
+nvidia-uvm.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/3.10.0-514.44.5.10.h121.x86_64/kernel/drivers/video/
+
+nvidia-modeset.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/3.10.0-514.44.5.10.h121.x86_64/kernel/drivers/video/
+
+nvidia-drm.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/3.10.0-514.44.5.10.h121.x86_64/kernel/drivers/video/
+Adding any weak-modules
+
+depmod...
+
+DKMS: install completed.
+  Installing : 1:xorg-x11-drv-nvidia-390.46-1.el7.x86_64                   8/40 
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-514.44.5.10.h121.x86_64
+Found initrd image: /boot/initramfs-3.10.0-514.44.5.10.h121.x86_64.img
+Found linux image: /boot/vmlinuz-0-rescue-a2b77d8927c24b86a3d593d1a059c23a
+Found initrd image: /boot/initramfs-0-rescue-a2b77d8927c24b86a3d593d1a059c23a.img
+Found linux image: /boot/vmlinuz-3.10.0-514.44.5.10.h121.x86_64
+Found initrd image: /boot/initramfs-3.10.0-514.44.5.10.h121.x86_64.img
+done
+  Installing : atk-2.14.0-1.x86_64                                         9/40 
+  Installing : libxshmfence-1.2-1.x86_64                                  10/40 
+  Installing : jasper-libs-1.900.1-31.h1.x86_64                           11/40 
+  Installing : libXcursor-1.1.14-8.h1.x86_64                              12/40 
+  Installing : libXrandr-1.5.1-2.x86_64                                   13/40 
+  Installing : libthai-0.1.14-9.x86_64                                    14/40 
+  Installing : jbigkit-libs-2.0-11.x86_64                                 15/40 
+  Installing : libtiff-4.0.3-27.h6.x86_64                                 16/40 
+  Installing : gdk-pixbuf2-2.31.6-3.h3.x86_64                             17/40 
+  Installing : libXi-1.7.9-1.x86_64                                       18/40 
+  Installing : fontpackages-filesystem-1.44-8.noarch                      19/40 
+  Installing : fontconfig-2.10.95-10.x86_64                               20/40 
+  Installing : libXft-2.3.2-2.x86_64                                      21/40 
+  Installing : graphite2-1.3.10-1.h2.x86_64                               22/40 
+  Installing : harfbuzz-0.9.36-1.x86_64                                   23/40 
+  Installing : pixman-0.32.6-3.x86_64                                     24/40 
+  Installing : libXxf86vm-1.1.4-1.x86_64                                  25/40 
+  Installing : libXinerama-1.1.3-2.1.x86_64                               26/40 
+  Installing : hicolor-icon-theme-0.12-7.noarch                           27/40 
+  Installing : libXcomposite-0.4.4-4.1.x86_64                             28/40 
+  Installing : libpciaccess-0.13.4-2.h1.x86_64                            29/40 
+  Installing : libdrm-2.4.74-1.x86_64                                     30/40 
+  Installing : mesa-libGL-11.2.2-2.20160614.x86_64                        31/40 
+  Installing : mesa-libgbm-11.2.2-2.20160614.x86_64                       32/40 
+  Installing : mesa-libEGL-11.2.2-2.20160614.x86_64                       33/40 
+  Installing : cairo-1.14.2-1.h1.x86_64                                   34/40 
+  Installing : pango-1.36.8-2.x86_64                                      35/40 
+  Installing : gtk2-2.24.28-8.x86_64                                      36/40 
+  Installing : 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64             37/40 
+  Installing : 1:xorg-x11-drv-nvidia-gl-390.46-1.el7.x86_64               38/40 
+  Installing : 1:xorg-x11-drv-nvidia-devel-390.46-1.el7.x86_64            39/40 
+  Installing : cuda-drivers-390.46-1.x86_64                               40/40 
+  Verifying  : libxshmfence-1.2-1.x86_64                                   1/40 
+  Verifying  : mesa-libEGL-11.2.2-2.20160614.x86_64                        2/40 
+  Verifying  : mesa-libGL-11.2.2-2.20160614.x86_64                         3/40 
+  Verifying  : 1:xorg-x11-drv-nvidia-gl-390.46-1.el7.x86_64                4/40 
+  Verifying  : libpciaccess-0.13.4-2.h1.x86_64                             5/40 
+  Verifying  : libjpeg-turbo-1.2.90-5.x86_64                               6/40 
+  Verifying  : libXcomposite-0.4.4-4.1.x86_64                              7/40 
+  Verifying  : mesa-libgbm-11.2.2-2.20160614.x86_64                        8/40 
+  Verifying  : libXfixes-5.0.3-1.x86_64                                    9/40 
+  Verifying  : atk-2.14.0-1.x86_64                                        10/40 
+  Verifying  : libXdamage-1.1.4-4.1.x86_64                                11/40 
+  Verifying  : hicolor-icon-theme-0.12-7.noarch                           12/40 
+  Verifying  : 1:nvidia-kmod-390.46-2.el7.x86_64                          13/40 
+  Verifying  : cairo-1.14.2-1.h1.x86_64                                   14/40 
+  Verifying  : libdrm-2.4.74-1.x86_64                                     15/40 
+  Verifying  : libXinerama-1.1.3-2.1.x86_64                               16/40 
+  Verifying  : libXxf86vm-1.1.4-1.x86_64                                  17/40 
+  Verifying  : libXcursor-1.1.14-8.h1.x86_64                              18/40 
+  Verifying  : pixman-0.32.6-3.x86_64                                     19/40 
+  Verifying  : fontconfig-2.10.95-10.x86_64                               20/40 
+  Verifying  : graphite2-1.3.10-1.h2.x86_64                               21/40 
+  Verifying  : 1:xorg-x11-drv-nvidia-devel-390.46-1.el7.x86_64            22/40 
+  Verifying  : jasper-libs-1.900.1-31.h1.x86_64                           23/40 
+  Verifying  : gtk2-2.24.28-8.x86_64                                      24/40 
+  Verifying  : cuda-drivers-390.46-1.x86_64                               25/40 
+  Verifying  : fontpackages-filesystem-1.44-8.noarch                      26/40 
+  Verifying  : 1:xorg-x11-drv-nvidia-libs-390.46-1.el7.x86_64             27/40 
+  Verifying  : gdk-pixbuf2-2.31.6-3.h3.x86_64                             28/40 
+  Verifying  : 2:libpng-1.5.13-7.h1.x86_64                                29/40 
+  Verifying  : libXi-1.7.9-1.x86_64                                       30/40 
+  Verifying  : libXft-2.3.2-2.x86_64                                      31/40 
+  Verifying  : 1:xorg-x11-drv-nvidia-390.46-1.el7.x86_64                  32/40 
+  Verifying  : jbigkit-libs-2.0-11.x86_64                                 33/40 
+  Verifying  : libtiff-4.0.3-27.h6.x86_64                                 34/40 
+  Verifying  : libthai-0.1.14-9.x86_64                                    35/40 
+  Verifying  : harfbuzz-0.9.36-1.x86_64                                   36/40 
+  Verifying  : libXrender-0.9.10-1.x86_64                                 37/40 
+  Verifying  : pango-1.36.8-2.x86_64                                      38/40 
+  Verifying  : libXrandr-1.5.1-2.x86_64                                   39/40 
+  Verifying  : mesa-libglapi-11.2.2-2.20160614.x86_64                     40/40 
+
+Installed:
+  cuda-drivers.x86_64 0:390.46-1                                                
+
+Dependency Installed:
+  atk.x86_64 0:2.14.0-1                                                         
+  cairo.x86_64 0:1.14.2-1.h1                                                    
+  fontconfig.x86_64 0:2.10.95-10                                                
+  fontpackages-filesystem.noarch 0:1.44-8                                       
+  gdk-pixbuf2.x86_64 0:2.31.6-3.h3                                              
+  graphite2.x86_64 0:1.3.10-1.h2                                                
+  gtk2.x86_64 0:2.24.28-8                                                       
+  harfbuzz.x86_64 0:0.9.36-1                                                    
+  hicolor-icon-theme.noarch 0:0.12-7                                            
+  jasper-libs.x86_64 0:1.900.1-31.h1                                            
+  jbigkit-libs.x86_64 0:2.0-11                                                  
+  libXcomposite.x86_64 0:0.4.4-4.1                                              
+  libXcursor.x86_64 0:1.1.14-8.h1                                               
+  libXdamage.x86_64 0:1.1.4-4.1                                                 
+  libXfixes.x86_64 0:5.0.3-1                                                    
+  libXft.x86_64 0:2.3.2-2                                                       
+  libXi.x86_64 0:1.7.9-1                                                        
+  libXinerama.x86_64 0:1.1.3-2.1                                                
+  libXrandr.x86_64 0:1.5.1-2                                                    
+  libXrender.x86_64 0:0.9.10-1                                                  
+  libXxf86vm.x86_64 0:1.1.4-1                                                   
+  libdrm.x86_64 0:2.4.74-1                                                      
+  libjpeg-turbo.x86_64 0:1.2.90-5                                               
+  libpciaccess.x86_64 0:0.13.4-2.h1                                             
+  libpng.x86_64 2:1.5.13-7.h1                                                   
+  libthai.x86_64 0:0.1.14-9                                                     
+  libtiff.x86_64 0:4.0.3-27.h6                                                  
+  libxshmfence.x86_64 0:1.2-1                                                   
+  mesa-libEGL.x86_64 0:11.2.2-2.20160614                                        
+  mesa-libGL.x86_64 0:11.2.2-2.20160614                                         
+  mesa-libgbm.x86_64 0:11.2.2-2.20160614                                        
+  mesa-libglapi.x86_64 0:11.2.2-2.20160614                                      
+  nvidia-kmod.x86_64 1:390.46-2.el7                                             
+  pango.x86_64 0:1.36.8-2                                                       
+  pixman.x86_64 0:0.32.6-3                                                      
+  xorg-x11-drv-nvidia.x86_64 1:390.46-1.el7                                     
+  xorg-x11-drv-nvidia-devel.x86_64 1:390.46-1.el7                               
+  xorg-x11-drv-nvidia-gl.x86_64 1:390.46-1.el7                                  
+  xorg-x11-drv-nvidia-libs.x86_64 1:390.46-1.el7                                
+
+Complete!
++ '[' 0 -ne 0 ']'
+******install driver begin time: 1536586290, end time: 1536586401,  use time: 111 s
+++ date +%s
++ begin_cuda=1536586401
+++ yum list
+++ grep cuda
+++ grep 9.0.176
+++ wc -l
+++ grep -v update
+++ grep rhel7
++ cuda_file_num=1
++ '[' 1 -eq 1 ']'
+++ yum list
+++ grep 9.0.176
+++ grep -v update
+++ grep rhel7
+++ grep cuda
+++ awk '-F ' '{print $1}'
++ cuda_file=cuda-repo-rhel7-9-0-local.x86_64
++ echo '******exec "yum list --showduplicates |grep cuda |grep rhel7 |grep 9.0.176|grep -v update| awk -F'\'' '\'' '\''{print $1}'\''":'
+******exec "yum list --showduplicates |grep cuda |grep rhel7 |grep 9.0.176|grep -v update| awk -F' ' '{print $1}'":
++ echo cuda-repo-rhel7-9-0-local.x86_64
+cuda-repo-rhel7-9-0-local.x86_64
++ echo '******exec "yum install -y cuda-repo-rhel7-9-0-local.x86_64" '
+******exec "yum install -y cuda-repo-rhel7-9-0-local.x86_64" 
++ yum install -y cuda-repo-rhel7-9-0-local.x86_64
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda-repo-rhel7-9-0-local.x86_64 0:9.0.176-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                        Arch        Version         Repository     Size
+================================================================================
+Installing:
+ cuda-repo-rhel7-9-0-local      x86_64      9.0.176-1       ecs-cuda      1.5 G
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 1.5 G
+Installed size: 1.5 G
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : cuda-repo-rhel7-9-0-local-9.0.176-1.x86_64                   1/1 
+  Verifying  : cuda-repo-rhel7-9-0-local-9.0.176-1.x86_64                   1/1 
+
+Installed:
+  cuda-repo-rhel7-9-0-local.x86_64 0:9.0.176-1                                  
+
+Complete!
+++ date +%s
++ end_cuda_unpack=1536588287
++ time_cuda_unpack=1886
++ echo '******download and unpack cuda file end, end time: 1536588287, use time 1886 s'
+******download and unpack cuda file end, end time: 1536588287, use time 1886 s
++ echo '******exec "yum list | grep cuda | grep rhel7 | grep 9.0 | grep update | awk -F'\'' '\'' '\''{print $1}'\''" '
+******exec "yum list | grep cuda | grep rhel7 | grep 9.0 | grep update | awk -F' ' '{print $1}'" 
+++ yum list
+++ grep rhel7
+++ grep cuda
+++ grep update
+++ awk '-F ' '{print $1}'
+++ grep 9.0
++ cuda_patch_filelist='cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64
+cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64'
++ echo '****** cuda_patch_filelist'
+****** cuda_patch_filelist
++ echo cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64 cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64
+cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64 cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64
++ for cuda_patch_file in '$cuda_patch_filelist'
++ echo '******exec "yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64" '
+******exec "yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64" 
++ yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64 0:1.0-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                                            Arch   Version
+                                                                 Repository
+                                                                           Size
+================================================================================
+Installing:
+ cuda-repo-rhel7-9-0-local-cublas-performance-update
+                                                    x86_64 1.0-1 ecs-cuda 144 M
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 144 M
+Installed size: 144 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : cuda-repo-rhel7-9-0-local-cublas-performance-update-1.0-1.   1/1 
+  Verifying  : cuda-repo-rhel7-9-0-local-cublas-performance-update-1.0-1.   1/1 
+
+Installed:
+  cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64 0:1.0-1            
+
+Complete!
++ for cuda_patch_file in '$cuda_patch_filelist'
++ echo '******exec "yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64" '
+******exec "yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64" 
++ yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64 0:1.0-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                                            Arch   Version
+                                                                 Repository
+                                                                           Size
+================================================================================
+Installing:
+ cuda-repo-rhel7-9-0-local-cublas-performance-update-2
+                                                    x86_64 1.0-1 ecs-cuda 143 M
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 143 M
+Installed size: 143 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : cuda-repo-rhel7-9-0-local-cublas-performance-update-2-1.0-   1/1 
+  Verifying  : cuda-repo-rhel7-9-0-local-cublas-performance-update-2-1.0-   1/1 
+
+Installed:
+  cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64 0:1.0-1          
+
+Complete!
++ echo '******exec "yum clean all && yum install -y cuda" '
+******exec "yum clean all && yum install -y cuda" 
++ yum clean all
+Cleaning repos: EulerOS-base base cuda-9-0-local
+              : cuda-9-0-local-cublas-performance-update
+              : cuda-9-0-local-cublas-performance-update-2 ecs-cuda ecs-driver
+              : nvidia-diag-driver-local-390.46
+Cleaning up everything
++ yum install -y cuda
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-9-0 >= 9.0.176 for package: cuda-9.0.176-1.x86_64
+--> Running transaction check
+---> Package cuda-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-toolkit-9-0 >= 9.0.176 for package: cuda-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-runtime-9-0 >= 9.0.176 for package: cuda-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-demo-suite-9-0 >= 9.0.176 for package: cuda-9-0-9.0.176-1.x86_64
+--> Running transaction check
+---> Package cuda-demo-suite-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-runtime-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-license-9-0 >= 9.0.176 for package: cuda-runtime-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-libraries-9-0 >= 9.0.176 for package: cuda-runtime-9-0-9.0.176-1.x86_64
+---> Package cuda-toolkit-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-visual-tools-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-samples-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-nvml-dev-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-libraries-dev-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-documentation-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-core-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-command-line-tools-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Running transaction check
+---> Package cuda-command-line-tools-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-cudart-dev-9-0 for package: cuda-command-line-tools-9-0-9.0.176-1.x86_64
+---> Package cuda-core-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: gcc-c++ for package: cuda-core-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-misc-headers-9-0 for package: cuda-core-9-0-9.0.176-1.x86_64
+---> Package cuda-documentation-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-libraries-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-nvrtc-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-nvgraph-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-npp-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cusparse-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cusolver-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-curand-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cufft-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cudart-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cublas-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+---> Package cuda-libraries-dev-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-nvrtc-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-nvgraph-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-npp-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-driver-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cusparse-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cusolver-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-curand-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cufft-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cublas-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+---> Package cuda-license-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvml-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-samples-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: mesa-libGLU-devel for package: cuda-samples-9-0-9.0.176-1.x86_64
+--> Processing Dependency: libXmu-devel for package: cuda-samples-9-0-9.0.176-1.x86_64
+--> Processing Dependency: libXi-devel for package: cuda-samples-9-0-9.0.176-1.x86_64
+--> Processing Dependency: libX11-devel for package: cuda-samples-9-0-9.0.176-1.x86_64
+--> Processing Dependency: freeglut-devel for package: cuda-samples-9-0-9.0.176-1.x86_64
+---> Package cuda-visual-tools-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: jre >= 1.7 for package: cuda-visual-tools-9-0-9.0.176-1.x86_64
+--> Running transaction check
+---> Package cuda-cublas-9-0.x86_64 0:9.0.176.2-1 will be installed
+---> Package cuda-cublas-dev-9-0.x86_64 0:9.0.176.2-1 will be installed
+---> Package cuda-cudart-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cudart-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cufft-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cufft-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-curand-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-curand-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cusolver-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cusolver-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cusparse-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cusparse-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-driver-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-misc-headers-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-npp-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-npp-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvgraph-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvgraph-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvrtc-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvrtc-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package freeglut-devel.x86_64 0:2.8.1-3 will be installed
+--> Processing Dependency: freeglut = 2.8.1-3 for package: freeglut-devel-2.8.1-3.x86_64
+--> Processing Dependency: libGL-devel for package: freeglut-devel-2.8.1-3.x86_64
+--> Processing Dependency: libglut.so.3()(64bit) for package: freeglut-devel-2.8.1-3.x86_64
+---> Package gcc-c++.x86_64 0:4.8.5-4.h8 will be installed
+--> Processing Dependency: libstdc++-devel = 4.8.5-4.h8 for package: gcc-c++-4.8.5-4.h8.x86_64
+---> Package java-1.8.0-openjdk.x86_64 1:1.8.0.171-8.b10 will be installed
+--> Processing Dependency: java-1.8.0-openjdk-headless(x86-64) = 1:1.8.0.171-8.b10 for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: xorg-x11-fonts-Type1 for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libjvm.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libjli.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libjava.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libjvm.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libjli.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libjava.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libgif.so.4()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libawt.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: libXtst.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64
+---> Package libX11-devel.x86_64 0:1.6.5-1 will be installed
+--> Processing Dependency: pkgconfig(xcb) >= 1.11.1 for package: libX11-devel-1.6.5-1.x86_64
+--> Processing Dependency: pkgconfig(xproto) for package: libX11-devel-1.6.5-1.x86_64
+--> Processing Dependency: pkgconfig(xcb) for package: libX11-devel-1.6.5-1.x86_64
+--> Processing Dependency: pkgconfig(kbproto) for package: libX11-devel-1.6.5-1.x86_64
+---> Package libXi-devel.x86_64 0:1.7.9-1 will be installed
+--> Processing Dependency: pkgconfig(xfixes) for package: libXi-devel-1.7.9-1.x86_64
+--> Processing Dependency: pkgconfig(xext) for package: libXi-devel-1.7.9-1.x86_64
+---> Package libXmu-devel.x86_64 0:1.1.2-2 will be installed
+--> Processing Dependency: libXmu = 1.1.2-2 for package: libXmu-devel-1.1.2-2.x86_64
+--> Processing Dependency: pkgconfig(xt) for package: libXmu-devel-1.1.2-2.x86_64
+--> Processing Dependency: libXmuu.so.1()(64bit) for package: libXmu-devel-1.1.2-2.x86_64
+--> Processing Dependency: libXmu.so.6()(64bit) for package: libXmu-devel-1.1.2-2.x86_64
+---> Package mesa-libGLU-devel.x86_64 0:9.0.0-4 will be installed
+--> Processing Dependency: mesa-libGLU(x86-64) = 9.0.0-4 for package: mesa-libGLU-devel-9.0.0-4.x86_64
+--> Processing Dependency: gl-manpages for package: mesa-libGLU-devel-9.0.0-4.x86_64
+--> Processing Dependency: libGLU.so.1()(64bit) for package: mesa-libGLU-devel-9.0.0-4.x86_64
+--> Running transaction check
+---> Package freeglut.x86_64 0:2.8.1-3 will be installed
+---> Package giflib.x86_64 0:4.1.6-9 will be installed
+--> Processing Dependency: libSM.so.6()(64bit) for package: giflib-4.1.6-9.x86_64
+--> Processing Dependency: libICE.so.6()(64bit) for package: giflib-4.1.6-9.x86_64
+---> Package gl-manpages.noarch 0:1.1-7.20130122 will be installed
+---> Package java-1.8.0-openjdk-headless.x86_64 1:1.8.0.171-8.b10 will be installed
+--> Processing Dependency: tzdata-java >= 2015d for package: 1:java-1.8.0-openjdk-headless-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: copy-jdk-configs >= 2.2 for package: 1:java-1.8.0-openjdk-headless-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: lksctp-tools(x86-64) for package: 1:java-1.8.0-openjdk-headless-1.8.0.171-8.b10.x86_64
+--> Processing Dependency: jpackage-utils for package: 1:java-1.8.0-openjdk-headless-1.8.0.171-8.b10.x86_64
+---> Package libXext-devel.x86_64 0:1.3.3-3 will be installed
+---> Package libXfixes-devel.x86_64 0:5.0.3-1 will be installed
+---> Package libXmu.x86_64 0:1.1.2-2 will be installed
+--> Processing Dependency: libXt.so.6()(64bit) for package: libXmu-1.1.2-2.x86_64
+---> Package libXt-devel.x86_64 0:1.1.5-3 will be installed
+--> Processing Dependency: pkgconfig(sm) for package: libXt-devel-1.1.5-3.x86_64
+--> Processing Dependency: pkgconfig(ice) for package: libXt-devel-1.1.5-3.x86_64
+---> Package libXtst.x86_64 0:1.2.3-1 will be installed
+---> Package libstdc++-devel.x86_64 0:4.8.5-4.h8 will be installed
+---> Package libxcb-devel.x86_64 0:1.12-1 will be installed
+--> Processing Dependency: pkgconfig(xau) >= 0.99.2 for package: libxcb-devel-1.12-1.x86_64
+---> Package mesa-libGL-devel.x86_64 0:11.2.2-2.20160614 will be installed
+--> Processing Dependency: pkgconfig(libdrm) >= 2.4.60 for package: mesa-libGL-devel-11.2.2-2.20160614.x86_64
+--> Processing Dependency: pkgconfig(xxf86vm) for package: mesa-libGL-devel-11.2.2-2.20160614.x86_64
+--> Processing Dependency: pkgconfig(xdamage) for package: mesa-libGL-devel-11.2.2-2.20160614.x86_64
+---> Package mesa-libGLU.x86_64 0:9.0.0-4 will be installed
+---> Package xorg-x11-fonts-Type1.noarch 0:7.5-9 will be installed
+--> Processing Dependency: ttmkfdir for package: xorg-x11-fonts-Type1-7.5-9.noarch
+--> Processing Dependency: ttmkfdir for package: xorg-x11-fonts-Type1-7.5-9.noarch
+--> Processing Dependency: mkfontdir for package: xorg-x11-fonts-Type1-7.5-9.noarch
+--> Processing Dependency: mkfontdir for package: xorg-x11-fonts-Type1-7.5-9.noarch
+---> Package xorg-x11-proto-devel.noarch 0:7.7-14 will be installed
+--> Running transaction check
+---> Package copy-jdk-configs.noarch 0:3.3-10 will be installed
+---> Package javapackages-tools.noarch 0:3.4.1-11 will be installed
+--> Processing Dependency: python-javapackages = 3.4.1-11 for package: javapackages-tools-3.4.1-11.noarch
+--> Processing Dependency: libxslt for package: javapackages-tools-3.4.1-11.noarch
+---> Package libICE.x86_64 0:1.0.9-9 will be installed
+---> Package libICE-devel.x86_64 0:1.0.9-9 will be installed
+---> Package libSM.x86_64 0:1.2.2-2 will be installed
+---> Package libSM-devel.x86_64 0:1.2.2-2 will be installed
+---> Package libXau-devel.x86_64 0:1.0.8-2.1 will be installed
+---> Package libXdamage-devel.x86_64 0:1.1.4-4.1 will be installed
+---> Package libXt.x86_64 0:1.1.5-3 will be installed
+---> Package libXxf86vm-devel.x86_64 0:1.1.4-1 will be installed
+---> Package libdrm-devel.x86_64 0:2.4.74-1 will be installed
+---> Package lksctp-tools.x86_64 0:1.0.13-3 will be installed
+---> Package ttmkfdir.x86_64 0:3.0.9-42 will be installed
+---> Package tzdata-java.noarch 0:2017b-1.h1 will be installed
+---> Package xorg-x11-font-utils.x86_64 1:7.5-20 will be installed
+--> Processing Dependency: libfontenc.so.1()(64bit) for package: 1:xorg-x11-font-utils-7.5-20.x86_64
+--> Processing Dependency: libXfont.so.1()(64bit) for package: 1:xorg-x11-font-utils-7.5-20.x86_64
+--> Running transaction check
+---> Package libXfont.x86_64 0:1.5.2-1 will be installed
+---> Package libfontenc.x86_64 0:1.1.3-3 will be installed
+---> Package libxslt.x86_64 0:1.1.28-5 will be installed
+---> Package python-javapackages.noarch 0:3.4.1-11 will be installed
+--> Processing Dependency: python-lxml for package: python-javapackages-3.4.1-11.noarch
+--> Running transaction check
+---> Package python-lxml.x86_64 0:3.2.1-4 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                     Arch   Version           Repository           Size
+================================================================================
+Installing:
+ cuda                        x86_64 9.0.176-1         cuda-9-0-local      5.8 k
+Installing for dependencies:
+ copy-jdk-configs            noarch 3.3-10            EulerOS-base         22 k
+ cuda-9-0                    x86_64 9.0.176-1         cuda-9-0-local      5.9 k
+ cuda-command-line-tools-9-0 x86_64 9.0.176-1         cuda-9-0-local       31 M
+ cuda-core-9-0               x86_64 9.0.176-1         cuda-9-0-local       22 M
+ cuda-cublas-9-0             x86_64 9.0.176.2-1       cuda-9-0-local-cublas-performance-update-2
+                                                                           67 M
+ cuda-cublas-dev-9-0         x86_64 9.0.176.2-1       cuda-9-0-local-cublas-performance-update-2
+                                                                           76 M
+ cuda-cudart-9-0             x86_64 9.0.176-1         cuda-9-0-local      143 k
+ cuda-cudart-dev-9-0         x86_64 9.0.176-1         cuda-9-0-local      1.2 M
+ cuda-cufft-9-0              x86_64 9.0.176-1         cuda-9-0-local       98 M
+ cuda-cufft-dev-9-0          x86_64 9.0.176-1         cuda-9-0-local       91 M
+ cuda-curand-9-0             x86_64 9.0.176-1         cuda-9-0-local       42 M
+ cuda-curand-dev-9-0         x86_64 9.0.176-1         cuda-9-0-local       65 M
+ cuda-cusolver-9-0           x86_64 9.0.176-1         cuda-9-0-local       38 M
+ cuda-cusolver-dev-9-0       x86_64 9.0.176-1         cuda-9-0-local       11 M
+ cuda-cusparse-9-0           x86_64 9.0.176-1         cuda-9-0-local       36 M
+ cuda-cusparse-dev-9-0       x86_64 9.0.176-1         cuda-9-0-local       72 M
+ cuda-demo-suite-9-0         x86_64 9.0.176-1         cuda-9-0-local      4.7 M
+ cuda-documentation-9-0      x86_64 9.0.176-1         cuda-9-0-local      116 M
+ cuda-driver-dev-9-0         x86_64 9.0.176-1         cuda-9-0-local       18 k
+ cuda-libraries-9-0          x86_64 9.0.176-1         cuda-9-0-local      6.0 k
+ cuda-libraries-dev-9-0      x86_64 9.0.176-1         cuda-9-0-local      6.2 k
+ cuda-license-9-0            x86_64 9.0.176-1         cuda-9-0-local       28 k
+ cuda-misc-headers-9-0       x86_64 9.0.176-1         cuda-9-0-local      1.1 M
+ cuda-npp-9-0                x86_64 9.0.176-1         cuda-9-0-local       91 M
+ cuda-npp-dev-9-0            x86_64 9.0.176-1         cuda-9-0-local       91 M
+ cuda-nvgraph-9-0            x86_64 9.0.176-1         cuda-9-0-local      8.8 M
+ cuda-nvgraph-dev-9-0        x86_64 9.0.176-1         cuda-9-0-local      8.9 M
+ cuda-nvml-dev-9-0           x86_64 9.0.176-1         cuda-9-0-local       63 k
+ cuda-nvrtc-9-0              x86_64 9.0.176-1         cuda-9-0-local      8.5 M
+ cuda-nvrtc-dev-9-0          x86_64 9.0.176-1         cuda-9-0-local       14 k
+ cuda-runtime-9-0            x86_64 9.0.176-1         cuda-9-0-local      5.9 k
+ cuda-samples-9-0            x86_64 9.0.176-1         cuda-9-0-local       97 M
+ cuda-toolkit-9-0            x86_64 9.0.176-1         cuda-9-0-local      6.5 k
+ cuda-visual-tools-9-0       x86_64 9.0.176-1         cuda-9-0-local      386 M
+ freeglut                    x86_64 2.8.1-3           EulerOS-base        183 k
+ freeglut-devel              x86_64 2.8.1-3           EulerOS-base        114 k
+ gcc-c++                     x86_64 4.8.5-4.h8        EulerOS-base        7.2 M
+ giflib                      x86_64 4.1.6-9           EulerOS-base         40 k
+ gl-manpages                 noarch 1.1-7.20130122    EulerOS-base        994 k
+ java-1.8.0-openjdk          x86_64 1:1.8.0.171-8.b10 EulerOS-base        246 k
+ java-1.8.0-openjdk-headless x86_64 1:1.8.0.171-8.b10 EulerOS-base         32 M
+ javapackages-tools          noarch 3.4.1-11          EulerOS-base         73 k
+ libICE                      x86_64 1.0.9-9           EulerOS-base         66 k
+ libICE-devel                x86_64 1.0.9-9           EulerOS-base         50 k
+ libSM                       x86_64 1.2.2-2           EulerOS-base         39 k
+ libSM-devel                 x86_64 1.2.2-2           EulerOS-base         13 k
+ libX11-devel                x86_64 1.6.5-1           EulerOS-base        980 k
+ libXau-devel                x86_64 1.0.8-2.1         EulerOS-base         14 k
+ libXdamage-devel            x86_64 1.1.4-4.1         EulerOS-base        9.9 k
+ libXext-devel               x86_64 1.3.3-3           EulerOS-base         75 k
+ libXfixes-devel             x86_64 5.0.3-1           EulerOS-base         13 k
+ libXfont                    x86_64 1.5.2-1           EulerOS-base        153 k
+ libXi-devel                 x86_64 1.7.9-1           EulerOS-base        105 k
+ libXmu                      x86_64 1.1.2-2           EulerOS-base         71 k
+ libXmu-devel                x86_64 1.1.2-2           EulerOS-base         24 k
+ libXt                       x86_64 1.1.5-3           EulerOS-base        173 k
+ libXt-devel                 x86_64 1.1.5-3           EulerOS-base        446 k
+ libXtst                     x86_64 1.2.3-1           EulerOS-base         21 k
+ libXxf86vm-devel            x86_64 1.1.4-1           EulerOS-base         19 k
+ libdrm-devel                x86_64 2.4.74-1          EulerOS-base        121 k
+ libfontenc                  x86_64 1.1.3-3           EulerOS-base         31 k
+ libstdc++-devel             x86_64 4.8.5-4.h8        EulerOS-base        1.5 M
+ libxcb-devel                x86_64 1.12-1            EulerOS-base        1.0 M
+ libxslt                     x86_64 1.1.28-5          EulerOS-base        242 k
+ lksctp-tools                x86_64 1.0.13-3          EulerOS-base         87 k
+ mesa-libGL-devel            x86_64 11.2.2-2.20160614 EulerOS-base        149 k
+ mesa-libGLU                 x86_64 9.0.0-4           EulerOS-base        196 k
+ mesa-libGLU-devel           x86_64 9.0.0-4           EulerOS-base        9.2 k
+ python-javapackages         noarch 3.4.1-11          EulerOS-base         31 k
+ python-lxml                 x86_64 3.2.1-4           EulerOS-base        758 k
+ ttmkfdir                    x86_64 3.0.9-42          EulerOS-base         48 k
+ tzdata-java                 noarch 2017b-1.h1        EulerOS-base        182 k
+ xorg-x11-font-utils         x86_64 1:7.5-20          EulerOS-base         88 k
+ xorg-x11-fonts-Type1        noarch 7.5-9             EulerOS-base        522 k
+ xorg-x11-proto-devel        noarch 7.7-14            EulerOS-base        283 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+75 Dependent packages)
+
+Total download size: 1.5 G
+Installed size: 2.4 G
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              116 MB/s | 1.5 GB  00:13     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : cuda-license-9-0-9.0.176-1.x86_64                           1/76 
+*** LICENSE AGREEMENT ***
+By using this software you agree to fully comply with the terms and 
+conditions of the EULA (End User License Agreement). The EULA is located
+at /usr/local/cuda-9.0/doc/EULA.txt. The EULA can also be found at
+http://docs.nvidia.com/cuda/eula/index.html. If you do not agree to the
+terms and conditions of the EULA, do not use the software.
+  Installing : xorg-x11-proto-devel-7.7-14.noarch                          2/76 
+  Installing : cuda-driver-dev-9-0-9.0.176-1.x86_64                        3/76 
+  Installing : libICE-1.0.9-9.x86_64                                       4/76 
+  Installing : libSM-1.2.2-2.x86_64                                        5/76 
+  Installing : libXt-1.1.5-3.x86_64                                        6/76 
+  Installing : libICE-devel-1.0.9-9.x86_64                                 7/76 
+  Installing : cuda-cusolver-9-0-9.0.176-1.x86_64                          8/76 
+  Installing : cuda-cusolver-dev-9-0-9.0.176-1.x86_64                      9/76 
+  Installing : cuda-cusparse-9-0-9.0.176-1.x86_64                         10/76 
+  Installing : cuda-cusparse-dev-9-0-9.0.176-1.x86_64                     11/76 
+  Installing : cuda-npp-9-0-9.0.176-1.x86_64                              12/76 
+  Installing : cuda-npp-dev-9-0-9.0.176-1.x86_64                          13/76 
+  Installing : cuda-nvgraph-9-0-9.0.176-1.x86_64                          14/76 
+  Installing : cuda-nvgraph-dev-9-0-9.0.176-1.x86_64                      15/76 
+  Installing : cuda-cudart-9-0-9.0.176-1.x86_64                           16/76 
+  Installing : cuda-cudart-dev-9-0-9.0.176-1.x86_64                       17/76 
+  Installing : cuda-nvrtc-9-0-9.0.176-1.x86_64                            18/76 
+  Installing : cuda-nvrtc-dev-9-0-9.0.176-1.x86_64                        19/76 
+  Installing : cuda-cublas-9-0-9.0.176.2-1.x86_64                         20/76 
+  Installing : cuda-cublas-dev-9-0-9.0.176.2-1.x86_64                     21/76 
+  Installing : cuda-curand-9-0-9.0.176-1.x86_64                           22/76 
+  Installing : cuda-curand-dev-9-0-9.0.176-1.x86_64                       23/76 
+  Installing : cuda-nvml-dev-9-0-9.0.176-1.x86_64                         24/76 
+  Installing : cuda-misc-headers-9-0-9.0.176-1.x86_64                     25/76 
+  Installing : cuda-cufft-9-0-9.0.176-1.x86_64                            26/76 
+  Installing : cuda-cufft-dev-9-0-9.0.176-1.x86_64                        27/76 
+  Installing : libfontenc-1.1.3-3.x86_64                                  28/76 
+  Installing : libxslt-1.1.28-5.x86_64                                    29/76 
+  Installing : gl-manpages-1.1-7.20130122.noarch                          30/76 
+  Installing : python-lxml-3.2.1-4.x86_64                                 31/76 
+  Installing : python-javapackages-3.4.1-11.noarch                        32/76 
+  Installing : javapackages-tools-3.4.1-11.noarch                         33/76 
+  Installing : libXfont-1.5.2-1.x86_64                                    34/76 
+  Installing : 1:xorg-x11-font-utils-7.5-20.x86_64                        35/76 
+  Installing : cuda-libraries-dev-9-0-9.0.176-1.x86_64                    36/76 
+  Installing : cuda-libraries-9-0-9.0.176-1.x86_64                        37/76 
+  Installing : cuda-runtime-9-0-9.0.176-1.x86_64                          38/76 
+  Installing : cuda-demo-suite-9-0-9.0.176-1.x86_64                       39/76 
+  Installing : libSM-devel-1.2.2-2.x86_64                                 40/76 
+  Installing : libXmu-1.1.2-2.x86_64                                      41/76 
+  Installing : giflib-4.1.6-9.x86_64                                      42/76 
+  Installing : libXau-devel-1.0.8-2.1.x86_64                              43/76 
+  Installing : libxcb-devel-1.12-1.x86_64                                 44/76 
+  Installing : libX11-devel-1.6.5-1.x86_64                                45/76 
+  Installing : libXext-devel-1.3.3-3.x86_64                               46/76 
+  Installing : libXfixes-devel-5.0.3-1.x86_64                             47/76 
+  Installing : libXdamage-devel-1.1.4-4.1.x86_64                          48/76 
+  Installing : libXi-devel-1.7.9-1.x86_64                                 49/76 
+  Installing : libXxf86vm-devel-1.1.4-1.x86_64                            50/76 
+  Installing : libXt-devel-1.1.5-3.x86_64                                 51/76 
+  Installing : libXmu-devel-1.1.2-2.x86_64                                52/76 
+  Installing : libdrm-devel-2.4.74-1.x86_64                               53/76 
+  Installing : mesa-libGL-devel-11.2.2-2.20160614.x86_64                  54/76 
+  Installing : libstdc++-devel-4.8.5-4.h8.x86_64                          55/76 
+  Installing : gcc-c++-4.8.5-4.h8.x86_64                                  56/76 
+  Installing : cuda-core-9-0-9.0.176-1.x86_64                             57/76 
+  Installing : cuda-command-line-tools-9-0-9.0.176-1.x86_64               58/76 
+  Installing : tzdata-java-2017b-1.h1.noarch                              59/76 
+  Installing : libXtst-1.2.3-1.x86_64                                     60/76 
+  Installing : ttmkfdir-3.0.9-42.x86_64                                   61/76 
+  Installing : xorg-x11-fonts-Type1-7.5-9.noarch                          62/76 
+  Installing : copy-jdk-configs-3.3-10.noarch                             63/76 
+  Installing : mesa-libGLU-9.0.0-4.x86_64                                 64/76 
+  Installing : mesa-libGLU-devel-9.0.0-4.x86_64                           65/76 
+  Installing : lksctp-tools-1.0.13-3.x86_64                               66/76 
+  Installing : 1:java-1.8.0-openjdk-headless-1.8.0.171-8.b10.x86_64       67/76 
+  Installing : 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64                68/76 
+  Installing : cuda-visual-tools-9-0-9.0.176-1.x86_64                     69/76 
+  Installing : freeglut-2.8.1-3.x86_64                                    70/76 
+  Installing : freeglut-devel-2.8.1-3.x86_64                              71/76 
+  Installing : cuda-samples-9-0-9.0.176-1.x86_64                          72/76 
+  Installing : cuda-documentation-9-0-9.0.176-1.x86_64                    73/76 
+  Installing : cuda-toolkit-9-0-9.0.176-1.x86_64                          74/76 
+  Installing : cuda-9-0-9.0.176-1.x86_64                                  75/76 
+  Installing : cuda-9.0.176-1.x86_64                                      76/76 
+  Verifying  : freeglut-2.8.1-3.x86_64                                     1/76 
+  Verifying  : giflib-4.1.6-9.x86_64                                       2/76 
+  Verifying  : cuda-license-9-0-9.0.176-1.x86_64                           3/76 
+  Verifying  : libXdamage-devel-1.1.4-4.1.x86_64                           4/76 
+  Verifying  : libXt-devel-1.1.5-3.x86_64                                  5/76 
+  Verifying  : gl-manpages-1.1-7.20130122.noarch                           6/76 
+  Verifying  : freeglut-devel-2.8.1-3.x86_64                               7/76 
+  Verifying  : cuda-samples-9-0-9.0.176-1.x86_64                           8/76 
+  Verifying  : cuda-cusolver-9-0-9.0.176-1.x86_64                          9/76 
+  Verifying  : cuda-nvgraph-dev-9-0-9.0.176-1.x86_64                      10/76 
+  Verifying  : cuda-curand-dev-9-0-9.0.176-1.x86_64                       11/76 
+  Verifying  : gcc-c++-4.8.5-4.h8.x86_64                                  12/76 
+  Verifying  : lksctp-tools-1.0.13-3.x86_64                               13/76 
+  Verifying  : xorg-x11-fonts-Type1-7.5-9.noarch                          14/76 
+  Verifying  : cuda-visual-tools-9-0-9.0.176-1.x86_64                     15/76 
+  Verifying  : cuda-cusparse-9-0-9.0.176-1.x86_64                         16/76 
+  Verifying  : cuda-npp-9-0-9.0.176-1.x86_64                              17/76 
+  Verifying  : mesa-libGLU-9.0.0-4.x86_64                                 18/76 
+  Verifying  : cuda-nvgraph-9-0-9.0.176-1.x86_64                          19/76 
+  Verifying  : 1:xorg-x11-font-utils-7.5-20.x86_64                        20/76 
+  Verifying  : libXfont-1.5.2-1.x86_64                                    21/76 
+  Verifying  : python-javapackages-3.4.1-11.noarch                        22/76 
+  Verifying  : copy-jdk-configs-3.3-10.noarch                             23/76 
+  Verifying  : 1:java-1.8.0-openjdk-headless-1.8.0.171-8.b10.x86_64       24/76 
+  Verifying  : cuda-cudart-9-0-9.0.176-1.x86_64                           25/76 
+  Verifying  : libXext-devel-1.3.3-3.x86_64                               26/76 
+  Verifying  : mesa-libGL-devel-11.2.2-2.20160614.x86_64                  27/76 
+  Verifying  : libSM-devel-1.2.2-2.x86_64                                 28/76 
+  Verifying  : ttmkfdir-3.0.9-42.x86_64                                   29/76 
+  Verifying  : cuda-core-9-0-9.0.176-1.x86_64                             30/76 
+  Verifying  : cuda-nvrtc-dev-9-0-9.0.176-1.x86_64                        31/76 
+  Verifying  : cuda-toolkit-9-0-9.0.176-1.x86_64                          32/76 
+  Verifying  : python-lxml-3.2.1-4.x86_64                                 33/76 
+  Verifying  : libXt-1.1.5-3.x86_64                                       34/76 
+  Verifying  : libxcb-devel-1.12-1.x86_64                                 35/76 
+  Verifying  : libSM-1.2.2-2.x86_64                                       36/76 
+  Verifying  : cuda-9-0-9.0.176-1.x86_64                                  37/76 
+  Verifying  : cuda-libraries-dev-9-0-9.0.176-1.x86_64                    38/76 
+  Verifying  : cuda-nvrtc-9-0-9.0.176-1.x86_64                            39/76 
+  Verifying  : libXxf86vm-devel-1.1.4-1.x86_64                            40/76 
+  Verifying  : libxslt-1.1.28-5.x86_64                                    41/76 
+  Verifying  : cuda-npp-dev-9-0-9.0.176-1.x86_64                          42/76 
+  Verifying  : cuda-demo-suite-9-0-9.0.176-1.x86_64                       43/76 
+  Verifying  : libXfixes-devel-5.0.3-1.x86_64                             44/76 
+  Verifying  : cuda-cublas-9-0-9.0.176.2-1.x86_64                         45/76 
+  Verifying  : libICE-devel-1.0.9-9.x86_64                                46/76 
+  Verifying  : cuda-9.0.176-1.x86_64                                      47/76 
+  Verifying  : libXi-devel-1.7.9-1.x86_64                                 48/76 
+  Verifying  : 1:java-1.8.0-openjdk-1.8.0.171-8.b10.x86_64                49/76 
+  Verifying  : cuda-cudart-dev-9-0-9.0.176-1.x86_64                       50/76 
+  Verifying  : cuda-driver-dev-9-0-9.0.176-1.x86_64                       51/76 
+  Verifying  : cuda-cufft-dev-9-0-9.0.176-1.x86_64                        52/76 
+  Verifying  : javapackages-tools-3.4.1-11.noarch                         53/76 
+  Verifying  : libfontenc-1.1.3-3.x86_64                                  54/76 
+  Verifying  : libXau-devel-1.0.8-2.1.x86_64                              55/76 
+  Verifying  : cuda-curand-9-0-9.0.176-1.x86_64                           56/76 
+  Verifying  : libX11-devel-1.6.5-1.x86_64                                57/76 
+  Verifying  : cuda-cublas-dev-9-0-9.0.176.2-1.x86_64                     58/76 
+  Verifying  : libXtst-1.2.3-1.x86_64                                     59/76 
+  Verifying  : cuda-cusolver-dev-9-0-9.0.176-1.x86_64                     60/76 
+  Verifying  : tzdata-java-2017b-1.h1.noarch                              61/76 
+  Verifying  : mesa-libGLU-devel-9.0.0-4.x86_64                           62/76 
+  Verifying  : cuda-documentation-9-0-9.0.176-1.x86_64                    63/76 
+  Verifying  : cuda-libraries-9-0-9.0.176-1.x86_64                        64/76 
+  Verifying  : cuda-nvml-dev-9-0-9.0.176-1.x86_64                         65/76 
+  Verifying  : xorg-x11-proto-devel-7.7-14.noarch                         66/76 
+  Verifying  : cuda-misc-headers-9-0-9.0.176-1.x86_64                     67/76 
+  Verifying  : libstdc++-devel-4.8.5-4.h8.x86_64                          68/76 
+  Verifying  : cuda-command-line-tools-9-0-9.0.176-1.x86_64               69/76 
+  Verifying  : libXmu-1.1.2-2.x86_64                                      70/76 
+  Verifying  : libdrm-devel-2.4.74-1.x86_64                               71/76 
+  Verifying  : libICE-1.0.9-9.x86_64                                      72/76 
+  Verifying  : cuda-runtime-9-0-9.0.176-1.x86_64                          73/76 
+  Verifying  : cuda-cufft-9-0-9.0.176-1.x86_64                            74/76 
+  Verifying  : cuda-cusparse-dev-9-0-9.0.176-1.x86_64                     75/76 
+  Verifying  : libXmu-devel-1.1.2-2.x86_64                                76/76 
+
+Installed:
+  cuda.x86_64 0:9.0.176-1                                                       
+
+Dependency Installed:
+  copy-jdk-configs.noarch 0:3.3-10                                              
+  cuda-9-0.x86_64 0:9.0.176-1                                                   
+  cuda-command-line-tools-9-0.x86_64 0:9.0.176-1                                
+  cuda-core-9-0.x86_64 0:9.0.176-1                                              
+  cuda-cublas-9-0.x86_64 0:9.0.176.2-1                                          
+  cuda-cublas-dev-9-0.x86_64 0:9.0.176.2-1                                      
+  cuda-cudart-9-0.x86_64 0:9.0.176-1                                            
+  cuda-cudart-dev-9-0.x86_64 0:9.0.176-1                                        
+  cuda-cufft-9-0.x86_64 0:9.0.176-1                                             
+  cuda-cufft-dev-9-0.x86_64 0:9.0.176-1                                         
+  cuda-curand-9-0.x86_64 0:9.0.176-1                                            
+  cuda-curand-dev-9-0.x86_64 0:9.0.176-1                                        
+  cuda-cusolver-9-0.x86_64 0:9.0.176-1                                          
+  cuda-cusolver-dev-9-0.x86_64 0:9.0.176-1                                      
+  cuda-cusparse-9-0.x86_64 0:9.0.176-1                                          
+  cuda-cusparse-dev-9-0.x86_64 0:9.0.176-1                                      
+  cuda-demo-suite-9-0.x86_64 0:9.0.176-1                                        
+  cuda-documentation-9-0.x86_64 0:9.0.176-1                                     
+  cuda-driver-dev-9-0.x86_64 0:9.0.176-1                                        
+  cuda-libraries-9-0.x86_64 0:9.0.176-1                                         
+  cuda-libraries-dev-9-0.x86_64 0:9.0.176-1                                     
+  cuda-license-9-0.x86_64 0:9.0.176-1                                           
+  cuda-misc-headers-9-0.x86_64 0:9.0.176-1                                      
+  cuda-npp-9-0.x86_64 0:9.0.176-1                                               
+  cuda-npp-dev-9-0.x86_64 0:9.0.176-1                                           
+  cuda-nvgraph-9-0.x86_64 0:9.0.176-1                                           
+  cuda-nvgraph-dev-9-0.x86_64 0:9.0.176-1                                       
+  cuda-nvml-dev-9-0.x86_64 0:9.0.176-1                                          
+  cuda-nvrtc-9-0.x86_64 0:9.0.176-1                                             
+  cuda-nvrtc-dev-9-0.x86_64 0:9.0.176-1                                         
+  cuda-runtime-9-0.x86_64 0:9.0.176-1                                           
+  cuda-samples-9-0.x86_64 0:9.0.176-1                                           
+  cuda-toolkit-9-0.x86_64 0:9.0.176-1                                           
+  cuda-visual-tools-9-0.x86_64 0:9.0.176-1                                      
+  freeglut.x86_64 0:2.8.1-3                                                     
+  freeglut-devel.x86_64 0:2.8.1-3                                               
+  gcc-c++.x86_64 0:4.8.5-4.h8                                                   
+  giflib.x86_64 0:4.1.6-9                                                       
+  gl-manpages.noarch 0:1.1-7.20130122                                           
+  java-1.8.0-openjdk.x86_64 1:1.8.0.171-8.b10                                   
+  java-1.8.0-openjdk-headless.x86_64 1:1.8.0.171-8.b10                          
+  javapackages-tools.noarch 0:3.4.1-11                                          
+  libICE.x86_64 0:1.0.9-9                                                       
+  libICE-devel.x86_64 0:1.0.9-9                                                 
+  libSM.x86_64 0:1.2.2-2                                                        
+  libSM-devel.x86_64 0:1.2.2-2                                                  
+  libX11-devel.x86_64 0:1.6.5-1                                                 
+  libXau-devel.x86_64 0:1.0.8-2.1                                               
+  libXdamage-devel.x86_64 0:1.1.4-4.1                                           
+  libXext-devel.x86_64 0:1.3.3-3                                                
+  libXfixes-devel.x86_64 0:5.0.3-1                                              
+  libXfont.x86_64 0:1.5.2-1                                                     
+  libXi-devel.x86_64 0:1.7.9-1                                                  
+  libXmu.x86_64 0:1.1.2-2                                                       
+  libXmu-devel.x86_64 0:1.1.2-2                                                 
+  libXt.x86_64 0:1.1.5-3                                                        
+  libXt-devel.x86_64 0:1.1.5-3                                                  
+  libXtst.x86_64 0:1.2.3-1                                                      
+  libXxf86vm-devel.x86_64 0:1.1.4-1                                             
+  libdrm-devel.x86_64 0:2.4.74-1                                                
+  libfontenc.x86_64 0:1.1.3-3                                                   
+  libstdc++-devel.x86_64 0:4.8.5-4.h8                                           
+  libxcb-devel.x86_64 0:1.12-1                                                  
+  libxslt.x86_64 0:1.1.28-5                                                     
+  lksctp-tools.x86_64 0:1.0.13-3                                                
+  mesa-libGL-devel.x86_64 0:11.2.2-2.20160614                                   
+  mesa-libGLU.x86_64 0:9.0.0-4                                                  
+  mesa-libGLU-devel.x86_64 0:9.0.0-4                                            
+  python-javapackages.noarch 0:3.4.1-11                                         
+  python-lxml.x86_64 0:3.2.1-4                                                  
+  ttmkfdir.x86_64 0:3.0.9-42                                                    
+  tzdata-java.noarch 0:2017b-1.h1                                               
+  xorg-x11-font-utils.x86_64 1:7.5-20                                           
+  xorg-x11-fonts-Type1.noarch 0:7.5-9                                           
+  xorg-x11-proto-devel.noarch 0:7.7-14                                          
+
+Complete!
++ '[' 0 -ne 0 ']'
+++ date +%s
++ end_cuda=1536588701
++ time_cuda=2300
++ echo '******install cuda begin time: 1536586401, end time 1536588701, use time 2300 s'
+******install cuda begin time: 1536586401, end time 1536588701, use time 2300 s
+******install kernel-devel use time 1 s
+******install driver use time 111 s
+******install cuda use time 2300 s
+add auto enable Persistence Mode when start vm...
+reboot......

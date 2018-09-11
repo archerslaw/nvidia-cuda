@@ -1,0 +1,529 @@
+install nvidia driver and cuda begin ......
+driver version: 390.46
+cuda version: 9.0.176
+release:rhel7
+version:7
+Loaded plugins: fastestmirror
+Cleaning repos: base ecs-cuda ecs-driver epel extras
+              : nvidia-diag-driver-local-390.46 updates
+Cleaning up everything
+Maybe you want: rm -rf /var/cache/yum, to also free up space taken by orphaned data from disabled or removed repos
+Cleaning up list of fastest mirrors
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: ftp.sjtu.edu.cn
+ * epel: mirror01.idc.hinet.net
+ * extras: mirrors.shu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Metadata Cache Created
+++ uname -r
++ kernel_version=3.10.0-862.9.1.el7.x86_64
++ echo '******exec "uname -r": 3.10.0-862.9.1.el7.x86_64'
+******exec "uname -r": 3.10.0-862.9.1.el7.x86_64
++ echo '******exec "rpm -qa | grep kernel-devel | grep 3.10.0-862.9.1.el7.x86_64 | wc -l"'
+******exec "rpm -qa | grep kernel-devel | grep 3.10.0-862.9.1.el7.x86_64 | wc -l"
+++ rpm -qa
+++ grep 3.10.0-862.9.1.el7.x86_64
+++ wc -l
+++ grep kernel-devel
++ kernel_devel_num=1
++ echo '******kernel_devel_num=1'
+******kernel_devel_num=1
++ '[' 1 -eq 0 ']'
+******install kernel-devel begin time: 1536310196, end time: 1536310197, use time: 1 s
+++ yum list --showduplicates
+++ grep nvidia
+++ grep driver
+++ grep rhel7
+++ wc -l
+++ grep 390.46
++ driver_file_num=2
++ '[' 2 -eq 2 ']'
+++ yum list --showduplicates
+++ grep nvidia
+++ grep driver
+++ grep rhel7
+++ awk '-F ' '{print $1}'
+++ grep 390.46
++ driver_file='nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+nvidia-diag-driver-local-repo-rhel7-390.46.x86_64'
++ echo '******exec "yum list --showduplicates |grep nvidia | grep driver |grep rhel7 |grep 390.46 | awk -F'\'' '\'' '\''{print $1}'\''":'
+******exec "yum list --showduplicates |grep nvidia | grep driver |grep rhel7 |grep 390.46 | awk -F' ' '{print $1}'":
++ echo nvidia-diag-driver-local-repo-rhel7-390.46.x86_64 nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+nvidia-diag-driver-local-repo-rhel7-390.46.x86_64 nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
++ echo '******exec "yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+nvidia-diag-driver-local-repo-rhel7-390.46.x86_64" '
+******exec "yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+nvidia-diag-driver-local-repo-rhel7-390.46.x86_64" 
++ yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64 nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: ftp.sjtu.edu.cn
+ * epel: mirror01.idc.hinet.net
+ * extras: mirrors.shu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Package nvidia-diag-driver-local-repo-rhel7-390.46-1.0-1.x86_64 already installed and latest version
+Package nvidia-diag-driver-local-repo-rhel7-390.46-1.0-1.x86_64 already installed and latest version
+Nothing to do
++ echo '******exec "yum clean all && yum install -y cuda-drivers" '
+******exec "yum clean all && yum install -y cuda-drivers" 
++ yum clean all
+Loaded plugins: fastestmirror
+Cleaning repos: base ecs-cuda ecs-driver epel extras
+              : nvidia-diag-driver-local-390.46 updates
+Cleaning up everything
+Maybe you want: rm -rf /var/cache/yum, to also free up space taken by orphaned data from disabled or removed repos
+Cleaning up list of fastest mirrors
++ yum install -y cuda-drivers
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: ftp.sjtu.edu.cn
+ * epel: mirrors.ustc.edu.cn
+ * extras: mirrors.zju.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Package cuda-drivers-390.46-1.x86_64 already installed and latest version
+Nothing to do
++ '[' 0 -ne 0 ']'
+******install driver begin time: 1536310197, end time: 1536310213,  use time: 16 s
+++ date +%s
++ begin_cuda=1536310213
+++ yum list --showduplicates
+++ grep cuda
+++ grep rhel7
+++ grep 9.0.176
+++ grep -v update
+++ wc -l
++ cuda_file_num=1
++ '[' 1 -eq 1 ']'
+++ yum list --showduplicates
+++ grep cuda
+++ grep rhel7
+++ grep 9.0.176
+++ grep -v update
+++ awk '-F ' '{print $1}'
++ cuda_file=cuda-repo-rhel7-9-0-local.x86_64
++ echo '******exec "yum list --showduplicates |grep cuda |grep rhel7 |grep 9.0.176|grep -v update| awk -F'\'' '\'' '\''{print $1}'\''":'
+******exec "yum list --showduplicates |grep cuda |grep rhel7 |grep 9.0.176|grep -v update| awk -F' ' '{print $1}'":
++ echo cuda-repo-rhel7-9-0-local.x86_64
+cuda-repo-rhel7-9-0-local.x86_64
++ echo '******exec "yum install -y cuda-repo-rhel7-9-0-local.x86_64" '
+******exec "yum install -y cuda-repo-rhel7-9-0-local.x86_64" 
++ yum install -y cuda-repo-rhel7-9-0-local.x86_64
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: ftp.sjtu.edu.cn
+ * epel: mirrors.ustc.edu.cn
+ * extras: mirrors.zju.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda-repo-rhel7-9-0-local.x86_64 0:9.0.176-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                        Arch        Version         Repository     Size
+================================================================================
+Installing:
+ cuda-repo-rhel7-9-0-local      x86_64      9.0.176-1       ecs-cuda      1.5 G
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 1.5 G
+Installed size: 1.5 G
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : cuda-repo-rhel7-9-0-local-9.0.176-1.x86_64                   1/1 
+  Verifying  : cuda-repo-rhel7-9-0-local-9.0.176-1.x86_64                   1/1 
+
+Installed:
+  cuda-repo-rhel7-9-0-local.x86_64 0:9.0.176-1                                  
+
+Complete!
+++ date +%s
++ end_cuda_unpack=1536310283
++ time_cuda_unpack=70
++ echo '******download and unpack cuda file end, end time: 1536310283, use time 70 s'
+******download and unpack cuda file end, end time: 1536310283, use time 70 s
++ echo '******exec "yum list --showduplicates | grep cuda | grep rhel7 | grep 9.0 | grep update | awk -F'\'' '\'' '\''{print $1}'\''" '
+******exec "yum list --showduplicates | grep cuda | grep rhel7 | grep 9.0 | grep update | awk -F' ' '{print $1}'" 
+++ yum list --showduplicates
+++ grep cuda
+++ grep rhel7
+++ awk '-F ' '{print $1}'
+++ grep 9.0
+++ grep update
++ cuda_patch_filelist='cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64
+cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64'
++ echo '****** cuda_patch_filelist'
+****** cuda_patch_filelist
++ echo cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64 cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64
+cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64 cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64
++ for cuda_patch_file in '$cuda_patch_filelist'
++ echo '******exec "yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64" '
+******exec "yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64" 
++ yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: ftp.sjtu.edu.cn
+ * epel: mirrors.ustc.edu.cn
+ * extras: mirrors.zju.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64 0:1.0-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                                            Arch   Version
+                                                                 Repository
+                                                                           Size
+================================================================================
+Installing:
+ cuda-repo-rhel7-9-0-local-cublas-performance-update
+                                                    x86_64 1.0-1 ecs-cuda 144 M
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 144 M
+Installed size: 144 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : cuda-repo-rhel7-9-0-local-cublas-performance-update-1.0-1.   1/1 
+  Verifying  : cuda-repo-rhel7-9-0-local-cublas-performance-update-1.0-1.   1/1 
+
+Installed:
+  cuda-repo-rhel7-9-0-local-cublas-performance-update.x86_64 0:1.0-1            
+
+Complete!
++ for cuda_patch_file in '$cuda_patch_filelist'
++ echo '******exec "yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64" '
+******exec "yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64" 
++ yum install -y cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: ftp.sjtu.edu.cn
+ * epel: mirrors.ustc.edu.cn
+ * extras: mirrors.zju.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64 0:1.0-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                                            Arch   Version
+                                                                 Repository
+                                                                           Size
+================================================================================
+Installing:
+ cuda-repo-rhel7-9-0-local-cublas-performance-update-2
+                                                    x86_64 1.0-1 ecs-cuda 143 M
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 143 M
+Installed size: 143 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : cuda-repo-rhel7-9-0-local-cublas-performance-update-2-1.0-   1/1 
+  Verifying  : cuda-repo-rhel7-9-0-local-cublas-performance-update-2-1.0-   1/1 
+
+Installed:
+  cuda-repo-rhel7-9-0-local-cublas-performance-update-2.x86_64 0:1.0-1          
+
+Complete!
++ echo '******exec "yum clean all && yum install -y cuda" '
+******exec "yum clean all && yum install -y cuda" 
++ yum clean all
+Loaded plugins: fastestmirror
+Cleaning repos: base cuda-9-0-local cuda-9-0-local-cublas-performance-update
+              : cuda-9-0-local-cublas-performance-update-2 ecs-cuda ecs-driver
+              : epel extras nvidia-diag-driver-local-390.46 updates
+Cleaning up everything
+Maybe you want: rm -rf /var/cache/yum, to also free up space taken by orphaned data from disabled or removed repos
+Cleaning up list of fastest mirrors
++ yum install -y cuda
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: ftp.sjtu.edu.cn
+ * epel: mirrors.ustc.edu.cn
+ * extras: mirrors.shu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-9-0 >= 9.0.176 for package: cuda-9.0.176-1.x86_64
+--> Running transaction check
+---> Package cuda-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-toolkit-9-0 >= 9.0.176 for package: cuda-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-runtime-9-0 >= 9.0.176 for package: cuda-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-demo-suite-9-0 >= 9.0.176 for package: cuda-9-0-9.0.176-1.x86_64
+--> Running transaction check
+---> Package cuda-demo-suite-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-runtime-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-license-9-0 >= 9.0.176 for package: cuda-runtime-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-libraries-9-0 >= 9.0.176 for package: cuda-runtime-9-0-9.0.176-1.x86_64
+---> Package cuda-toolkit-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-visual-tools-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-samples-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-nvml-dev-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-libraries-dev-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-documentation-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-core-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-command-line-tools-9-0 >= 9.0.176 for package: cuda-toolkit-9-0-9.0.176-1.x86_64
+--> Running transaction check
+---> Package cuda-command-line-tools-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-cudart-dev-9-0 for package: cuda-command-line-tools-9-0-9.0.176-1.x86_64
+---> Package cuda-core-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-misc-headers-9-0 for package: cuda-core-9-0-9.0.176-1.x86_64
+---> Package cuda-documentation-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-libraries-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-nvrtc-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-nvgraph-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-npp-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cusparse-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cusolver-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-curand-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cufft-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cudart-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cublas-9-0 >= 9.0.176 for package: cuda-libraries-9-0-9.0.176-1.x86_64
+---> Package cuda-libraries-dev-9-0.x86_64 0:9.0.176-1 will be installed
+--> Processing Dependency: cuda-nvrtc-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-nvgraph-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-npp-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-driver-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cusparse-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cusolver-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-curand-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cufft-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+--> Processing Dependency: cuda-cublas-dev-9-0 >= 9.0.176 for package: cuda-libraries-dev-9-0-9.0.176-1.x86_64
+---> Package cuda-license-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvml-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-samples-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-visual-tools-9-0.x86_64 0:9.0.176-1 will be installed
+--> Running transaction check
+---> Package cuda-cublas-9-0.x86_64 0:9.0.176.2-1 will be installed
+---> Package cuda-cublas-dev-9-0.x86_64 0:9.0.176.2-1 will be installed
+---> Package cuda-cudart-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cudart-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cufft-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cufft-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-curand-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-curand-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cusolver-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cusolver-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cusparse-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-cusparse-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-driver-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-misc-headers-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-npp-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-npp-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvgraph-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvgraph-dev-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvrtc-9-0.x86_64 0:9.0.176-1 will be installed
+---> Package cuda-nvrtc-dev-9-0.x86_64 0:9.0.176-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                     Arch   Version     Repository                 Size
+================================================================================
+Installing:
+ cuda                        x86_64 9.0.176-1   cuda-9-0-local            5.8 k
+Installing for dependencies:
+ cuda-9-0                    x86_64 9.0.176-1   cuda-9-0-local            5.9 k
+ cuda-command-line-tools-9-0 x86_64 9.0.176-1   cuda-9-0-local             31 M
+ cuda-core-9-0               x86_64 9.0.176-1   cuda-9-0-local             22 M
+ cuda-cublas-9-0             x86_64 9.0.176.2-1 cuda-9-0-local-cublas-performance-update-2
+                                                                           67 M
+ cuda-cublas-dev-9-0         x86_64 9.0.176.2-1 cuda-9-0-local-cublas-performance-update-2
+                                                                           76 M
+ cuda-cudart-9-0             x86_64 9.0.176-1   cuda-9-0-local            143 k
+ cuda-cudart-dev-9-0         x86_64 9.0.176-1   cuda-9-0-local            1.2 M
+ cuda-cufft-9-0              x86_64 9.0.176-1   cuda-9-0-local             98 M
+ cuda-cufft-dev-9-0          x86_64 9.0.176-1   cuda-9-0-local             91 M
+ cuda-curand-9-0             x86_64 9.0.176-1   cuda-9-0-local             42 M
+ cuda-curand-dev-9-0         x86_64 9.0.176-1   cuda-9-0-local             65 M
+ cuda-cusolver-9-0           x86_64 9.0.176-1   cuda-9-0-local             38 M
+ cuda-cusolver-dev-9-0       x86_64 9.0.176-1   cuda-9-0-local             11 M
+ cuda-cusparse-9-0           x86_64 9.0.176-1   cuda-9-0-local             36 M
+ cuda-cusparse-dev-9-0       x86_64 9.0.176-1   cuda-9-0-local             72 M
+ cuda-demo-suite-9-0         x86_64 9.0.176-1   cuda-9-0-local            4.7 M
+ cuda-documentation-9-0      x86_64 9.0.176-1   cuda-9-0-local            116 M
+ cuda-driver-dev-9-0         x86_64 9.0.176-1   cuda-9-0-local             18 k
+ cuda-libraries-9-0          x86_64 9.0.176-1   cuda-9-0-local            6.0 k
+ cuda-libraries-dev-9-0      x86_64 9.0.176-1   cuda-9-0-local            6.2 k
+ cuda-license-9-0            x86_64 9.0.176-1   cuda-9-0-local             28 k
+ cuda-misc-headers-9-0       x86_64 9.0.176-1   cuda-9-0-local            1.1 M
+ cuda-npp-9-0                x86_64 9.0.176-1   cuda-9-0-local             91 M
+ cuda-npp-dev-9-0            x86_64 9.0.176-1   cuda-9-0-local             91 M
+ cuda-nvgraph-9-0            x86_64 9.0.176-1   cuda-9-0-local            8.8 M
+ cuda-nvgraph-dev-9-0        x86_64 9.0.176-1   cuda-9-0-local            8.9 M
+ cuda-nvml-dev-9-0           x86_64 9.0.176-1   cuda-9-0-local             63 k
+ cuda-nvrtc-9-0              x86_64 9.0.176-1   cuda-9-0-local            8.5 M
+ cuda-nvrtc-dev-9-0          x86_64 9.0.176-1   cuda-9-0-local             14 k
+ cuda-runtime-9-0            x86_64 9.0.176-1   cuda-9-0-local            5.9 k
+ cuda-samples-9-0            x86_64 9.0.176-1   cuda-9-0-local             97 M
+ cuda-toolkit-9-0            x86_64 9.0.176-1   cuda-9-0-local            6.5 k
+ cuda-visual-tools-9-0       x86_64 9.0.176-1   cuda-9-0-local            386 M
+
+Transaction Summary
+================================================================================
+Install  1 Package (+33 Dependent packages)
+
+Total download size: 1.4 G
+Installed size: 2.3 G
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              167 MB/s | 1.4 GB  00:08     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : cuda-license-9-0-9.0.176-1.x86_64                           1/34 
+*** LICENSE AGREEMENT ***
+By using this software you agree to fully comply with the terms and 
+conditions of the EULA (End User License Agreement). The EULA is located
+at /usr/local/cuda-9.0/doc/EULA.txt. The EULA can also be found at
+http://docs.nvidia.com/cuda/eula/index.html. If you do not agree to the
+terms and conditions of the EULA, do not use the software.
+  Installing : cuda-driver-dev-9-0-9.0.176-1.x86_64                        2/34 
+  Installing : cuda-cusolver-9-0-9.0.176-1.x86_64                          3/34 
+  Installing : cuda-cusolver-dev-9-0-9.0.176-1.x86_64                      4/34 
+  Installing : cuda-cusparse-9-0-9.0.176-1.x86_64                          5/34 
+  Installing : cuda-cusparse-dev-9-0-9.0.176-1.x86_64                      6/34 
+  Installing : cuda-npp-9-0-9.0.176-1.x86_64                               7/34 
+  Installing : cuda-npp-dev-9-0-9.0.176-1.x86_64                           8/34 
+  Installing : cuda-nvgraph-9-0-9.0.176-1.x86_64                           9/34 
+  Installing : cuda-nvgraph-dev-9-0-9.0.176-1.x86_64                      10/34 
+  Installing : cuda-cudart-9-0-9.0.176-1.x86_64                           11/34 
+  Installing : cuda-cudart-dev-9-0-9.0.176-1.x86_64                       12/34 
+  Installing : cuda-nvrtc-9-0-9.0.176-1.x86_64                            13/34 
+  Installing : cuda-nvrtc-dev-9-0-9.0.176-1.x86_64                        14/34 
+  Installing : cuda-cublas-9-0-9.0.176.2-1.x86_64                         15/34 
+  Installing : cuda-cublas-dev-9-0-9.0.176.2-1.x86_64                     16/34 
+  Installing : cuda-curand-9-0-9.0.176-1.x86_64                           17/34 
+  Installing : cuda-curand-dev-9-0-9.0.176-1.x86_64                       18/34 
+  Installing : cuda-nvml-dev-9-0-9.0.176-1.x86_64                         19/34 
+  Installing : cuda-misc-headers-9-0-9.0.176-1.x86_64                     20/34 
+  Installing : cuda-core-9-0-9.0.176-1.x86_64                             21/34 
+  Installing : cuda-command-line-tools-9-0-9.0.176-1.x86_64               22/34 
+  Installing : cuda-cufft-9-0-9.0.176-1.x86_64                            23/34 
+  Installing : cuda-cufft-dev-9-0-9.0.176-1.x86_64                        24/34 
+  Installing : cuda-samples-9-0-9.0.176-1.x86_64                          25/34 
+  Installing : cuda-documentation-9-0-9.0.176-1.x86_64                    26/34 
+  Installing : cuda-visual-tools-9-0-9.0.176-1.x86_64                     27/34 
+  Installing : cuda-libraries-dev-9-0-9.0.176-1.x86_64                    28/34 
+  Installing : cuda-toolkit-9-0-9.0.176-1.x86_64                          29/34 
+  Installing : cuda-libraries-9-0-9.0.176-1.x86_64                        30/34 
+  Installing : cuda-runtime-9-0-9.0.176-1.x86_64                          31/34 
+  Installing : cuda-demo-suite-9-0-9.0.176-1.x86_64                       32/34 
+  Installing : cuda-9-0-9.0.176-1.x86_64                                  33/34 
+  Installing : cuda-9.0.176-1.x86_64                                      34/34 
+  Verifying  : cuda-license-9-0-9.0.176-1.x86_64                           1/34 
+  Verifying  : cuda-samples-9-0-9.0.176-1.x86_64                           2/34 
+  Verifying  : cuda-cusolver-9-0-9.0.176-1.x86_64                          3/34 
+  Verifying  : cuda-nvgraph-dev-9-0-9.0.176-1.x86_64                       4/34 
+  Verifying  : cuda-curand-dev-9-0-9.0.176-1.x86_64                        5/34 
+  Verifying  : cuda-visual-tools-9-0-9.0.176-1.x86_64                      6/34 
+  Verifying  : cuda-cusparse-9-0-9.0.176-1.x86_64                          7/34 
+  Verifying  : cuda-npp-9-0-9.0.176-1.x86_64                               8/34 
+  Verifying  : cuda-nvgraph-9-0-9.0.176-1.x86_64                           9/34 
+  Verifying  : cuda-cudart-9-0-9.0.176-1.x86_64                           10/34 
+  Verifying  : cuda-core-9-0-9.0.176-1.x86_64                             11/34 
+  Verifying  : cuda-nvrtc-dev-9-0-9.0.176-1.x86_64                        12/34 
+  Verifying  : cuda-toolkit-9-0-9.0.176-1.x86_64                          13/34 
+  Verifying  : cuda-9-0-9.0.176-1.x86_64                                  14/34 
+  Verifying  : cuda-libraries-dev-9-0-9.0.176-1.x86_64                    15/34 
+  Verifying  : cuda-nvrtc-9-0-9.0.176-1.x86_64                            16/34 
+  Verifying  : cuda-npp-dev-9-0-9.0.176-1.x86_64                          17/34 
+  Verifying  : cuda-demo-suite-9-0-9.0.176-1.x86_64                       18/34 
+  Verifying  : cuda-cublas-9-0-9.0.176.2-1.x86_64                         19/34 
+  Verifying  : cuda-9.0.176-1.x86_64                                      20/34 
+  Verifying  : cuda-cudart-dev-9-0-9.0.176-1.x86_64                       21/34 
+  Verifying  : cuda-driver-dev-9-0-9.0.176-1.x86_64                       22/34 
+  Verifying  : cuda-cufft-dev-9-0-9.0.176-1.x86_64                        23/34 
+  Verifying  : cuda-curand-9-0-9.0.176-1.x86_64                           24/34 
+  Verifying  : cuda-cublas-dev-9-0-9.0.176.2-1.x86_64                     25/34 
+  Verifying  : cuda-cusolver-dev-9-0-9.0.176-1.x86_64                     26/34 
+  Verifying  : cuda-documentation-9-0-9.0.176-1.x86_64                    27/34 
+  Verifying  : cuda-libraries-9-0-9.0.176-1.x86_64                        28/34 
+  Verifying  : cuda-nvml-dev-9-0-9.0.176-1.x86_64                         29/34 
+  Verifying  : cuda-misc-headers-9-0-9.0.176-1.x86_64                     30/34 
+  Verifying  : cuda-command-line-tools-9-0-9.0.176-1.x86_64               31/34 
+  Verifying  : cuda-runtime-9-0-9.0.176-1.x86_64                          32/34 
+  Verifying  : cuda-cufft-9-0-9.0.176-1.x86_64                            33/34 
+  Verifying  : cuda-cusparse-dev-9-0-9.0.176-1.x86_64                     34/34 
+
+Installed:
+  cuda.x86_64 0:9.0.176-1                                                       
+
+Dependency Installed:
+  cuda-9-0.x86_64 0:9.0.176-1                                                   
+  cuda-command-line-tools-9-0.x86_64 0:9.0.176-1                                
+  cuda-core-9-0.x86_64 0:9.0.176-1                                              
+  cuda-cublas-9-0.x86_64 0:9.0.176.2-1                                          
+  cuda-cublas-dev-9-0.x86_64 0:9.0.176.2-1                                      
+  cuda-cudart-9-0.x86_64 0:9.0.176-1                                            
+  cuda-cudart-dev-9-0.x86_64 0:9.0.176-1                                        
+  cuda-cufft-9-0.x86_64 0:9.0.176-1                                             
+  cuda-cufft-dev-9-0.x86_64 0:9.0.176-1                                         
+  cuda-curand-9-0.x86_64 0:9.0.176-1                                            
+  cuda-curand-dev-9-0.x86_64 0:9.0.176-1                                        
+  cuda-cusolver-9-0.x86_64 0:9.0.176-1                                          
+  cuda-cusolver-dev-9-0.x86_64 0:9.0.176-1                                      
+  cuda-cusparse-9-0.x86_64 0:9.0.176-1                                          
+  cuda-cusparse-dev-9-0.x86_64 0:9.0.176-1                                      
+  cuda-demo-suite-9-0.x86_64 0:9.0.176-1                                        
+  cuda-documentation-9-0.x86_64 0:9.0.176-1                                     
+  cuda-driver-dev-9-0.x86_64 0:9.0.176-1                                        
+  cuda-libraries-9-0.x86_64 0:9.0.176-1                                         
+  cuda-libraries-dev-9-0.x86_64 0:9.0.176-1                                     
+  cuda-license-9-0.x86_64 0:9.0.176-1                                           
+  cuda-misc-headers-9-0.x86_64 0:9.0.176-1                                      
+  cuda-npp-9-0.x86_64 0:9.0.176-1                                               
+  cuda-npp-dev-9-0.x86_64 0:9.0.176-1                                           
+  cuda-nvgraph-9-0.x86_64 0:9.0.176-1                                           
+  cuda-nvgraph-dev-9-0.x86_64 0:9.0.176-1                                       
+  cuda-nvml-dev-9-0.x86_64 0:9.0.176-1                                          
+  cuda-nvrtc-9-0.x86_64 0:9.0.176-1                                             
+  cuda-nvrtc-dev-9-0.x86_64 0:9.0.176-1                                         
+  cuda-runtime-9-0.x86_64 0:9.0.176-1                                           
+  cuda-samples-9-0.x86_64 0:9.0.176-1                                           
+  cuda-toolkit-9-0.x86_64 0:9.0.176-1                                           
+  cuda-visual-tools-9-0.x86_64 0:9.0.176-1                                      
+
+Complete!
++ '[' 0 -ne 0 ']'
+++ date +%s
++ end_cuda=1536310342
++ time_cuda=129
++ echo '******install cuda begin time: 1536310213, end time 1536310342, use time 129 s'
+******install cuda begin time: 1536310213, end time 1536310342, use time 129 s
+******install kernel-devel use time 1 s
+******install driver use time 16 s
+******install cuda use time 129 s
+add auto enable Persistence Mode when start vm...
+reboot......
