@@ -1,6 +1,6 @@
 #!/bin/sh
 
-log="/root/nvidia_install.log"
+log="/var/log/nvidia_install.log"
 
 driver_version="390.46"
 cuda_version="9.0.176"
