@@ -182,7 +182,7 @@ fi
 echo "release:$release" >> $log 2>&1
 echo "version:$version" >> $log 2>&1
 
-create_nvidia_repo_centos
+create_nvidia_repo_centos >> $log 2>&1
 
 #curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-7.repo
 #curl -o /etc/yum.repos.d/nvidia-RHEL.repo http://119.3.60.246/ecs/linux/nvidia-RHEL.repo
