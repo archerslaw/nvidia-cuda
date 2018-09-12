@@ -195,7 +195,16 @@ fi
 
 echo "os:$os release:$release version:$version" >> $log 2>&1
 
-create_nvidia_repo_ubuntu >> $log 2>&1 
+if [ "$release" = "ubuntu1404" ]; then
+    update_ubuntu1404_apt_source >> $log 2>&1
+elif [ "$release" = "ubuntu1604" ]; then
+    update_ubuntu1604_apt_source >> $log 2>&1
+else
+    echo "ERROR: There is no any Repo match the OS."
+    exit 1
+fi   
+
+create_nvidia_repo_ubuntu >> $log 2>&1
 
 begin=$(date '+%s')
 install_nvidia_kernel_ubuntu >> $log 2>&1 
