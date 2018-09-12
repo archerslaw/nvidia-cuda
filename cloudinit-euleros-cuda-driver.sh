@@ -14,7 +14,7 @@ echo "cuda version: $cuda_version" >> $log 2>&1
 ##Centos
 create_nvidia_repo_centos()
 {
-    curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
+    curl -o /etc/yum.repos.d/hwEulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_$eulerversion_$eulercode_base.repo
     curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
     url="http://119.3.60.246"
     cudaurl=$url"/ecs/linux/rpm/cuda/${version}/x86_64/"
@@ -174,6 +174,11 @@ if [ "$os" = "EulerOS" ]; then
     version=7
     release="rhel${version}"
     filename="/etc/rc.d/rc.local"
+    rstr=$(lsb_release -r | awk -F'[:.]' '{print $2}')
+    eulerversion=$(echo $rstr | sed 's/ //g')
+    cstr=$(lsb_release -c | awk -F'[:.]' '{print $2}')
+    newcstr=$(echo $cstr | sed 's/ //g')
+    eulercode=$(echo ${newcstr: -1})
 else
     echo "ERROR: OS ($os) is invalid!" >> $log 2>&1
     exit 1
