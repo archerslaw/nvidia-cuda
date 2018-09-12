@@ -155,7 +155,7 @@ enable_pm()
         sed -i '/exit 0/i\bash /etc/init.d/enable_pm.sh' $filename
     else
         sed -i "/enable_pm.sh/d" $filename
-        sed -i '$a\bash /etc/init.d/enable_pm.sh' /etc/rc.d/rc.local
+        sed -i '$a\bash /etc/init.d/enable_pm.sh' $filename
     fi
     chmod +x $filename
 }
