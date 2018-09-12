@@ -2,8 +2,8 @@
 
 log="/var/log/nvidia_install.log"
 
-driver_version="390.46"
-cuda_version="9.0.176"
+driver_version="384.66"
+cuda_version="8.0.61"
 
 cuda_big_version=$(echo $cuda_version | awk -F'.' '{print $1"."$2}')
 
@@ -42,8 +42,7 @@ update_ubuntu1404_apt_source()
     deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates main restricted universe multiverse
     deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-proposed main restricted universe multiverse
     deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
-    EOF
-    apt-get update
+EOF
 }
 update_ubuntu1604_apt_source()
 {
@@ -61,8 +60,7 @@ update_ubuntu1604_apt_source()
     deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-updates main restricted universe multiverse
     deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-proposed main restricted universe multiverse
     deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-backports main restricted universe multiverse
-    EOF
-    apt-get update
+EOF
 }
 
 install_kernel_devel_ubuntu()
