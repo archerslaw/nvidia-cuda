@@ -168,7 +168,7 @@ fi
 str=$(lsb_release -i | awk -F':' '{print $2}')
 os=$(echo $str | sed 's/ //g')
 if [ "$os" = "EulerOS" ]; then
-    os="euleros"
+    os="EulerOS"
     #str=$(lsb_release -r | awk -F'[:.]' '{print $2}')
     #version=$(echo $str | sed 's/ //g')
     version=7
