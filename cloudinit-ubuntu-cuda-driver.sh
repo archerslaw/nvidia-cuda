@@ -229,7 +229,7 @@ end_driver=$(date '+%s')
 time_driver=$((end_driver-begin_driver))
 echo "******install driver begin time: $begin_driver, end time: $end_driver,  use time: $time_driver s" >> $log 2>&1
 
-install_cuda_ubuntu >> $log 2>&1 
+install_nvidia_cuda_ubuntu >> $log 2>&1 
 if [ $? -ne 0 ]; then
     echo "error:  cuda install fail!!!" >> $log 2>&1
     exit 1
