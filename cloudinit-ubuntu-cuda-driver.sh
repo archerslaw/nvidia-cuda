@@ -207,7 +207,7 @@ fi
 create_nvidia_repo_ubuntu >> $log 2>&1
 
 begin=$(date '+%s')
-install_nvidia_kernel_ubuntu >> $log 2>&1 
+install_kernel_devel_ubuntu >> $log 2>&1 
 if [ $? -ne 0 ]; then
     echo "error:  kernel install fail!!!" >> $log 2>&1
     exit 1
