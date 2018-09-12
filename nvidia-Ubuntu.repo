@@ -1,2 +1,0 @@
-deb http://119.3.60.246/ecs/linux/apt/ ecs cuda
-deb http://119.3.60.246/ecs/linux/apt/ ecs driver
