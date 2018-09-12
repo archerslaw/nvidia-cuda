@@ -11,7 +11,39 @@ echo "install nvidia driver and cuda begin ......" >> $log 2>&1
 echo "driver version: $driver_version" >> $log 2>&1
 echo "cuda version: $cuda_version" >> $log 2>&1
 
-install_kernel_centos()
+##Centos
+create_nvidia_repo_centos()
+{
+    #curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
+    curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
+    url="http://119.3.60.246"
+    cudaurl=$url"/ecs/linux/rpm/cuda/${version}/\$basearch/"
+    driverurl=$url"/ecs/linux/rpm/driver/${version}/\$basearch/"
+    packageurl=$url"/ecs/linux/rpm/package/${version}/\$basearch/"
+
+    echo "[ecs-cuda]" |tee /etc/yum.repos.d/nvidia-centos.repo
+    echo "name=ecs-cuda-\$basearch" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "baseurl=$cudaurl" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "enabled=1" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "gpgcheck=0" | tee -a /etc/yum.repos.d/nvidia-centos.repo	
+    echo " " | tee -a /etc/yum.repos.d/nvidia-centos.repo	
+    echo "[ecs-driver]" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "name=ecs-driver-\$basearch" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "baseurl=$driverurl" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "enabled=1" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "gpgcheck=0" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo " " | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "[ecs-package]" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "name=ecs-package-\$basearch" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "baseurl=$packageurl" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "enabled=1" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+    echo "gpgcheck=0" | tee -a /etc/yum.repos.d/nvidia-centos.repo
+
+    yum clean all >> $log 2>&1
+    yum makecache >> $log 2>&1
+}
+
+install_kernel_devel_centos()
 {
     #install kernel-devel
     kernel_version=$(uname -r)
@@ -40,7 +72,7 @@ install_kernel_centos()
 }
 
 
-install_driver_centos()
+install_nvidia_driver_centos()
 {
     #install driver
     driver_file_num=$(yum list | grep nvidia | grep driver | grep $release | grep $driver_version | wc -l)
@@ -64,7 +96,7 @@ install_driver_centos()
     fi
 }
 
-install_cuda_centos()
+install_nvidia_cuda_centos()
 {
     begin_cuda=$(date '+%s')
     cuda_file_num=$(yum list | grep cuda | grep $release | grep $cuda_big_version |grep -v update | wc -l)
@@ -150,20 +182,24 @@ fi
 echo "release:$release" >> $log 2>&1
 echo "version:$version" >> $log 2>&1
 
-echo "create_nvidia_repo_centos" >> $log 2>&1
+create_nvidia_repo_centos >> $log 2>&1
+
 curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-7.repo
 curl -o /etc/yum.repos.d/nvidia-CentOS.repo http://119.3.60.246/ecs/linux/nvidia-CentOS.repo
 
-yum install epel -y >> $log 2>&1
-cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/hwepel.repo
-cp /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/hwepel-testing.repo
-sed -e 's!^mirrorlist=!#mirrorlist=!g' -e 's!^#baseurl=!baseurl=!g' -e 's!//download\.fedoraproject\.org/pub!//mirrors.myhuaweicloud.com!g' -i /etc/yum.repos.d/hwepel.repo /etc/yum.repos.d/hwepel-testing.repo
+#curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-7.repo
+#curl -o /etc/yum.repos.d/nvidia-RHEL.repo http://119.3.60.246/ecs/linux/nvidia-RHEL.repo
+#yum install epel -y >> $log 2>&1
+
+#cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/hwepel.repo
+#cp /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/hwepel-testing.repo
+#sed -e 's!^mirrorlist=!#mirrorlist=!g' -e 's!^#baseurl=!baseurl=!g' -e 's!//download\.fedoraproject\.org/pub!//mirrors.myhuaweicloud.com!g' -i /etc/yum.repos.d/hwepel.repo /etc/yum.repos.d/hwepel-testing.repo
 
 yum clean all >> $log 2>&1
 yum makecache >> $log 2>&1
 
 begin=$(date '+%s')
-install_kernel_centos >> $log 2>&1 
+install_kernel_devel_centos >> $log 2>&1 
 if [ $? -ne 0 ]; then
     exit 1
 fi
@@ -173,7 +209,7 @@ echo "******install kernel-devel begin time: $begin, end time: $end, use time: $
 
 
 begin_driver=$(date '+%s')
-install_driver_centos >> $log 2>&1 
+install_nvidia_driver_centos >> $log 2>&1 
 if [ $? -ne 0 ]; then
     echo "error: driver download fail!!!" >> $log 2>&1
     exit 1
@@ -182,15 +218,15 @@ end_driver=$(date '+%s')
 time_driver=$((end_driver-begin_driver))
 echo "******install driver begin time: $begin_driver, end time: $end_driver,  use time: $time_driver s" >> $log 2>&1
 
-install_cuda_centos >> $log 2>&1 
+install_nvidia_cuda_centos >> $log 2>&1 
 if [ $? -ne 0 ]; then
     echo "error: cuda download fail!!!" >> $log 2>&1
     exit 1
 fi
 
 echo "******install kernel-devel use time $time_kernel s" >> $log 2>&1
-echo "******install driver use time $time_driver s" >> $log 2>&1
-echo "******install cuda use time $time_cuda s" >> $log 2>&1
+echo "******install nvidia driver use time $time_driver s" >> $log 2>&1
+echo "******install nvidia cuda use time $time_cuda s" >> $log 2>&1
 
 echo "add auto enable Persistence Mode when start vm..." >> $log 2>&1
 enable_pm
