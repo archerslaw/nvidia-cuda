@@ -1,0 +1,172 @@
+install nvidia driver and cuda begin ......
+driver version: 390.46
+cuda version: 9.0.176
+release:rhel7
+version:7
++ curl -o /etc/yum.repos.d/hwEulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_3_base.repo
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   256  100   256    0     0  28045      0 --:--:-- --:--:-- --:--:-- 28444
++ curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-7.repo
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   943  100   943    0     0   115k      0 --:--:-- --:--:-- --:--:--  131k
++ url=http://119.3.60.246
++ cudaurl=http://119.3.60.246/ecs/linux/rpm/cuda/7/x86_64/
++ driverurl=http://119.3.60.246/ecs/linux/rpm/driver/7/x86_64/
++ packageurl=http://119.3.60.246/ecs/linux/rpm/package/7/x86_64/
++ echo '[ecs-cuda]'
++ tee /etc/yum.repos.d/nvidia-centos.repo
+[ecs-cuda]
++ echo name=ecs-cuda-x86_6
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+name=ecs-cuda-x86_6
++ echo baseurl=http://119.3.60.246/ecs/linux/rpm/cuda/7/x86_64/
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+baseurl=http://119.3.60.246/ecs/linux/rpm/cuda/7/x86_64/
++ echo enabled=1
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+enabled=1
++ echo gpgcheck=0
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+gpgcheck=0
++ echo ' '
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+ 
++ echo '[ecs-driver]'
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+[ecs-driver]
++ echo name=ecs-driver-x86_6
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+name=ecs-driver-x86_6
++ echo baseurl=http://119.3.60.246/ecs/linux/rpm/driver/7/x86_64/
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+baseurl=http://119.3.60.246/ecs/linux/rpm/driver/7/x86_64/
++ echo enabled=1
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+enabled=1
++ echo gpgcheck=0
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+gpgcheck=0
++ echo ' '
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+ 
++ echo '[ecs-package]'
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+[ecs-package]
++ echo name=ecs-package-x86_64
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+name=ecs-package-x86_64
++ echo baseurl=http://119.3.60.246/ecs/linux/rpm/package/7/x86_64/
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+baseurl=http://119.3.60.246/ecs/linux/rpm/package/7/x86_64/
++ echo enabled=1
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+enabled=1
++ echo gpgcheck=0
++ tee -a /etc/yum.repos.d/nvidia-centos.repo
+gpgcheck=0
++ yum clean all
+Cleaning repos: EulerOS-base base ecs-cuda ecs-driver ecs-package epel
+              : nvidia-diag-driver-local-390.46
+Cleaning up everything
++ yum makecache
+Metadata Cache Created
+Cleaning repos: EulerOS-base base ecs-cuda ecs-driver ecs-package epel
+              : nvidia-diag-driver-local-390.46
+Cleaning up everything
+Metadata Cache Created
+++ uname -r
++ kernel_version=3.10.0-514.44.5.10.h121.x86_64
++ echo '******exec "uname -r": 3.10.0-514.44.5.10.h121.x86_64'
+******exec "uname -r": 3.10.0-514.44.5.10.h121.x86_64
++ echo '******exec "rpm -qa | grep kernel-devel | grep 3.10.0-514.44.5.10.h121.x86_64 | wc -l"'
+******exec "rpm -qa | grep kernel-devel | grep 3.10.0-514.44.5.10.h121.x86_64 | wc -l"
+++ rpm -qa
+++ grep kernel-devel
+++ wc -l
+++ grep 3.10.0-514.44.5.10.h121.x86_64
++ kernel_devel_num=1
++ echo '******kernel_devel_num=1'
+******kernel_devel_num=1
++ '[' 1 -eq 0 ']'
+******install kernel-devel begin time: 1536753588, end time: 1536753588, use time: 0 s
+++ yum list
+++ grep rhel7
+++ wc -l
+++ grep nvidia
+++ grep 390.46
+++ grep driver
++ driver_file_num=1
++ '[' 1 -eq 1 ']'
+++ yum list
+++ grep nvidia
+++ grep rhel7
+++ awk '-F ' '{print $1}'
+++ grep driver
+++ grep 390.46
++ driver_file=nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
++ echo '******exec "yum list |grep nvidia | grep driver |grep rhel7 |grep 390.46 | awk -F'\'' '\'' '\''{print $1}'\''":'
+******exec "yum list |grep nvidia | grep driver |grep rhel7 |grep 390.46 | awk -F' ' '{print $1}'":
++ echo nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
++ echo '******exec "yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64" '
+******exec "yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64" 
++ yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
+Package nvidia-diag-driver-local-repo-rhel7-390.46-1.0-1.x86_64 already installed and latest version
+Nothing to do
++ echo '******exec "yum clean all && yum install -y cuda-drivers" '
+******exec "yum clean all && yum install -y cuda-drivers" 
++ yum clean all
+Cleaning repos: EulerOS-base base ecs-cuda ecs-driver ecs-package epel
+              : nvidia-diag-driver-local-390.46
+Cleaning up everything
++ yum install -y cuda-drivers
+Package cuda-drivers-390.46-1.x86_64 already installed and latest version
+Nothing to do
++ '[' 0 -ne 0 ']'
+******install driver begin time: 1536753588, end time: 1536753596,  use time: 8 s
+++ date +%s
++ begin_cuda=1536753596
+++ yum list
+++ grep cuda
+++ grep 9.0
+++ wc -l
+++ grep rhel7
+++ grep -v update
++ cuda_file_num=1
++ '[' 1 -eq 1 ']'
+++ yum list
+++ grep cuda
+++ awk '-F ' '{print $1}'
+++ grep 9.0
+++ grep -v update
+++ grep rhel7
++ cuda_file=cuda-repo-rhel7-9-0-local.x86_64
++ echo '******exec "yum list |grep cuda |grep rhel7 |grep 9.0|grep -v update| awk -F'\'' '\'' '\''{print $1}'\''":'
+******exec "yum list |grep cuda |grep rhel7 |grep 9.0|grep -v update| awk -F' ' '{print $1}'":
++ echo cuda-repo-rhel7-9-0-local.x86_64
+cuda-repo-rhel7-9-0-local.x86_64
++ echo '******exec "yum install -y cuda-repo-rhel7-9-0-local.x86_64" '
+******exec "yum install -y cuda-repo-rhel7-9-0-local.x86_64" 
++ yum install -y cuda-repo-rhel7-9-0-local.x86_64
+Resolving Dependencies
+--> Running transaction check
+---> Package cuda-repo-rhel7-9-0-local.x86_64 0:9.0.176-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                        Arch        Version         Repository     Size
+================================================================================
+Installing:
+ cuda-repo-rhel7-9-0-local      x86_64      9.0.176-1       ecs-cuda      1.5 G
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 1.5 G
+Installed size: 1.5 G
+Downloading packages:
