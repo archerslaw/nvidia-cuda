@@ -157,7 +157,7 @@ str=$(lsb_release -i | awk -F':' '{print $2}')
 os=$(echo $str | sed 's/ //g')
 if [ "$os" = "openSUSEproject" ]; then
     os="openSUSE"
-    str=$(lsb_release -r | awk -F'[:]' '{print $2}')
+    str=$(lsb_release -r | awk -F'[:.]' '{print $2$3}')
     version=$(echo $str | sed 's/ //g')
     release="opensuse${version}"
     filename="/etc/init.d/after.local"
@@ -168,9 +168,9 @@ fi
 
 echo "os:$os release:$release version:$version" >> $log 2>&1
 
-if [ "$release" = "opensuse42.2" ]; then
+if [ "$release" = "opensuse422" ]; then
     update_opensuse_source4202 >> $log 2>&1
-elif [ "$release" = "opensuse42.3" ]; then
+elif [ "$release" = "opensuse423" ]; then
     update_opensuse_source4203 >> $log 2>&1
 else
     echo "ERROR: There is no any Repo match the OS."
