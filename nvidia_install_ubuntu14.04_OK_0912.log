@@ -1,172 +1,1213 @@
 install nvidia driver and cuda begin ......
-driver version: 390.46
-cuda version: 9.0.176
-release:rhel7
-version:7
-+ curl -o /etc/yum.repos.d/hwEulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_3_base.repo
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   256  100   256    0     0  28045      0 --:--:-- --:--:-- --:--:-- 28444
-+ curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-7.repo
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   943  100   943    0     0   115k      0 --:--:-- --:--:-- --:--:--  131k
+driver version: 384.66
+cuda version: 8.0.61
+os:ubuntu release:ubuntu1404 version:1404
++ echo -e '\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m'
+[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.
+[40;37m
++ cp -fp /etc/apt/sources.list /etc/apt/sources.list.back
++ cat
 + url=http://119.3.60.246
-+ cudaurl=http://119.3.60.246/ecs/linux/rpm/cuda/7/x86_64/
-+ driverurl=http://119.3.60.246/ecs/linux/rpm/driver/7/x86_64/
-+ packageurl=http://119.3.60.246/ecs/linux/rpm/package/7/x86_64/
-+ echo '[ecs-cuda]'
-+ tee /etc/yum.repos.d/nvidia-centos.repo
-[ecs-cuda]
-+ echo name=ecs-cuda-x86_6
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-name=ecs-cuda-x86_6
-+ echo baseurl=http://119.3.60.246/ecs/linux/rpm/cuda/7/x86_64/
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-baseurl=http://119.3.60.246/ecs/linux/rpm/cuda/7/x86_64/
-+ echo enabled=1
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-enabled=1
-+ echo gpgcheck=0
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-gpgcheck=0
-+ echo ' '
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
- 
-+ echo '[ecs-driver]'
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-[ecs-driver]
-+ echo name=ecs-driver-x86_6
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-name=ecs-driver-x86_6
-+ echo baseurl=http://119.3.60.246/ecs/linux/rpm/driver/7/x86_64/
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-baseurl=http://119.3.60.246/ecs/linux/rpm/driver/7/x86_64/
-+ echo enabled=1
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-enabled=1
-+ echo gpgcheck=0
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-gpgcheck=0
-+ echo ' '
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
- 
-+ echo '[ecs-package]'
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-[ecs-package]
-+ echo name=ecs-package-x86_64
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-name=ecs-package-x86_64
-+ echo baseurl=http://119.3.60.246/ecs/linux/rpm/package/7/x86_64/
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-baseurl=http://119.3.60.246/ecs/linux/rpm/package/7/x86_64/
-+ echo enabled=1
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-enabled=1
-+ echo gpgcheck=0
-+ tee -a /etc/yum.repos.d/nvidia-centos.repo
-gpgcheck=0
-+ yum clean all
-Cleaning repos: EulerOS-base base ecs-cuda ecs-driver ecs-package epel
-              : nvidia-diag-driver-local-390.46
-Cleaning up everything
-+ yum makecache
-Metadata Cache Created
-Cleaning repos: EulerOS-base base ecs-cuda ecs-driver ecs-package epel
-              : nvidia-diag-driver-local-390.46
-Cleaning up everything
-Metadata Cache Created
++ repo_file=/etc/apt/sources.list
++ url1='deb http://119.3.60.246/ecs/linux/apt/ ecs cuda'
++ url2='deb http://119.3.60.246/ecs/linux/apt/ ecs driver'
++ sed -i '/ecs driver/d' /etc/apt/sources.list
++ sed -i '/ecs driver/d' /etc/apt/sources.list
++ echo deb http://119.3.60.246/ecs/linux/apt/ ecs cuda
++ echo deb http://119.3.60.246/ecs/linux/apt/ ecs driver
++ wget -O - http://119.3.60.246/ecs/linux/huaweicloud.ubuntu.gpg.key
+--2018-09-12 19:13:16--  http://119.3.60.246/ecs/linux/huaweicloud.ubuntu.gpg.key
+Connecting to 119.3.60.246:80... + apt-key add -
+connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1658 (1.6K)
+Saving to: ‘STDOUT’
+
+     0K .                                                     100%  354M=0s
+
+2018-09-12 19:13:16 (354 MB/s) - written to stdout [1658/1658]
+
+OK
++ apt update
+
+WARNING: apt does not have a stable CLI interface yet. Use with caution in scripts.
+
+Ign file:  InRelease
+Get:1 file:  Release.gpg [819 B]
+Get:2 file:  Release [574 B]
+Ign http://mirrors.myhuaweicloud.com trusty InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-security InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-updates InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-proposed InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-backports InRelease
+Hit http://mirrors.myhuaweicloud.com trusty Release.gpg
+Ign file:  Translation-en_US
+Ign file:  Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty Release
+Hit http://mirrors.myhuaweicloud.com trusty-security/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe i386 Packages
+Hit http://119.3.60.246 ecs InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted amd64 Packages
+Hit http://119.3.60.246 ecs/cuda amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse i386 Packages
+Hit http://119.3.60.246 ecs/driver amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main amd64 Packages
+Hit http://119.3.60.246 ecs/cuda i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main Translation-en
+Hit http://119.3.60.246 ecs/driver i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/universe Translation-en
+Ign http://mirrors.myhuaweicloud.com trusty/main Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/multiverse Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/restricted Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/universe Translation-en_US
+Ign http://119.3.60.246 ecs/cuda Translation-en_US
+Ign http://119.3.60.246 ecs/cuda Translation-en
+Ign http://119.3.60.246 ecs/driver Translation-en_US
+Ign http://119.3.60.246 ecs/driver Translation-en
+Reading package lists...
 ++ uname -r
-+ kernel_version=3.10.0-514.44.5.10.h121.x86_64
-+ echo '******exec "uname -r": 3.10.0-514.44.5.10.h121.x86_64'
-******exec "uname -r": 3.10.0-514.44.5.10.h121.x86_64
-+ echo '******exec "rpm -qa | grep kernel-devel | grep 3.10.0-514.44.5.10.h121.x86_64 | wc -l"'
-******exec "rpm -qa | grep kernel-devel | grep 3.10.0-514.44.5.10.h121.x86_64 | wc -l"
-++ rpm -qa
-++ grep kernel-devel
++ kernel_version=4.4.0-104-generic
++ echo '******exec "uname -r": 4.4.0-104-generic'
+******exec "uname -r": 4.4.0-104-generic
++ echo '******exec "dpkg --list |grep linux-headers | grep 4.4.0-104-generic | wc -l"'
+******exec "dpkg --list |grep linux-headers | grep 4.4.0-104-generic | wc -l"
+++ dpkg --list
+++ grep linux-headers
+++ grep 4.4.0-104-generic
 ++ wc -l
-++ grep 3.10.0-514.44.5.10.h121.x86_64
-+ kernel_devel_num=1
-+ echo '******kernel_devel_num=1'
-******kernel_devel_num=1
++ linux_headers_num=1
++ echo '******linux_headers_num=1'
+******linux_headers_num=1
 + '[' 1 -eq 0 ']'
-******install kernel-devel begin time: 1536753588, end time: 1536753588, use time: 0 s
-++ yum list
-++ grep rhel7
-++ wc -l
-++ grep nvidia
-++ grep 390.46
+******install kernel-devel begin time: 1536750802, end time: 1536750802, use time: 0 s
+++ apt-cache search nvidia
 ++ grep driver
+++ grep ubuntu1404
+++ grep 384.66
+++ wc -l
 + driver_file_num=1
 + '[' 1 -eq 1 ']'
-++ yum list
-++ grep nvidia
-++ grep rhel7
 ++ awk '-F ' '{print $1}'
+++ grep 384.66
+++ grep ubuntu1404
 ++ grep driver
-++ grep 390.46
-+ driver_file=nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
-+ echo '******exec "yum list |grep nvidia | grep driver |grep rhel7 |grep 390.46 | awk -F'\'' '\'' '\''{print $1}'\''":'
-******exec "yum list |grep nvidia | grep driver |grep rhel7 |grep 390.46 | awk -F' ' '{print $1}'":
-+ echo nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
-nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
-+ echo '******exec "yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64" '
-******exec "yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64" 
-+ yum install -y nvidia-diag-driver-local-repo-rhel7-390.46.x86_64
-Package nvidia-diag-driver-local-repo-rhel7-390.46-1.0-1.x86_64 already installed and latest version
-Nothing to do
-+ echo '******exec "yum clean all && yum install -y cuda-drivers" '
-******exec "yum clean all && yum install -y cuda-drivers" 
-+ yum clean all
-Cleaning repos: EulerOS-base base ecs-cuda ecs-driver ecs-package epel
-              : nvidia-diag-driver-local-390.46
-Cleaning up everything
-+ yum install -y cuda-drivers
-Package cuda-drivers-390.46-1.x86_64 already installed and latest version
-Nothing to do
+++ apt-cache search nvidia
++ driver_file=nvidia-diag-driver-local-repo-ubuntu1404-384.66
++ echo '******exec "apt-cache search nvidia | grep driver |grep ubuntu1404 |grep 384.66 | awk -F'\'' '\'' '\''{print $1}'\''":'
+******exec "apt-cache search nvidia | grep driver |grep ubuntu1404 |grep 384.66 | awk -F' ' '{print $1}'":
++ echo nvidia-diag-driver-local-repo-ubuntu1404-384.66
+nvidia-diag-driver-local-repo-ubuntu1404-384.66
++ echo '******exec "apt-get install -y --allow-unauthenticated nvidia-diag-driver-local-repo-ubuntu1404-384.66" '
+******exec "apt-get install -y --allow-unauthenticated nvidia-diag-driver-local-repo-ubuntu1404-384.66" 
++ apt-get install -y --allow-unauthenticated nvidia-diag-driver-local-repo-ubuntu1404-384.66
+Reading package lists...
+Building dependency tree...
+Reading state information...
+nvidia-diag-driver-local-repo-ubuntu1404-384.66 is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 87 not upgraded.
++ echo '******exec "apt-key add /var/nvidia*driver*384.66/*.pub"'
+******exec "apt-key add /var/nvidia*driver*384.66/*.pub"
++ apt-key add /var/nvidia-diag-driver-local-repo-384.66/7fa2af80.pub
+OK
++ echo '******exec "apt-get update && apt-get install -y --allow-unauthenticated cuda-drivers" '
+******exec "apt-get update && apt-get install -y --allow-unauthenticated cuda-drivers" 
++ apt-get update
+Ign file:  InRelease
+Get:1 file:  Release.gpg [819 B]
+Get:2 file:  Release [574 B]
+Ign http://mirrors.myhuaweicloud.com trusty InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-security InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-updates InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-proposed InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-backports InRelease
+Hit http://mirrors.myhuaweicloud.com trusty Release.gpg
+Hit http://mirrors.myhuaweicloud.com trusty Release
+Ign file:  Translation-en_US
+Ign file:  Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe i386 Packages
+Hit http://119.3.60.246 ecs InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse i386 Packages
+Hit http://119.3.60.246 ecs/cuda amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe Sources
+Hit http://119.3.60.246 ecs/driver amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main Translation-en
+Hit http://119.3.60.246 ecs/cuda i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main amd64 Packages
+Hit http://119.3.60.246 ecs/driver i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/universe Translation-en
+Ign http://mirrors.myhuaweicloud.com trusty/main Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/multiverse Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/restricted Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/universe Translation-en_US
+Ign http://119.3.60.246 ecs/cuda Translation-en_US
+Ign http://119.3.60.246 ecs/cuda Translation-en
+Ign http://119.3.60.246 ecs/driver Translation-en_US
+Ign http://119.3.60.246 ecs/driver Translation-en
+Reading package lists...
++ apt-get install -y --allow-unauthenticated cuda-drivers
+Reading package lists...
+Building dependency tree...
+Reading state information...
+cuda-drivers is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 87 not upgraded.
 + '[' 0 -ne 0 ']'
-******install driver begin time: 1536753588, end time: 1536753596,  use time: 8 s
+******install driver begin time: 1536750802, end time: 1536750809,  use time: 7 s
 ++ date +%s
-+ begin_cuda=1536753596
-++ yum list
-++ grep cuda
-++ grep 9.0
++ begin_cuda=1536750809
 ++ wc -l
-++ grep rhel7
 ++ grep -v update
+++ grep 8.0
+++ grep ubuntu1404
+++ apt-cache search cuda
 + cuda_file_num=1
 + '[' 1 -eq 1 ']'
-++ yum list
-++ grep cuda
+++ apt-cache search cuda
 ++ awk '-F ' '{print $1}'
-++ grep 9.0
+++ grep 8.0
+++ grep ubuntu1404
 ++ grep -v update
-++ grep rhel7
-+ cuda_file=cuda-repo-rhel7-9-0-local.x86_64
-+ echo '******exec "yum list |grep cuda |grep rhel7 |grep 9.0|grep -v update| awk -F'\'' '\'' '\''{print $1}'\''":'
-******exec "yum list |grep cuda |grep rhel7 |grep 9.0|grep -v update| awk -F' ' '{print $1}'":
-+ echo cuda-repo-rhel7-9-0-local.x86_64
-cuda-repo-rhel7-9-0-local.x86_64
-+ echo '******exec "yum install -y cuda-repo-rhel7-9-0-local.x86_64" '
-******exec "yum install -y cuda-repo-rhel7-9-0-local.x86_64" 
-+ yum install -y cuda-repo-rhel7-9-0-local.x86_64
-Resolving Dependencies
---> Running transaction check
----> Package cuda-repo-rhel7-9-0-local.x86_64 0:9.0.176-1 will be installed
---> Finished Dependency Resolution
++ cuda_file=cuda-repo-ubuntu1404-8-0-local-ga2
++ echo '******exec "apt-cache search cuda| grep ubuntu1404| grep 8.0 |grep -v update| awk -F'\'' '\'' '\''{print $1}'\''"'
+******exec "apt-cache search cuda| grep ubuntu1404| grep 8.0 |grep -v update| awk -F' ' '{print $1}'"
++ echo cuda-repo-ubuntu1404-8-0-local-ga2
+cuda-repo-ubuntu1404-8-0-local-ga2
++ echo '******exec "apt-get install -y --allow-unauthenticated cuda-repo-ubuntu1404-8-0-local-ga2" '
+******exec "apt-get install -y --allow-unauthenticated cuda-repo-ubuntu1404-8-0-local-ga2" 
++ apt-get install -y --allow-unauthenticated cuda-repo-ubuntu1404-8-0-local-ga2
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  cuda-repo-ubuntu1404-8-0-local-ga2
+0 upgraded, 1 newly installed, 0 to remove and 87 not upgraded.
+Need to get 1,914 MB of archives.
+After this operation, 1,919 MB of additional disk space will be used.
+Get:1 http://119.3.60.246/ecs/linux/apt/ ecs/cuda cuda-repo-ubuntu1404-8-0-local-ga2 amd64 8.0.61-1 [1,914 MB]
+Fetched 1,914 MB in 40min 49s (781 kB/s)
+Selecting previously unselected package cuda-repo-ubuntu1404-8-0-local-ga2.
+(Reading database ... 128049 files and directories currently installed.)
+Preparing to unpack .../cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb ...
+Unpacking cuda-repo-ubuntu1404-8-0-local-ga2 (8.0.61-1) ...
+Setting up cuda-repo-ubuntu1404-8-0-local-ga2 (8.0.61-1) ...
+OK
+++ date +%s
++ end_cuda_unpack=1536753279
++ time_cuda_unpack=2470
++ echo '******download and unpack cuda file end, end time: 1536753279, use time 2470 s'
+******download and unpack cuda file end, end time: 1536753279, use time 2470 s
++ echo '******exec "apt-cache search cuda | grep ubuntu1404 | grep 8.0 | grep update | awk -F'\'' '\'' '\''{print $1}'\''" '
+******exec "apt-cache search cuda | grep ubuntu1404 | grep 8.0 | grep update | awk -F' ' '{print $1}'" 
+++ awk '-F ' '{print $1}'
+++ grep update
+++ grep 8.0
+++ grep ubuntu1404
+++ apt-cache search cuda
++ cuda_patch_filelist=cuda-repo-ubuntu1404-8-0-local-cublas-performance-update
++ echo '****** cuda_patch_filelist'
+****** cuda_patch_filelist
++ echo cuda-repo-ubuntu1404-8-0-local-cublas-performance-update
+cuda-repo-ubuntu1404-8-0-local-cublas-performance-update
++ for cuda_patch_file in '$cuda_patch_filelist'
++ echo '******exec "apt-get install -y --allow-unauthenticated cuda-repo-ubuntu1404-8-0-local-cublas-performance-update" '
+******exec "apt-get install -y --allow-unauthenticated cuda-repo-ubuntu1404-8-0-local-cublas-performance-update" 
++ apt-get install -y --allow-unauthenticated cuda-repo-ubuntu1404-8-0-local-cublas-performance-update
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  cuda-repo-ubuntu1404-8-0-local-cublas-performance-update
+0 upgraded, 1 newly installed, 0 to remove and 87 not upgraded.
+Need to get 124 MB of archives.
+After this operation, 125 MB of additional disk space will be used.
+Get:1 http://119.3.60.246/ecs/linux/apt/ ecs/cuda cuda-repo-ubuntu1404-8-0-local-cublas-performance-update amd64 8.0.61-1 [124 MB]
+Fetched 124 MB in 2min 25s (856 kB/s)
+Selecting previously unselected package cuda-repo-ubuntu1404-8-0-local-cublas-performance-update.
+(Reading database ... 128143 files and directories currently installed.)
+Preparing to unpack .../cuda-repo-ubuntu1404-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb ...
+Unpacking cuda-repo-ubuntu1404-8-0-local-cublas-performance-update (8.0.61-1) ...
+Setting up cuda-repo-ubuntu1404-8-0-local-cublas-performance-update (8.0.61-1) ...
+OK
++ echo '******exec "apt-get update && apt-get install -y --allow-unauthenticated cuda" '
+******exec "apt-get update && apt-get install -y --allow-unauthenticated cuda" 
++ apt-get update
+Ign file:  InRelease
+Ign file:  InRelease
+Ign file:  InRelease
+Ign http://mirrors.myhuaweicloud.com trusty InRelease
+Get:1 file:  Release.gpg [819 B]
+Hit http://mirrors.myhuaweicloud.com trusty-security InRelease
+Get:2 file:  Release.gpg [819 B]
+Hit http://mirrors.myhuaweicloud.com trusty-updates InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-proposed InRelease
+Hit http://mirrors.myhuaweicloud.com trusty-backports InRelease
+Get:3 file:  Release.gpg [819 B]
+Get:4 file:  Release [574 B]
+Get:5 file:  Release [574 B]
+Get:6 file:  Release [574 B]
+Hit http://mirrors.myhuaweicloud.com trusty Release.gpg
+Hit http://mirrors.myhuaweicloud.com trusty Release
+Hit http://mirrors.myhuaweicloud.com trusty-security/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-security/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe i386 Packages
+Hit http://119.3.60.246 ecs InRelease
+Ign file:  Translation-en_US
+Ign file:  Translation-en
+Ign file:  Translation-en_US
+Ign file:  Translation-en
+Ign file:  Translation-en_US
+Ign file:  Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-security/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-security/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse i386 Packages
+Hit http://119.3.60.246 ecs/cuda amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-updates/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-updates/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted amd64 Packages
+Hit http://119.3.60.246 ecs/driver amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/main Translation-en
+Hit http://119.3.60.246 ecs/cuda i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-proposed/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe i386 Packages
+Hit http://119.3.60.246 ecs/driver i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty-backports/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty-backports/universe Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/main Sources
+Hit http://mirrors.myhuaweicloud.com trusty/restricted Sources
+Hit http://mirrors.myhuaweicloud.com trusty/universe Sources
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse Sources
+Hit http://mirrors.myhuaweicloud.com trusty/main amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/restricted amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/universe amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse amd64 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/main i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/restricted i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/universe i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse i386 Packages
+Hit http://mirrors.myhuaweicloud.com trusty/main Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/multiverse Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/restricted Translation-en
+Hit http://mirrors.myhuaweicloud.com trusty/universe Translation-en
+Ign http://mirrors.myhuaweicloud.com trusty/main Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/multiverse Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/restricted Translation-en_US
+Ign http://mirrors.myhuaweicloud.com trusty/universe Translation-en_US
+Ign http://119.3.60.246 ecs/cuda Translation-en_US
+Ign http://119.3.60.246 ecs/cuda Translation-en
+Ign http://119.3.60.246 ecs/driver Translation-en_US
+Ign http://119.3.60.246 ecs/driver Translation-en
+Reading package lists...
++ apt-get install -y --allow-unauthenticated cuda
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  build-essential ca-certificates-java cuda-8-0 cuda-command-line-tools-8-0
+  cuda-core-8-0 cuda-cublas-8-0 cuda-cublas-dev-8-0 cuda-cudart-8-0
+  cuda-cudart-dev-8-0 cuda-cufft-8-0 cuda-cufft-dev-8-0 cuda-curand-8-0
+  cuda-curand-dev-8-0 cuda-cusolver-8-0 cuda-cusolver-dev-8-0
+  cuda-cusparse-8-0 cuda-cusparse-dev-8-0 cuda-demo-suite-8-0
+  cuda-documentation-8-0 cuda-driver-dev-8-0 cuda-license-8-0
+  cuda-misc-headers-8-0 cuda-npp-8-0 cuda-npp-dev-8-0 cuda-nvgraph-8-0
+  cuda-nvgraph-dev-8-0 cuda-nvml-dev-8-0 cuda-nvrtc-8-0 cuda-nvrtc-dev-8-0
+  cuda-runtime-8-0 cuda-samples-8-0 cuda-toolkit-8-0 cuda-visual-tools-8-0
+  default-jre default-jre-headless dpkg-dev fonts-dejavu-extra freeglut3
+  freeglut3-dev g++ g++-4.8 java-common libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libatk-wrapper-java
+  libatk-wrapper-java-jni libdrm-amdgpu1 libdrm-dev libgif4 libgl1-mesa-dev
+  libglu1-mesa-dev libice-dev libpthread-stubs0-dev libsctp1 libsm-dev
+  libstdc++-4.8-dev libx11-dev libx11-doc libx11-xcb-dev libxau-dev
+  libxcb-dri2-0-dev libxcb-dri3-dev libxcb-glx0-dev libxcb-present-dev
+  libxcb-randr0-dev libxcb-render0-dev libxcb-shape0-dev libxcb-sync-dev
+  libxcb-xfixes0-dev libxcb1-dev libxdamage-dev libxdmcp-dev libxext-dev
+  libxfixes-dev libxi-dev libxmu-dev libxmu-headers libxshmfence-dev libxt-dev
+  libxxf86vm-dev lksctp-tools mesa-common-dev openjdk-7-jre
+  openjdk-7-jre-headless tzdata-java x11proto-core-dev x11proto-damage-dev
+  x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev x11proto-input-dev
+  x11proto-kb-dev x11proto-xext-dev x11proto-xf86vidmode-dev
+  xorg-sgml-doctools xtrans-dev
+Suggested packages:
+  debian-keyring g++-multilib g++-4.8-multilib gcc-4.8-doc libstdc++6-4.8-dbg
+  equivs libice-doc libsm-doc libstdc++-4.8-doc libxcb-doc libxext-doc
+  libxt-doc icedtea-7-plugin icedtea-7-jre-jamvm sun-java6-fonts
+  fonts-ipafont-gothic fonts-ipafont-mincho fonts-wqy-microhei
+  fonts-wqy-zenhei ttf-indic-fonts
+The following NEW packages will be installed:
+  build-essential ca-certificates-java cuda cuda-8-0
+  cuda-command-line-tools-8-0 cuda-core-8-0 cuda-cublas-8-0
+  cuda-cublas-dev-8-0 cuda-cudart-8-0 cuda-cudart-dev-8-0 cuda-cufft-8-0
+  cuda-cufft-dev-8-0 cuda-curand-8-0 cuda-curand-dev-8-0 cuda-cusolver-8-0
+  cuda-cusolver-dev-8-0 cuda-cusparse-8-0 cuda-cusparse-dev-8-0
+  cuda-demo-suite-8-0 cuda-documentation-8-0 cuda-driver-dev-8-0
+  cuda-license-8-0 cuda-misc-headers-8-0 cuda-npp-8-0 cuda-npp-dev-8-0
+  cuda-nvgraph-8-0 cuda-nvgraph-dev-8-0 cuda-nvml-dev-8-0 cuda-nvrtc-8-0
+  cuda-nvrtc-dev-8-0 cuda-runtime-8-0 cuda-samples-8-0 cuda-toolkit-8-0
+  cuda-visual-tools-8-0 default-jre default-jre-headless dpkg-dev
+  fonts-dejavu-extra freeglut3 freeglut3-dev g++ g++-4.8 java-common
+  libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl
+  libatk-wrapper-java libatk-wrapper-java-jni libdrm-amdgpu1 libdrm-dev
+  libgif4 libgl1-mesa-dev libglu1-mesa-dev libice-dev libpthread-stubs0-dev
+  libsctp1 libsm-dev libstdc++-4.8-dev libx11-dev libx11-doc libx11-xcb-dev
+  libxau-dev libxcb-dri2-0-dev libxcb-dri3-dev libxcb-glx0-dev
+  libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-shape0-dev
+  libxcb-sync-dev libxcb-xfixes0-dev libxcb1-dev libxdamage-dev libxdmcp-dev
+  libxext-dev libxfixes-dev libxi-dev libxmu-dev libxmu-headers
+  libxshmfence-dev libxt-dev libxxf86vm-dev lksctp-tools mesa-common-dev
+  openjdk-7-jre openjdk-7-jre-headless tzdata-java x11proto-core-dev
+  x11proto-damage-dev x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev
+  x11proto-input-dev x11proto-kb-dev x11proto-xext-dev
+  x11proto-xf86vidmode-dev xorg-sgml-doctools xtrans-dev
+0 upgraded, 98 newly installed, 0 to remove and 87 not upgraded.
+Need to get 67.4 MB/1,419 MB of archives.
+After this operation, 2,279 MB of additional disk space will be used.
+Get:1 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main freeglut3 amd64 2.8.1-1 [97.5 kB]
+Get:2 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main ca-certificates-java all 20130815ubuntu1 [13.4 kB]
+Get:3 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main tzdata-java all 2017c-0ubuntu0.14.04 [70.1 kB]
+Get:4 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main java-common all 0.51 [130 kB]
+Get:5 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libsctp1 amd64 1.0.15+dfsg-1 [9,226 B]
+Get:6 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main openjdk-7-jre-headless amd64 7u181-2.6.14-0ubuntu0.1 [39.5 MB]
+Get:7 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main default-jre-headless amd64 2:1.7-51 [3,834 B]
+Get:8 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libgif4 amd64 4.1.6-11 [28.6 kB]
+Get:9 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main openjdk-7-jre amd64 7u181-2.6.14-0ubuntu0.1 [172 kB]
+Get:10 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main default-jre amd64 2:1.7-51 [940 B]
+Get:11 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libatk-wrapper-java all 0.30.4-4 [30.2 kB]
+Get:12 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libatk-wrapper-java-jni amd64 0.30.4-4 [25.2 kB]
+Get:13 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main libdrm-amdgpu1 amd64 2.4.67-1ubuntu0.14.04.2 [16.4 kB]
+Get:14 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main libstdc++-4.8-dev amd64 4.8.4-2ubuntu1~14.04.4 [1,051 kB]
+Get:15 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main g++-4.8 amd64 4.8.4-2ubuntu1~14.04.4 [18.0 MB]
+Get:16 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main g++ amd64 4:4.8.2-1ubuntu6 [1,490 B]
+Get:17 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates/main dpkg-dev all 1.17.5ubuntu5.8 [726 kB]
+Get:18 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main build-essential amd64 11.6ubuntu6 [4,838 B]
+Get:19 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main xorg-sgml-doctools all 1:1.11-1 [12.9 kB]
+Get:20 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main x11proto-core-dev all 7.0.26-1~ubuntu2 [700 kB]
+Get:21 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxau-dev amd64 1:1.0.8-1 [11.1 kB]
+Get:22 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxdmcp-dev amd64 1:1.1.1-1 [26.9 kB]
+Get:23 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main x11proto-input-dev all 2.3-1 [139 kB]
+Get:24 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main x11proto-kb-dev all 1.0.6-2 [269 kB]
+Get:25 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main xtrans-dev all 1.3.5-1~ubuntu14.04.2 [70.7 kB]
+Get:26 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libpthread-stubs0-dev amd64 0.3-4 [4,068 B]
+Get:27 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb1-dev amd64 1.10-2ubuntu1 [76.6 kB]
+Get:28 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libx11-dev amd64 2:1.6.2-1ubuntu2 [629 kB]
+Get:29 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main libdrm-dev amd64 2.4.67-1ubuntu0.14.04.2 [205 kB]
+Get:30 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates/main mesa-common-dev amd64 10.1.3-0ubuntu0.6 [261 kB]
+Get:31 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libx11-xcb-dev amd64 2:1.6.2-1ubuntu2 [9,758 B]
+Get:32 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-dri3-dev amd64 1.10-2ubuntu1 [5,998 B]
+Get:33 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-render0-dev amd64 1.10-2ubuntu1 [16.7 kB]
+Get:34 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-randr0-dev amd64 1.10-2ubuntu1 [20.7 kB]
+Get:35 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-shape0-dev amd64 1.10-2ubuntu1 [7,226 B]
+Get:36 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-xfixes0-dev amd64 1.10-2ubuntu1 [12.0 kB]
+Get:37 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-sync-dev amd64 1.10-2ubuntu1 [10.6 kB]
+Get:38 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-present-dev amd64 1.10-2ubuntu1 [6,988 B]
+Get:39 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxshmfence-dev amd64 1.1-2 [3,452 B]
+Get:40 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-dri2-0-dev amd64 1.10-2ubuntu1 [9,030 B]
+Get:41 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxcb-glx0-dev amd64 1.10-2ubuntu1 [31.2 kB]
+Get:42 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main x11proto-xext-dev all 7.3.0-1 [212 kB]
+Get:43 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main x11proto-fixes-dev all 1:5.0-2ubuntu2 [14.2 kB]
+Get:44 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main libxfixes-dev amd64 1:5.0.1-1ubuntu1.1 [10.8 kB]
+Get:45 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main x11proto-damage-dev all 1:1.2.1-2 [8,286 B]
+Get:46 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxdamage-dev amd64 1:1.1.4-1ubuntu1 [5,450 B]
+Get:47 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main libxext-dev amd64 2:1.3.2-1ubuntu0.0.14.04.1 [81.2 kB]
+Get:48 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main x11proto-xf86vidmode-dev all 2.3.1-2 [6,116 B]
+Get:49 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxxf86vm-dev amd64 1:1.1.3-1 [14.6 kB]
+Get:50 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main x11proto-dri2-dev all 2.8-2 [12.6 kB]
+Get:51 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main x11proto-gl-dev all 1.4.17-1 [17.9 kB]
+Get:52 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates/main libgl1-mesa-dev amd64 10.1.3-0ubuntu0.6 [5,258 B]
+Get:53 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libglu1-mesa-dev amd64 9.0.0-2 [270 kB]
+Get:54 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libice-dev amd64 2:1.0.8-2 [57.6 kB]
+Get:55 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libsm-dev amd64 2:1.2.1-2 [19.9 kB]
+Get:56 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxt-dev amd64 1:1.1.4-1 [455 kB]
+Get:57 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main freeglut3-dev amd64 2.8.1-1 [175 kB]
+Get:58 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxmu-headers all 2:1.1.1-1 [62.0 kB]
+Get:59 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libxmu-dev amd64 2:1.1.1-1 [60.3 kB]
+Get:60 http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security/main libxi-dev amd64 2:1.7.1.901-1ubuntu1.1 [184 kB]
+Get:61 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main fonts-dejavu-extra all 2.34-1ubuntu1 [1,736 kB]
+Get:62 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libalgorithm-diff-perl all 1.19.02-3 [50.0 kB]
+Get:63 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libalgorithm-diff-xs-perl amd64 0.04-2build4 [12.6 kB]
+Get:64 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libalgorithm-merge-perl all 0.08-2 [12.7 kB]
+Get:65 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main libx11-doc all 2:1.6.2-1ubuntu2 [1,448 kB]
+Get:66 http://mirrors.myhuaweicloud.com/ubuntu/ trusty/main lksctp-tools amd64 1.0.15+dfsg-1 [51.3 kB]
+Extracting templates from packages: 30%Extracting templates from packages: 61%Extracting templates from packages: 91%Extracting templates from packages: 100%
+Fetched 67.4 MB in 22s (3,052 kB/s)
+Selecting previously unselected package freeglut3:amd64.
+(Reading database ... 128153 files and directories currently installed.)
+Preparing to unpack .../freeglut3_2.8.1-1_amd64.deb ...
+Unpacking freeglut3:amd64 (2.8.1-1) ...
+Selecting previously unselected package ca-certificates-java.
+Preparing to unpack .../ca-certificates-java_20130815ubuntu1_all.deb ...
+Unpacking ca-certificates-java (20130815ubuntu1) ...
+Selecting previously unselected package tzdata-java.
+Preparing to unpack .../tzdata-java_2017c-0ubuntu0.14.04_all.deb ...
+Unpacking tzdata-java (2017c-0ubuntu0.14.04) ...
+Selecting previously unselected package java-common.
+Preparing to unpack .../java-common_0.51_all.deb ...
+Unpacking java-common (0.51) ...
+Selecting previously unselected package libsctp1:amd64.
+Preparing to unpack .../libsctp1_1.0.15+dfsg-1_amd64.deb ...
+Unpacking libsctp1:amd64 (1.0.15+dfsg-1) ...
+Selecting previously unselected package openjdk-7-jre-headless:amd64.
+Preparing to unpack .../openjdk-7-jre-headless_7u181-2.6.14-0ubuntu0.1_amd64.deb ...
+Unpacking openjdk-7-jre-headless:amd64 (7u181-2.6.14-0ubuntu0.1) ...
+Selecting previously unselected package default-jre-headless.
+Preparing to unpack .../default-jre-headless_2%3a1.7-51_amd64.deb ...
+Unpacking default-jre-headless (2:1.7-51) ...
+Selecting previously unselected package libgif4:amd64.
+Preparing to unpack .../libgif4_4.1.6-11_amd64.deb ...
+Unpacking libgif4:amd64 (4.1.6-11) ...
+Selecting previously unselected package openjdk-7-jre:amd64.
+Preparing to unpack .../openjdk-7-jre_7u181-2.6.14-0ubuntu0.1_amd64.deb ...
+Unpacking openjdk-7-jre:amd64 (7u181-2.6.14-0ubuntu0.1) ...
+Selecting previously unselected package default-jre.
+Preparing to unpack .../default-jre_2%3a1.7-51_amd64.deb ...
+Unpacking default-jre (2:1.7-51) ...
+Selecting previously unselected package libatk-wrapper-java.
+Preparing to unpack .../libatk-wrapper-java_0.30.4-4_all.deb ...
+Unpacking libatk-wrapper-java (0.30.4-4) ...
+Selecting previously unselected package libatk-wrapper-java-jni:amd64.
+Preparing to unpack .../libatk-wrapper-java-jni_0.30.4-4_amd64.deb ...
+Unpacking libatk-wrapper-java-jni:amd64 (0.30.4-4) ...
+Selecting previously unselected package libdrm-amdgpu1:amd64.
+Preparing to unpack .../libdrm-amdgpu1_2.4.67-1ubuntu0.14.04.2_amd64.deb ...
+Unpacking libdrm-amdgpu1:amd64 (2.4.67-1ubuntu0.14.04.2) ...
+Selecting previously unselected package libstdc++-4.8-dev:amd64.
+Preparing to unpack .../libstdc++-4.8-dev_4.8.4-2ubuntu1~14.04.4_amd64.deb ...
+Unpacking libstdc++-4.8-dev:amd64 (4.8.4-2ubuntu1~14.04.4) ...
+Selecting previously unselected package g++-4.8.
+Preparing to unpack .../g++-4.8_4.8.4-2ubuntu1~14.04.4_amd64.deb ...
+Unpacking g++-4.8 (4.8.4-2ubuntu1~14.04.4) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../g++_4%3a4.8.2-1ubuntu6_amd64.deb ...
+Unpacking g++ (4:4.8.2-1ubuntu6) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../dpkg-dev_1.17.5ubuntu5.8_all.deb ...
+Unpacking dpkg-dev (1.17.5ubuntu5.8) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../build-essential_11.6ubuntu6_amd64.deb ...
+Unpacking build-essential (11.6ubuntu6) ...
+Selecting previously unselected package cuda-license-8-0.
+Preparing to unpack .../cuda-license-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-license-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-misc-headers-8-0.
+Preparing to unpack .../cuda-misc-headers-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-misc-headers-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-core-8-0.
+Preparing to unpack .../cuda-core-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-core-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-cudart-8-0.
+Preparing to unpack .../cuda-cudart-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-cudart-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-driver-dev-8-0.
+Preparing to unpack .../cuda-driver-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-driver-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-cudart-dev-8-0.
+Preparing to unpack .../cuda-cudart-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-cudart-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-command-line-tools-8-0.
+Preparing to unpack .../cuda-command-line-tools-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-command-line-tools-8-0 (8.0.61-1) ...
+Selecting previously unselected package xorg-sgml-doctools.
+Preparing to unpack .../xorg-sgml-doctools_1%3a1.11-1_all.deb ...
+Unpacking xorg-sgml-doctools (1:1.11-1) ...
+Selecting previously unselected package x11proto-core-dev.
+Preparing to unpack .../x11proto-core-dev_7.0.26-1~ubuntu2_all.deb ...
+Unpacking x11proto-core-dev (7.0.26-1~ubuntu2) ...
+Selecting previously unselected package libxau-dev:amd64.
+Preparing to unpack .../libxau-dev_1%3a1.0.8-1_amd64.deb ...
+Unpacking libxau-dev:amd64 (1:1.0.8-1) ...
+Selecting previously unselected package libxdmcp-dev:amd64.
+Preparing to unpack .../libxdmcp-dev_1%3a1.1.1-1_amd64.deb ...
+Unpacking libxdmcp-dev:amd64 (1:1.1.1-1) ...
+Selecting previously unselected package x11proto-input-dev.
+Preparing to unpack .../x11proto-input-dev_2.3-1_all.deb ...
+Unpacking x11proto-input-dev (2.3-1) ...
+Selecting previously unselected package x11proto-kb-dev.
+Preparing to unpack .../x11proto-kb-dev_1.0.6-2_all.deb ...
+Unpacking x11proto-kb-dev (1.0.6-2) ...
+Selecting previously unselected package xtrans-dev.
+Preparing to unpack .../xtrans-dev_1.3.5-1~ubuntu14.04.2_all.deb ...
+Unpacking xtrans-dev (1.3.5-1~ubuntu14.04.2) ...
+Selecting previously unselected package libpthread-stubs0-dev:amd64.
+Preparing to unpack .../libpthread-stubs0-dev_0.3-4_amd64.deb ...
+Unpacking libpthread-stubs0-dev:amd64 (0.3-4) ...
+Selecting previously unselected package libxcb1-dev:amd64.
+Preparing to unpack .../libxcb1-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb1-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libx11-dev:amd64.
+Preparing to unpack .../libx11-dev_2%3a1.6.2-1ubuntu2_amd64.deb ...
+Unpacking libx11-dev:amd64 (2:1.6.2-1ubuntu2) ...
+Selecting previously unselected package libdrm-dev:amd64.
+Preparing to unpack .../libdrm-dev_2.4.67-1ubuntu0.14.04.2_amd64.deb ...
+Unpacking libdrm-dev:amd64 (2.4.67-1ubuntu0.14.04.2) ...
+Selecting previously unselected package mesa-common-dev.
+Preparing to unpack .../mesa-common-dev_10.1.3-0ubuntu0.6_amd64.deb ...
+Unpacking mesa-common-dev (10.1.3-0ubuntu0.6) ...
+Selecting previously unselected package libx11-xcb-dev:amd64.
+Preparing to unpack .../libx11-xcb-dev_2%3a1.6.2-1ubuntu2_amd64.deb ...
+Unpacking libx11-xcb-dev:amd64 (2:1.6.2-1ubuntu2) ...
+Selecting previously unselected package libxcb-dri3-dev:amd64.
+Preparing to unpack .../libxcb-dri3-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-dri3-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libxcb-render0-dev:amd64.
+Preparing to unpack .../libxcb-render0-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-render0-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libxcb-randr0-dev:amd64.
+Preparing to unpack .../libxcb-randr0-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-randr0-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libxcb-shape0-dev:amd64.
+Preparing to unpack .../libxcb-shape0-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-shape0-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libxcb-xfixes0-dev:amd64.
+Preparing to unpack .../libxcb-xfixes0-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-xfixes0-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libxcb-sync-dev:amd64.
+Preparing to unpack .../libxcb-sync-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-sync-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libxcb-present-dev:amd64.
+Preparing to unpack .../libxcb-present-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-present-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libxshmfence-dev:amd64.
+Preparing to unpack .../libxshmfence-dev_1.1-2_amd64.deb ...
+Unpacking libxshmfence-dev:amd64 (1.1-2) ...
+Selecting previously unselected package libxcb-dri2-0-dev:amd64.
+Preparing to unpack .../libxcb-dri2-0-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-dri2-0-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package libxcb-glx0-dev:amd64.
+Preparing to unpack .../libxcb-glx0-dev_1.10-2ubuntu1_amd64.deb ...
+Unpacking libxcb-glx0-dev:amd64 (1.10-2ubuntu1) ...
+Selecting previously unselected package x11proto-xext-dev.
+Preparing to unpack .../x11proto-xext-dev_7.3.0-1_all.deb ...
+Unpacking x11proto-xext-dev (7.3.0-1) ...
+Selecting previously unselected package x11proto-fixes-dev.
+Preparing to unpack .../x11proto-fixes-dev_1%3a5.0-2ubuntu2_all.deb ...
+Unpacking x11proto-fixes-dev (1:5.0-2ubuntu2) ...
+Selecting previously unselected package libxfixes-dev:amd64.
+Preparing to unpack .../libxfixes-dev_1%3a5.0.1-1ubuntu1.1_amd64.deb ...
+Unpacking libxfixes-dev:amd64 (1:5.0.1-1ubuntu1.1) ...
+Selecting previously unselected package x11proto-damage-dev.
+Preparing to unpack .../x11proto-damage-dev_1%3a1.2.1-2_all.deb ...
+Unpacking x11proto-damage-dev (1:1.2.1-2) ...
+Selecting previously unselected package libxdamage-dev:amd64.
+Preparing to unpack .../libxdamage-dev_1%3a1.1.4-1ubuntu1_amd64.deb ...
+Unpacking libxdamage-dev:amd64 (1:1.1.4-1ubuntu1) ...
+Selecting previously unselected package libxext-dev:amd64.
+Preparing to unpack .../libxext-dev_2%3a1.3.2-1ubuntu0.0.14.04.1_amd64.deb ...
+Unpacking libxext-dev:amd64 (2:1.3.2-1ubuntu0.0.14.04.1) ...
+Selecting previously unselected package x11proto-xf86vidmode-dev.
+Preparing to unpack .../x11proto-xf86vidmode-dev_2.3.1-2_all.deb ...
+Unpacking x11proto-xf86vidmode-dev (2.3.1-2) ...
+Selecting previously unselected package libxxf86vm-dev:amd64.
+Preparing to unpack .../libxxf86vm-dev_1%3a1.1.3-1_amd64.deb ...
+Unpacking libxxf86vm-dev:amd64 (1:1.1.3-1) ...
+Selecting previously unselected package x11proto-dri2-dev.
+Preparing to unpack .../x11proto-dri2-dev_2.8-2_all.deb ...
+Unpacking x11proto-dri2-dev (2.8-2) ...
+Selecting previously unselected package x11proto-gl-dev.
+Preparing to unpack .../x11proto-gl-dev_1.4.17-1_all.deb ...
+Unpacking x11proto-gl-dev (1.4.17-1) ...
+Selecting previously unselected package libgl1-mesa-dev.
+Preparing to unpack .../libgl1-mesa-dev_10.1.3-0ubuntu0.6_amd64.deb ...
+Unpacking libgl1-mesa-dev (10.1.3-0ubuntu0.6) ...
+Selecting previously unselected package libglu1-mesa-dev.
+Preparing to unpack .../libglu1-mesa-dev_9.0.0-2_amd64.deb ...
+Unpacking libglu1-mesa-dev (9.0.0-2) ...
+Selecting previously unselected package libice-dev:amd64.
+Preparing to unpack .../libice-dev_2%3a1.0.8-2_amd64.deb ...
+Unpacking libice-dev:amd64 (2:1.0.8-2) ...
+Selecting previously unselected package libsm-dev:amd64.
+Preparing to unpack .../libsm-dev_2%3a1.2.1-2_amd64.deb ...
+Unpacking libsm-dev:amd64 (2:1.2.1-2) ...
+Selecting previously unselected package libxt-dev:amd64.
+Preparing to unpack .../libxt-dev_1%3a1.1.4-1_amd64.deb ...
+Unpacking libxt-dev:amd64 (1:1.1.4-1) ...
+Selecting previously unselected package freeglut3-dev:amd64.
+Preparing to unpack .../freeglut3-dev_2.8.1-1_amd64.deb ...
+Unpacking freeglut3-dev:amd64 (2.8.1-1) ...
+Selecting previously unselected package libxmu-headers.
+Preparing to unpack .../libxmu-headers_2%3a1.1.1-1_all.deb ...
+Unpacking libxmu-headers (2:1.1.1-1) ...
+Selecting previously unselected package libxmu-dev:amd64.
+Preparing to unpack .../libxmu-dev_2%3a1.1.1-1_amd64.deb ...
+Unpacking libxmu-dev:amd64 (2:1.1.1-1) ...
+Selecting previously unselected package libxi-dev.
+Preparing to unpack .../libxi-dev_2%3a1.7.1.901-1ubuntu1.1_amd64.deb ...
+Unpacking libxi-dev (2:1.7.1.901-1ubuntu1.1) ...
+Selecting previously unselected package cuda-nvrtc-8-0.
+Preparing to unpack .../cuda-nvrtc-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-nvrtc-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-nvrtc-dev-8-0.
+Preparing to unpack .../cuda-nvrtc-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-nvrtc-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-cusolver-8-0.
+Preparing to unpack .../cuda-cusolver-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-cusolver-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-cusolver-dev-8-0.
+Preparing to unpack .../cuda-cusolver-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-cusolver-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-cublas-8-0.
+Preparing to unpack .../cuda-cublas-8-0_8.0.61.2-1_amd64.deb ...
+Unpacking cuda-cublas-8-0 (8.0.61.2-1) ...
+Selecting previously unselected package cuda-cublas-dev-8-0.
+Preparing to unpack .../cuda-cublas-dev-8-0_8.0.61.2-1_amd64.deb ...
+Unpacking cuda-cublas-dev-8-0 (8.0.61.2-1) ...
+Selecting previously unselected package cuda-cufft-8-0.
+Preparing to unpack .../cuda-cufft-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-cufft-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-cufft-dev-8-0.
+Preparing to unpack .../cuda-cufft-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-cufft-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-curand-8-0.
+Preparing to unpack .../cuda-curand-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-curand-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-curand-dev-8-0.
+Preparing to unpack .../cuda-curand-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-curand-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-cusparse-8-0.
+Preparing to unpack .../cuda-cusparse-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-cusparse-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-cusparse-dev-8-0.
+Preparing to unpack .../cuda-cusparse-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-cusparse-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-npp-8-0.
+Preparing to unpack .../cuda-npp-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-npp-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-npp-dev-8-0.
+Preparing to unpack .../cuda-npp-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-npp-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-samples-8-0.
+Preparing to unpack .../cuda-samples-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-samples-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-documentation-8-0.
+Preparing to unpack .../cuda-documentation-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-documentation-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-nvml-dev-8-0.
+Preparing to unpack .../cuda-nvml-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-nvml-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-nvgraph-8-0.
+Preparing to unpack .../cuda-nvgraph-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-nvgraph-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-nvgraph-dev-8-0.
+Preparing to unpack .../cuda-nvgraph-dev-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-nvgraph-dev-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-visual-tools-8-0.
+Preparing to unpack .../cuda-visual-tools-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-visual-tools-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-toolkit-8-0.
+Preparing to unpack .../cuda-toolkit-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-toolkit-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-runtime-8-0.
+Preparing to unpack .../cuda-runtime-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-runtime-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-demo-suite-8-0.
+Preparing to unpack .../cuda-demo-suite-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-demo-suite-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda-8-0.
+Preparing to unpack ..././cuda-8-0_8.0.61-1_amd64.deb ...
+Unpacking cuda-8-0 (8.0.61-1) ...
+Selecting previously unselected package cuda.
+Preparing to unpack ..././cuda_8.0.61-1_amd64.deb ...
+Unpacking cuda (8.0.61-1) ...
+Selecting previously unselected package fonts-dejavu-extra.
+Preparing to unpack .../fonts-dejavu-extra_2.34-1ubuntu1_all.deb ...
+Unpacking fonts-dejavu-extra (2.34-1ubuntu1) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../libalgorithm-diff-perl_1.19.02-3_all.deb ...
+Unpacking libalgorithm-diff-perl (1.19.02-3) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+Preparing to unpack .../libalgorithm-diff-xs-perl_0.04-2build4_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl (0.04-2build4) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../libalgorithm-merge-perl_0.08-2_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-2) ...
+Selecting previously unselected package libx11-doc.
+Preparing to unpack .../libx11-doc_2%3a1.6.2-1ubuntu2_all.deb ...
+Unpacking libx11-doc (2:1.6.2-1ubuntu2) ...
+Selecting previously unselected package lksctp-tools.
+Preparing to unpack .../lksctp-tools_1.0.15+dfsg-1_amd64.deb ...
+Unpacking lksctp-tools (1.0.15+dfsg-1) ...
+Processing triggers for ca-certificates (20170717~14.04.1) ...
+Updating certificates in /etc/ssl/certs... 0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d....done.
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Processing triggers for hicolor-icon-theme (0.13-1) ...
+Processing triggers for gnome-menus (3.10.1-0ubuntu2) ...
+Processing triggers for desktop-file-utils (0.22-1ubuntu1.1) ...
+Processing triggers for mime-support (3.54ubuntu1.1) ...
+Processing triggers for fontconfig (2.11.0-0ubuntu4.2) ...
+Setting up freeglut3:amd64 (2.8.1-1) ...
+Setting up tzdata-java (2017c-0ubuntu0.14.04) ...
+Setting up java-common (0.51) ...
+Setting up libsctp1:amd64 (1.0.15+dfsg-1) ...
+Setting up libgif4:amd64 (4.1.6-11) ...
+Setting up libdrm-amdgpu1:amd64 (2.4.67-1ubuntu0.14.04.2) ...
+Setting up libstdc++-4.8-dev:amd64 (4.8.4-2ubuntu1~14.04.4) ...
+Setting up g++-4.8 (4.8.4-2ubuntu1~14.04.4) ...
+Setting up g++ (4:4.8.2-1ubuntu6) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up dpkg-dev (1.17.5ubuntu5.8) ...
+Setting up build-essential (11.6ubuntu6) ...
+Setting up cuda-license-8-0 (8.0.61-1) ...
+*** LICENSE AGREEMENT ***
+By using this software you agree to fully comply with the terms and 
+conditions of the EULA (End User License Agreement). The EULA is located
+at /usr/local/cuda-8.0/doc/EULA.txt. The EULA can also be found at
+http://docs.nvidia.com/cuda/eula/index.html. If you do not agree to the
+terms and conditions of the EULA, do not use the software.
 
-Dependencies Resolved
-
-================================================================================
- Package                        Arch        Version         Repository     Size
-================================================================================
-Installing:
- cuda-repo-rhel7-9-0-local      x86_64      9.0.176-1       ecs-cuda      1.5 G
-
-Transaction Summary
-================================================================================
-Install  1 Package
-
-Total download size: 1.5 G
-Installed size: 1.5 G
-Downloading packages:
+Setting up cuda-misc-headers-8-0 (8.0.61-1) ...
+Setting up cuda-core-8-0 (8.0.61-1) ...
+Setting up cuda-cudart-8-0 (8.0.61-1) ...
+Setting up cuda-driver-dev-8-0 (8.0.61-1) ...
+Setting up cuda-cudart-dev-8-0 (8.0.61-1) ...
+Setting up cuda-command-line-tools-8-0 (8.0.61-1) ...
+Setting up xorg-sgml-doctools (1:1.11-1) ...
+Setting up x11proto-core-dev (7.0.26-1~ubuntu2) ...
+Setting up libxau-dev:amd64 (1:1.0.8-1) ...
+Setting up libxdmcp-dev:amd64 (1:1.1.1-1) ...
+Setting up x11proto-input-dev (2.3-1) ...
+Setting up x11proto-kb-dev (1.0.6-2) ...
+Setting up xtrans-dev (1.3.5-1~ubuntu14.04.2) ...
+Setting up libpthread-stubs0-dev:amd64 (0.3-4) ...
+Setting up libxcb1-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libx11-dev:amd64 (2:1.6.2-1ubuntu2) ...
+Setting up libdrm-dev:amd64 (2.4.67-1ubuntu0.14.04.2) ...
+Setting up mesa-common-dev (10.1.3-0ubuntu0.6) ...
+Setting up libx11-xcb-dev:amd64 (2:1.6.2-1ubuntu2) ...
+Setting up libxcb-dri3-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libxcb-render0-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libxcb-randr0-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libxcb-shape0-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libxcb-xfixes0-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libxcb-sync-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libxcb-present-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libxshmfence-dev:amd64 (1.1-2) ...
+Setting up libxcb-dri2-0-dev:amd64 (1.10-2ubuntu1) ...
+Setting up libxcb-glx0-dev:amd64 (1.10-2ubuntu1) ...
+Setting up x11proto-xext-dev (7.3.0-1) ...
+Setting up x11proto-fixes-dev (1:5.0-2ubuntu2) ...
+Setting up libxfixes-dev:amd64 (1:5.0.1-1ubuntu1.1) ...
+Setting up x11proto-damage-dev (1:1.2.1-2) ...
+Setting up libxdamage-dev:amd64 (1:1.1.4-1ubuntu1) ...
+Setting up libxext-dev:amd64 (2:1.3.2-1ubuntu0.0.14.04.1) ...
+Setting up x11proto-xf86vidmode-dev (2.3.1-2) ...
+Setting up libxxf86vm-dev:amd64 (1:1.1.3-1) ...
+Setting up x11proto-dri2-dev (2.8-2) ...
+Setting up x11proto-gl-dev (1.4.17-1) ...
+Setting up libgl1-mesa-dev (10.1.3-0ubuntu0.6) ...
+Setting up libglu1-mesa-dev (9.0.0-2) ...
+Setting up libice-dev:amd64 (2:1.0.8-2) ...
+Setting up libsm-dev:amd64 (2:1.2.1-2) ...
+Setting up libxt-dev:amd64 (1:1.1.4-1) ...
+Setting up freeglut3-dev:amd64 (2.8.1-1) ...
+Setting up libxmu-headers (2:1.1.1-1) ...
+Setting up libxmu-dev:amd64 (2:1.1.1-1) ...
+Setting up libxi-dev (2:1.7.1.901-1ubuntu1.1) ...
+Setting up cuda-nvrtc-8-0 (8.0.61-1) ...
+Setting up cuda-nvrtc-dev-8-0 (8.0.61-1) ...
+Setting up cuda-cusolver-8-0 (8.0.61-1) ...
+Setting up cuda-cusolver-dev-8-0 (8.0.61-1) ...
+Setting up cuda-cublas-8-0 (8.0.61.2-1) ...
+Setting up cuda-cublas-dev-8-0 (8.0.61.2-1) ...
+Setting up cuda-cufft-8-0 (8.0.61-1) ...
+Setting up cuda-cufft-dev-8-0 (8.0.61-1) ...
+Setting up cuda-curand-8-0 (8.0.61-1) ...
+Setting up cuda-curand-dev-8-0 (8.0.61-1) ...
+Setting up cuda-cusparse-8-0 (8.0.61-1) ...
+Setting up cuda-cusparse-dev-8-0 (8.0.61-1) ...
+Setting up cuda-npp-8-0 (8.0.61-1) ...
+Setting up cuda-npp-dev-8-0 (8.0.61-1) ...
+Setting up cuda-samples-8-0 (8.0.61-1) ...
+Setting up cuda-documentation-8-0 (8.0.61-1) ...
+Setting up cuda-nvml-dev-8-0 (8.0.61-1) ...
+Setting up cuda-nvgraph-8-0 (8.0.61-1) ...
+Setting up cuda-nvgraph-dev-8-0 (8.0.61-1) ...
+Setting up cuda-runtime-8-0 (8.0.61-1) ...
+Setting up cuda-demo-suite-8-0 (8.0.61-1) ...
+Setting up fonts-dejavu-extra (2.34-1ubuntu1) ...
+Setting up libalgorithm-diff-perl (1.19.02-3) ...
+Setting up libalgorithm-diff-xs-perl (0.04-2build4) ...
+Setting up libalgorithm-merge-perl (0.08-2) ...
+Setting up libx11-doc (2:1.6.2-1ubuntu2) ...
+Setting up lksctp-tools (1.0.15+dfsg-1) ...
+Setting up openjdk-7-jre-headless:amd64 (7u181-2.6.14-0ubuntu0.1) ...
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/pack200 to provide /usr/bin/pack200 (pack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/rmid to provide /usr/bin/rmid (rmid) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/unpack200 to provide /usr/bin/unpack200 (unpack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/orbd to provide /usr/bin/orbd (orbd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/servertool to provide /usr/bin/servertool (servertool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/tnameserv to provide /usr/bin/tnameserv (tnameserv) in auto mode
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode
+Setting up default-jre-headless (2:1.7-51) ...
+Setting up openjdk-7-jre:amd64 (7u181-2.6.14-0ubuntu0.1) ...
+update-alternatives: using /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/policytool to provide /usr/bin/policytool (policytool) in auto mode
+Setting up default-jre (2:1.7-51) ...
+Setting up cuda-visual-tools-8-0 (8.0.61-1) ...
+Setting up cuda-toolkit-8-0 (8.0.61-1) ...
+Setting up cuda-8-0 (8.0.61-1) ...
+Setting up cuda (8.0.61-1) ...
+Setting up ca-certificates-java (20130815ubuntu1) ...
+Adding debian:Certum_Trusted_Network_CA_2.pem
+Adding debian:QuoVadis_Root_CA.pem
+Adding debian:GeoTrust_Global_CA_2.pem
+Adding debian:Visa_eCommerce_Root.pem
+Adding debian:Certum_Trusted_Network_CA.pem
+Adding debian:CA_Disig_Root_R1.pem
+Adding debian:TWCA_Global_Root_CA.pem
+Adding debian:Amazon_Root_CA_3.pem
+Adding debian:OpenTrust_Root_CA_G3.pem
+Adding debian:certSIGN_ROOT_CA.pem
+Adding debian:Camerfirma_Global_Chambersign_Root.pem
+Adding debian:CNNIC_ROOT.pem
+Adding debian:TWCA_Root_Certification_Authority.pem
+Adding debian:Certum_Root_CA.pem
+Adding debian:GlobalSign_Root_CA_-_R2.pem
+Adding debian:Certinomis_-_Autorité_Racine.pem
+Adding debian:Hongkong_Post_Root_CA_1.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G2.pem
+Adding debian:Taiwan_GRCA.pem
+Adding debian:Amazon_Root_CA_2.pem
+Adding debian:AC_RAIZ_FNMT-RCM.pem
+Adding debian:GeoTrust_Universal_CA_2.pem
+Adding debian:GeoTrust_Universal_CA.pem
+Adding debian:TeliaSonera_Root_CA_v1.pem
+Adding debian:Comodo_Trusted_Services_root.pem
+Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+Adding debian:COMODO_Certification_Authority.pem
+Adding debian:DigiCert_Assured_ID_Root_CA.pem
+Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Adding debian:SwissSign_Gold_CA_-_G2.pem
+Adding debian:AddTrust_Low-Value_Services_Root.pem
+Adding debian:Certinomis_-_Root_CA.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Adding debian:TÜBİTAK_UEKAE_Kök_Sertifika_Hizmet_Sağlayıcısı_-_Sürüm_3.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+Adding debian:OISTE_WISeKey_Global_Root_GA_CA.pem
+Adding debian:SwissSign_Silver_CA_-_G2.pem
+Adding debian:QuoVadis_Root_CA_3.pem
+Adding debian:Secure_Global_CA.pem
+Adding debian:Entrust_Root_Certification_Authority_-_EC1.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+Adding debian:CA_Disig_Root_R2.pem
+Adding debian:thawte_Primary_Root_CA_-_G2.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Adding debian:COMODO_RSA_Certification_Authority.pem
+Adding debian:EE_Certification_Centre_Root_CA.pem
+Adding debian:Certigna.pem
+Adding debian:Starfield_Class_2_CA.pem
+Adding debian:Entrust_Root_Certification_Authority.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G4.pem
+Adding debian:Cybertrust_Global_Root.pem
+Adding debian:CFCA_EV_ROOT.pem
+Adding debian:TÜRKTRUST_Elektronik_Sertifika_Hizmet_Sağlayıcısı_H5.pem
+Adding debian:Actalis_Authentication_Root_CA.pem
+Adding debian:Global_Chambersign_Root_-_2008.pem
+Adding debian:GeoTrust_Global_CA.pem
+Adding debian:E-Tugra_Certification_Authority.pem
+Adding debian:Atos_TrustedRoot_2011.pem
+Adding debian:Chambers_of_Commerce_Root_-_2008.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G2.pem
+Adding debian:GeoTrust_Primary_Certification_Authority.pem
+Adding debian:TURKTRUST_Certificate_Services_Provider_Root_2007.pem
+Adding debian:LuxTrust_Global_Root_2.pem
+Adding debian:AddTrust_Public_Services_Root.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G3.pem
+Adding debian:Comodo_Secure_Services_root.pem
+Adding debian:PSCProcert.pem
+Adding debian:ISRG_Root_X1.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2011.pem
+Adding debian:Security_Communication_EV_RootCA1.pem
+Adding debian:Certplus_Root_CA_G2.pem
+Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G3.pem
+Adding debian:Network_Solutions_Certificate_Authority.pem
+Adding debian:thawte_Primary_Root_CA_-_G3.pem
+Adding debian:DigiCert_Assured_ID_Root_G2.pem
+Adding debian:Verisign_Class_3_Public_Primary_Certification_Authority_-_G3.pem
+Adding debian:USERTrust_RSA_Certification_Authority.pem
+Adding debian:Certplus_Root_CA_G1.pem
+Adding debian:QuoVadis_Root_CA_1_G3.pem
+Adding debian:VeriSign_Universal_Root_Certification_Authority.pem
+Adding debian:AddTrust_Qualified_Certificates_Root.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Adding debian:AddTrust_External_Root.pem
+Adding debian:DigiCert_Trusted_Root_G4.pem
+Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Adding debian:DigiCert_Global_Root_G2.pem
+Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+Adding debian:DigiCert_Global_Root_CA.pem
+Adding debian:DigiCert_Global_Root_G3.pem
+Adding debian:QuoVadis_Root_CA_3_G3.pem
+Adding debian:DigiCert_Assured_ID_Root_G3.pem
+Adding debian:Go_Daddy_Class_2_CA.pem
+Adding debian:Certplus_Class_2_Primary_CA.pem
+Adding debian:AffirmTrust_Premium_ECC.pem
+Adding debian:Staat_der_Nederlanden_EV_Root_CA.pem
+Adding debian:QuoVadis_Root_CA_2.pem
+Adding debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+Adding debian:Sonera_Class_2_Root_CA.pem
+Adding debian:Comodo_AAA_Services_root.pem
+Adding debian:SecureTrust_CA.pem
+Adding debian:SZAFIR_ROOT_CA2.pem
+Adding debian:Buypass_Class_2_Root_CA.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G2.pem
+Adding debian:Camerfirma_Chambers_of_Commerce_Root.pem
+Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Adding debian:Security_Communication_Root_CA.pem
+Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Adding debian:GlobalSign_Root_CA.pem
+Adding debian:Swisscom_Root_EV_CA_2.pem
+Adding debian:AffirmTrust_Premium.pem
+Adding debian:AffirmTrust_Networking.pem
+Adding debian:Izenpe.com.pem
+Adding debian:DigiCert_High_Assurance_EV_Root_CA.pem
+Adding debian:ACEDICOM_Root.pem
+Adding debian:Trustis_FPS_Root_CA.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Adding debian:COMODO_ECC_Certification_Authority.pem
+Adding debian:thawte_Primary_Root_CA.pem
+Adding debian:OpenTrust_Root_CA_G2.pem
+Adding debian:Security_Communication_RootCA2.pem
+Adding debian:Amazon_Root_CA_1.pem
+Adding debian:Baltimore_CyberTrust_Root.pem
+Adding debian:Buypass_Class_3_Root_CA.pem
+Adding debian:UTN_USERFirst_Hardware_Root_CA.pem
+Adding debian:DST_ACES_CA_X6.pem
+Adding debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+Adding debian:Amazon_Root_CA_4.pem
+Adding debian:EC-ACC.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G5.pem
+Adding debian:Swisscom_Root_CA_2.pem
+Adding debian:SecureSign_RootCA11.pem
+Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Adding debian:Swisscom_Root_CA_1.pem
+Adding debian:ePKI_Root_Certification_Authority.pem
+Adding debian:XRamp_Global_CA_Root.pem
+Adding debian:OpenTrust_Root_CA_G1.pem
+Adding debian:DST_Root_CA_X3.pem
+Adding debian:AffirmTrust_Commercial.pem
+Adding debian:QuoVadis_Root_CA_2_G3.pem
+Adding debian:GlobalSign_Root_CA_-_R3.pem
+Adding debian:Deutsche_Telekom_Root_CA_2.pem
+Adding debian:USERTrust_ECC_Certification_Authority.pem
+Adding debian:ACCVRAIZ1.pem
+Adding debian:China_Internet_Network_Information_Center_EV_Certificates_Root.pem
+done.
+Setting up libatk-wrapper-java (0.30.4-4) ...
+Setting up libatk-wrapper-java-jni:amd64 (0.30.4-4) ...
+Processing triggers for libc-bin (2.19-0ubuntu6.13) ...
+Processing triggers for ca-certificates (20170717~14.04.1) ...
+Updating certificates in /etc/ssl/certs... 0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d....
+done.
+done.
++ '[' 0 -ne 0 ']'
+++ date +%s
++ end_cuda=1536753496
++ time_cuda=2687
++ echo '******install cuda begin time: 1536750809, end time 1536753496, use time 2687 s'
+******install cuda begin time: 1536750809, end time 1536753496, use time 2687 s
+******install kernel-devel use time 0 s
+******install nvidia driver use time 7 s
+******install nvidia cuda use time 2687 s
+add auto enable Persistence Mode when start vm...
+reboot......
