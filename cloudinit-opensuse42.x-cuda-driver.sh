@@ -59,7 +59,7 @@ install_kernel_devel_opensuse()
     fi
 }
 
-install_nvidia_driver_suse()
+install_nvidia_driver_opensuse()
 {
     #install driver
     driver_file_num=$(zypper se nvidia | grep driver | grep $release | grep $driver_version | wc -l)
@@ -84,7 +84,7 @@ install_nvidia_driver_suse()
     fi
 }
 
-install_nvidia_cuda_suse()
+install_nvidia_cuda_opensuse()
 {
     begin_cuda=$(date '+%s')
     cuda_file_num=$(zypper se cuda | grep $release | grep $cuda_big_version |grep -v update | wc -l)
@@ -191,7 +191,7 @@ echo "******install kernel-devel begin time: $begin, end time: $end, use time: $
 
 
 begin_driver=$(date '+%s')
-install_nvidia_driver_suse >> $log 2>&1 
+install_nvidia_driver_opensuse >> $log 2>&1 
 if [ $? -ne 0 ]; then
     echo "error: driver install fail!!!" >> $log 2>&1
     exit 1
@@ -201,7 +201,7 @@ end_driver=$(date '+%s')
 time_driver=$((end_driver-begin_driver))
 echo "******install driver begin time: $begin_driver, end time: $end_driver,  use time: $time_driver s" >> $log 2>&1
 
-install_nvidia_cuda_suse >> $log 2>&1 
+install_nvidia_cuda_opensuse >> $log 2>&1 
 if [ $? -ne 0 ]; then
     echo "error: cuda install fail!!!" >> $log 2>&1
     exit 1
