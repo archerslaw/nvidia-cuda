@@ -16,8 +16,8 @@ create_nvidia_repo_opensuse()
 {
     baseurl="http://119.3.60.246"
     echo "baseurl: $baseurl" >> $log 2>&1
-    zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/opensuse422/driver driver
-    zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/opensuse422/cuda cuda
+    zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/${release}/driver driver
+    zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/${release}/cuda cuda
 
     zypper refresh >> $log 2>&1
 }
