@@ -186,6 +186,7 @@ echo "release:$release" >> $log 2>&1
 echo "version:$version" >> $log 2>&1
 
 create_nvidia_repo_euleros >> $log 2>&1
+
 #curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-7.repo
 #curl -o /etc/yum.repos.d/hwEulerOS-base.repo http://mirrors.myhuaweicloud.com/repo/EulerOS_2_2_base.repo
 #curl -o /etc/yum.repos.d/nvidia-CentOS.repo http://119.3.60.246/ecs/linux/nvidia-EulerOS.repo
