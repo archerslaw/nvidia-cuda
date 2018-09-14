@@ -1,4 +1,4 @@
-# nvidia cuda and driver auto install with cloud-init user-data #
+# nvidia cuda toolkit and driver automatically install with cloud-init user-data #
 ----------------------------------------------------------------
 
 #### Nvidia cuda toolkit and driver supporting with the OS verison.
