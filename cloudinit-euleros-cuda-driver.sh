@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 log="/var/log/nvidia_install.log"
 
@@ -68,9 +68,7 @@ install_kernel_devel_centos()
     #    echo "******exec \"yum install -y kernel-headers-$kernel_version\""
     #    yum install -y kernel-headers-$kernel_version
     #fi
-
 }
-
 
 install_nvidia_driver_centos()
 {
@@ -184,7 +182,6 @@ else
     exit 1
 fi
 
-
 echo "release:$release" >> $log 2>&1
 echo "version:$version" >> $log 2>&1
 
@@ -209,7 +206,6 @@ fi
 end=$(date '+%s')
 time_kernel=$((end-begin))
 echo "******install kernel-devel begin time: $begin, end time: $end, use time: $time_kernel s" >> $log 2>&1
-
 
 begin_driver=$(date '+%s')
 install_nvidia_driver_centos >> $log 2>&1 
