@@ -16,8 +16,8 @@ create_nvidia_repo_opensuse()
 {
     baseurl="http://119.3.60.246"
     echo "baseurl: $baseurl" >> $log 2>&1
-    zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/${release}/driver driver
-    zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/${release}/cuda cuda
+    zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/${release}/driver HWnvidia-driver
+    zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/${release}/cuda HWnvidia-cuda
 
     zypper refresh >> $log 2>&1
 }
@@ -59,7 +59,7 @@ install_kernel_devel_opensuse()
     fi
 }
 
-install_nvidia_driver_opensuse()
+install_nvidia_driver_suse()
 {
     #install driver
     driver_file_num=$(zypper se nvidia | grep driver | grep $release | grep $driver_version | wc -l)
@@ -84,13 +84,13 @@ install_nvidia_driver_opensuse()
     fi
 }
 
-install_nvidia_cuda_opensuse()
+install_nvidia_cuda_suse()
 {
     begin_cuda=$(date '+%s')
-    cuda_file_num=$(zypper se cuda | grep $release | grep $cuda_big_version |grep -v update | wc -l)
+    cuda_file_num=$(zypper se cuda | grep $release | grep $cuda_big_version | grep -v update | grep -v patch | wc -l)
     if [ $cuda_file_num -eq 1 ];then
-        cuda_file=$(zypper se cuda | grep $release | grep $cuda_big_version | grep -v update | awk -F'|' '{print $2}')
-        echo "******exec \"zypper se cuda |grep $release |grep $cuda_big_version|grep -v update| awk -F'|' '{print \$2}'\":"
+        cuda_file=$(zypper se cuda | grep $release | grep $cuda_big_version | grep -v update | grep -v patch | awk -F'|' '{print $2}')
+        echo "******exec \"zypper se cuda |grep $release |grep $cuda_big_version|grep -v update | grep -v patch | awk -F'|' '{print \$2}'\":"
         echo $cuda_file
     else
         echo "error: cuda_file_num = $cuda_file_num , get cuda file failed, exit"
@@ -156,7 +156,7 @@ fi
 str=$(lsb_release -i | awk -F':' '{print $2}')
 os=$(echo $str | sed 's/ //g')
 if [ "$os" = "openSUSEproject" ]; then
-    os="openSUSE"
+    os="opensuse"
     str=$(lsb_release -r | awk -F'[:.]' '{print $2$3}')
     version=$(echo $str | sed 's/ //g')
     release="opensuse${version}"
@@ -191,7 +191,7 @@ echo "******install kernel-devel begin time: $begin, end time: $end, use time: $
 
 
 begin_driver=$(date '+%s')
-install_nvidia_driver_opensuse >> $log 2>&1 
+install_nvidia_driver_suse >> $log 2>&1 
 if [ $? -ne 0 ]; then
     echo "error: driver install fail!!!" >> $log 2>&1
     exit 1
@@ -201,7 +201,7 @@ end_driver=$(date '+%s')
 time_driver=$((end_driver-begin_driver))
 echo "******install driver begin time: $begin_driver, end time: $end_driver,  use time: $time_driver s" >> $log 2>&1
 
-install_nvidia_cuda_opensuse >> $log 2>&1 
+install_nvidia_cuda_suse >> $log 2>&1 
 if [ $? -ne 0 ]; then
     echo "error: cuda install fail!!!" >> $log 2>&1
     exit 1

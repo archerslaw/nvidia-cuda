@@ -1,0 +1,451 @@
+install nvidia driver and cuda begin ......
+driver version: 384.145
+cuda version: 9.0.176
+os:opensuse release:opensuse422 version:422
++ mv /etc/zypp/repos.d/HWCloud:42.2:OSS.repo /etc/zypp/repos.d/HWCloud:42.2:UPDATE-NON-OSS.repo /etc/zypp/repos.d/HWCloud:42.2:UPDATE-OSS.repo /etc/zypp/repos.d/HWCloud:42.3:NON-OSS.repo /etc/zypp/repos.d/HWnvidia-cuda.repo /etc/zypp/repos.d/HWnvidia-driver.repo /tmp/
++ sudo zypper ar -fcg http://mirrors.myhuaweicloud.com/opensuse/distribution/leap/42.2/repo/oss HWCloud:42.2:OSS
+Adding repository 'HWCloud:42.2:OSS' [......done]
+Repository 'HWCloud:42.2:OSS' successfully added
+
+URI         : http://mirrors.myhuaweicloud.com/opensuse/distribution/leap/42.2/repo/oss
+Enabled     : Yes                                                                      
+GPG Check   : Yes                                                                      
+Autorefresh : Yes                                                                      
+Priority    : 99 (default priority)                                                    
+
+Repository priorities are without effect. All enabled repositories share the same priority.
++ sudo zypper ar -fcg http://mirrors.myhuaweicloud.com/opensuse/distribution/leap/42.2/repo/non-oss HWCloud:42.3:NON-OSS
+Adding repository 'HWCloud:42.3:NON-OSS' [......done]
+Repository 'HWCloud:42.3:NON-OSS' successfully added
+
+URI         : http://mirrors.myhuaweicloud.com/opensuse/distribution/leap/42.2/repo/non-oss
+Enabled     : Yes                                                                          
+GPG Check   : Yes                                                                          
+Autorefresh : Yes                                                                          
+Priority    : 99 (default priority)                                                        
+
+Repository priorities are without effect. All enabled repositories share the same priority.
++ sudo zypper ar -fcg http://mirrors.myhuaweicloud.com/opensuse/update/leap/42.2/oss HWCloud:42.2:UPDATE-OSS
+Adding repository 'HWCloud:42.2:UPDATE-OSS' [......done]
+Repository 'HWCloud:42.2:UPDATE-OSS' successfully added
+
+URI         : http://mirrors.myhuaweicloud.com/opensuse/update/leap/42.2/oss
+Enabled     : Yes                                                           
+GPG Check   : Yes                                                           
+Autorefresh : Yes                                                           
+Priority    : 99 (default priority)                                         
+
+Repository priorities are without effect. All enabled repositories share the same priority.
++ sudo zypper ar -fcg http://mirrors.myhuaweicloud.com/opensuse/update/leap/42.2/non-oss HWCloud:42.2:UPDATE-NON-OSS
+Adding repository 'HWCloud:42.2:UPDATE-NON-OSS' [......done]
+Repository 'HWCloud:42.2:UPDATE-NON-OSS' successfully added
+
+URI         : http://mirrors.myhuaweicloud.com/opensuse/update/leap/42.2/non-oss
+Enabled     : Yes                                                               
+GPG Check   : Yes                                                               
+Autorefresh : Yes                                                               
+Priority    : 99 (default priority)                                             
+
+Repository priorities are without effect. All enabled repositories share the same priority.
+baseurl: http://119.3.60.246
+Retrieving repository 'HWCloud:42.2:OSS' metadata [.done]
+Building repository 'HWCloud:42.2:OSS' cache [....done]
+Retrieving repository 'HWCloud:42.2:UPDATE-NON-OSS' metadata [.done]
+Building repository 'HWCloud:42.2:UPDATE-NON-OSS' cache [....done]
+Retrieving repository 'HWCloud:42.2:UPDATE-OSS' metadata [..done]
+Building repository 'HWCloud:42.2:UPDATE-OSS' cache [....done]
+Retrieving repository 'HWCloud:42.3:NON-OSS' metadata [.done]
+Building repository 'HWCloud:42.3:NON-OSS' cache [....done]
+Retrieving repository 'HWnvidia-cuda' metadata [..done]
+Building repository 'HWnvidia-cuda' cache [....done]
+Retrieving repository 'HWnvidia-driver' metadata [.done]
+Building repository 'HWnvidia-driver' cache [....done]
+All repositories have been refreshed.
+++ uname -r
+++ awk -F- '{print $1"-"$2}'
++ kernel_version=4.4.103-18.41
++ echo '******exec "uname -r": 4.4.103-18.41'
+******exec "uname -r": 4.4.103-18.41
++ echo '******exec "rpm -qa | grep kernel-default-devel | wc -l"'
+******exec "rpm -qa | grep kernel-default-devel | wc -l"
+++ rpm -qa
+++ grep kernel-default-devel
+++ wc -l
++ kernel_devel_num=1
++ echo '******kernel_devel_num=1'
+******kernel_devel_num=1
++ '[' 1 -eq 0 ']'
+******install kernel-devel begin time: 1536895075, end time: 1536895076, use time: 1 s
+++ zypper se nvidia
+++ grep driver
+++ grep opensuse422
+++ grep 384.145
+++ wc -l
++ driver_file_num=1
++ '[' 1 -eq 1 ']'
+++ zypper se nvidia
+++ grep driver
+++ grep opensuse422
+++ grep 384.145
+++ awk '-F|' '{print $2}'
++ driver_file=' nvidia-diag-driver-local-repo-opensuse422-384.145 '
++ echo '******exec "zypper se nvidia | grep driver |grep opensuse422 |grep 384.145 | awk -F'\''|'\'' '\''{print $2}'\''":'
+******exec "zypper se nvidia | grep driver |grep opensuse422 |grep 384.145 | awk -F'|' '{print $2}'":
++ echo nvidia-diag-driver-local-repo-opensuse422-384.145
+nvidia-diag-driver-local-repo-opensuse422-384.145
++ echo '******exec "zypper --no-gpg-checks install -y  nvidia-diag-driver-local-repo-opensuse422-384.145 " '
+******exec "zypper --no-gpg-checks install -y  nvidia-diag-driver-local-repo-opensuse422-384.145 " 
++ zypper --no-gpg-checks install -y nvidia-diag-driver-local-repo-opensuse422-384.145
+Loading repository data...
+Warning: Repository 'HWCloud:42.2:UPDATE-NON-OSS' appears to be outdated. Consider using a different mirror or server.
+Warning: Repository 'HWCloud:42.2:UPDATE-OSS' appears to be outdated. Consider using a different mirror or server.
+Reading installed packages...
+'nvidia-diag-driver-local-repo-opensuse422-384.145' is already installed.
+No update candidate for 'nvidia-diag-driver-local-repo-opensuse422-384.145-1.0-1.x86_64'. The highest available version is already installed.
+Resolving package dependencies...
+
+Nothing to do.
++ echo '******exec "zypper --gpg-auto-import-keys refresh && zypper install -y cuda-drivers" '
+******exec "zypper --gpg-auto-import-keys refresh && zypper install -y cuda-drivers" 
++ zypper --gpg-auto-import-keys refresh
+Repository 'HWCloud:42.2:OSS' is up to date.
+Repository 'HWCloud:42.2:UPDATE-NON-OSS' is up to date.
+Repository 'HWCloud:42.2:UPDATE-OSS' is up to date.
+Repository 'HWCloud:42.3:NON-OSS' is up to date.
+Repository 'HWnvidia-cuda' is up to date.
+Repository 'HWnvidia-driver' is up to date.
+All repositories have been refreshed.
++ zypper install -y cuda-drivers
+Loading repository data...
+Warning: Repository 'HWCloud:42.2:UPDATE-NON-OSS' appears to be outdated. Consider using a different mirror or server.
+Warning: Repository 'HWCloud:42.2:UPDATE-OSS' appears to be outdated. Consider using a different mirror or server.
+Reading installed packages...
+'cuda-drivers' is already installed.
+Package 'cuda-drivers' is not available in your repositories. Cannot reinstall, upgrade, or downgrade.
+Resolving package dependencies...
+
+Nothing to do.
++ '[' 0 -ne 0 ']'
+******install driver begin time: 1536895076, end time: 1536895081,  use time: 5 s
+++ date +%s
++ begin_cuda=1536895081
+++ zypper se cuda
+++ grep opensuse422
+++ grep 9.0
+++ grep -v update
+++ wc -l
+++ grep -v patch
++ cuda_file_num=1
++ '[' 1 -eq 1 ']'
+++ zypper se cuda
+++ grep opensuse422
+++ grep 9.0
+++ grep -v update
+++ awk '-F|' '{print $2}'
+++ grep -v patch
++ cuda_file=' cuda-repo-opensuse422-9-0-local                             '
++ echo '******exec "zypper se cuda |grep opensuse422 |grep 9.0|grep -v update | grep -v patch | awk -F'\''|'\'' '\''{print $2}'\''":'
+******exec "zypper se cuda |grep opensuse422 |grep 9.0|grep -v update | grep -v patch | awk -F'|' '{print $2}'":
++ echo cuda-repo-opensuse422-9-0-local
+cuda-repo-opensuse422-9-0-local
++ echo '******exec "zypper --no-gpg-checks install -y  cuda-repo-opensuse422-9-0-local                             " '
+******exec "zypper --no-gpg-checks install -y  cuda-repo-opensuse422-9-0-local                             " 
++ zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local
+Loading repository data...
+Warning: Repository 'HWCloud:42.2:UPDATE-NON-OSS' appears to be outdated. Consider using a different mirror or server.
+Warning: Repository 'HWCloud:42.2:UPDATE-OSS' appears to be outdated. Consider using a different mirror or server.
+Reading installed packages...
+Resolving package dependencies...
+
+The following NEW package is going to be installed:
+  cuda-repo-opensuse422-9-0-local
+
+1 new package to install.
+Overall download size: 1.53 GiB. Already cached: 0 B. After the operation, additional 1.5 GiB will be used.
+Continue? [y/n/...? shows all options] (y): y
+Retrieving package cuda-repo-opensuse422-9-0-local-9.0.176-1.x86_64 (1/1),  1.53 GiB ( 1.54 GiB unpacked)
+Retrieving: cuda-repo-opensuse422-9-0-local-9.0.176-1.x86_64.rpm [.........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................done (833.9 KiB/s)]
+Checking for file conflicts: [.....done]
+(1/1) Installing: cuda-repo-opensuse422-9-0-local-9.0.176-1.x86_64 [......done]
+++ date +%s
++ end_cuda_unpack=1536897045
++ time_cuda_unpack=1964
++ echo '******download and unpack cuda file end, end time: 1536897045, use time 1964 s'
+******download and unpack cuda file end, end time: 1536897045, use time 1964 s
++ echo '******exec "zypper se cuda | grep opensuse422 | grep 9.0 | grep update | awk -F'\''|'\'' '\''{print $2}'\''" '
+******exec "zypper se cuda | grep opensuse422 | grep 9.0 | grep update | awk -F'|' '{print $2}'" 
+++ zypper se cuda
+++ grep opensuse422
+++ grep 9.0
+++ grep update
+++ awk '-F|' '{print $2}'
++ cuda_patch_filelist=' cuda-repo-opensuse422-9-0-local-cublas-performance-update   
+ cuda-repo-opensuse422-9-0-local-cublas-performance-update-2 
+ cuda-repo-opensuse422-9-0-local-cublas-performance-update-3 '
++ echo '****** cuda_patch_filelist'
+****** cuda_patch_filelist
++ echo cuda-repo-opensuse422-9-0-local-cublas-performance-update cuda-repo-opensuse422-9-0-local-cublas-performance-update-2 cuda-repo-opensuse422-9-0-local-cublas-performance-update-3
+cuda-repo-opensuse422-9-0-local-cublas-performance-update cuda-repo-opensuse422-9-0-local-cublas-performance-update-2 cuda-repo-opensuse422-9-0-local-cublas-performance-update-3
++ for cuda_patch_file in '$cuda_patch_filelist'
++ echo '******exec "zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update" '
+******exec "zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update" 
++ zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update
+Loading repository data...
+Warning: Repository 'HWCloud:42.2:UPDATE-NON-OSS' appears to be outdated. Consider using a different mirror or server.
+Warning: Repository 'HWCloud:42.2:UPDATE-OSS' appears to be outdated. Consider using a different mirror or server.
+Reading installed packages...
+'cuda-repo-opensuse422-9-0-local-cublas-performance-update' is already installed.
+No update candidate for 'cuda-repo-opensuse422-9-0-local-cublas-performance-update-1.0-1.x86_64'. The highest available version is already installed.
+Resolving package dependencies...
+
+Nothing to do.
++ for cuda_patch_file in '$cuda_patch_filelist'
++ echo '******exec "zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update-2" '
+******exec "zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update-2" 
++ zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update-2
+Loading repository data...
+Warning: Repository 'HWCloud:42.2:UPDATE-NON-OSS' appears to be outdated. Consider using a different mirror or server.
+Warning: Repository 'HWCloud:42.2:UPDATE-OSS' appears to be outdated. Consider using a different mirror or server.
+Reading installed packages...
+'cuda-repo-opensuse422-9-0-local-cublas-performance-update-2' is already installed.
+No update candidate for 'cuda-repo-opensuse422-9-0-local-cublas-performance-update-2-1.0-1.x86_64'. The highest available version is already installed.
+Resolving package dependencies...
+
+Nothing to do.
++ for cuda_patch_file in '$cuda_patch_filelist'
++ echo '******exec "zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update-3" '
+******exec "zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update-3" 
++ zypper --no-gpg-checks install -y cuda-repo-opensuse422-9-0-local-cublas-performance-update-3
+Loading repository data...
+Warning: Repository 'HWCloud:42.2:UPDATE-NON-OSS' appears to be outdated. Consider using a different mirror or server.
+Warning: Repository 'HWCloud:42.2:UPDATE-OSS' appears to be outdated. Consider using a different mirror or server.
+Reading installed packages...
+'cuda-repo-opensuse422-9-0-local-cublas-performance-update-3' is already installed.
+No update candidate for 'cuda-repo-opensuse422-9-0-local-cublas-performance-update-3-1.0-1.x86_64'. The highest available version is already installed.
+Resolving package dependencies...
+
+Nothing to do.
++ echo '******exec "zypper --gpg-auto-import-keys refresh && zypper install -y cuda" '
+******exec "zypper --gpg-auto-import-keys refresh && zypper install -y cuda" 
++ zypper --gpg-auto-import-keys refresh
+Repository 'HWCloud:42.2:OSS' is up to date.
+Repository 'HWCloud:42.2:UPDATE-NON-OSS' is up to date.
+Repository 'HWCloud:42.2:UPDATE-OSS' is up to date.
+Repository 'HWCloud:42.3:NON-OSS' is up to date.
+Repository 'HWnvidia-cuda' is up to date.
+Repository 'HWnvidia-driver' is up to date.
+Repository 'cuda-9-0-local' is up to date.
+All repositories have been refreshed.
++ zypper install -y cuda
+Loading repository data...
+Warning: Repository 'HWCloud:42.2:UPDATE-NON-OSS' appears to be outdated. Consider using a different mirror or server.
+Warning: Repository 'HWCloud:42.2:UPDATE-OSS' appears to be outdated. Consider using a different mirror or server.
+Reading installed packages...
+Resolving package dependencies...
+
+The following 71 NEW packages are going to be installed:
+  Mesa-libGL-devel cuda cuda-9-0 cuda-command-line-tools-9-0 cuda-core-9-0 cuda-cublas-9-0 cuda-cublas-dev-9-0 cuda-cudart-9-0 cuda-cudart-dev-9-0 cuda-cufft-9-0 cuda-cufft-dev-9-0 cuda-curand-9-0 cuda-curand-dev-9-0 cuda-cusolver-9-0 cuda-cusolver-dev-9-0 cuda-cusparse-9-0 cuda-cusparse-dev-9-0 cuda-demo-suite-9-0 cuda-documentation-9-0 cuda-driver-dev-9-0 cuda-libraries-9-0 cuda-libraries-dev-9-0 cuda-license-9-0 cuda-misc-headers-9-0 cuda-npp-9-0 cuda-npp-dev-9-0 cuda-nvgraph-9-0 cuda-nvgraph-dev-9-0 cuda-nvml-dev-9-0 cuda-nvrtc-9-0 cuda-nvrtc-dev-9-0 cuda-runtime-9-0 cuda-samples-9-0 cuda-toolkit-9-0 cuda-visual-tools-9-0 damageproto-devel fixesproto-devel freeglut-devel gcc-c++ gcc48-c++ glu-devel inputproto-devel kbproto-devel libICE-devel libSM-devel libX11-devel libXau-devel libXdamage-devel libXext-devel libXfixes-devel libXi-devel libXmu-devel libXt-devel libXxf86vm-devel libdrm-devel libglut3 libstdc++48-devel libxcb-devel libxcb-res0 libxcb-screensaver0 libxcb-xevie0 libxcb-xf86dri0 libxcb-xprint0 libxcb-xtest0 libxcb-xv0 libxcb-xvmc0 pthread-stubs-devel xbitmaps-devel xextproto-devel xf86vidmodeproto-devel xproto-devel
+
+71 new packages to install.
+Overall download size: 1.41 GiB. Already cached: 0 B. After the operation, additional 2.3 GiB will be used.
+Continue? [y/n/...? shows all options] (y): y
+Retrieving package xbitmaps-devel-1.1.1-13.2.noarch (1/71),   3.4 KiB (  193   B unpacked)
+Retrieving: xbitmaps-devel-1.1.1-13.2.noarch.rpm [done]
+Retrieving package damageproto-devel-1.2.1-9.2.x86_64 (2/71),   8.8 KiB ( 14.2 KiB unpacked)
+Retrieving: damageproto-devel-1.2.1-9.2.x86_64.rpm [.done]
+Retrieving package inputproto-devel-2.3.1-9.2.x86_64 (3/71),  18.9 KiB (101.5 KiB unpacked)
+Retrieving: inputproto-devel-2.3.1-9.2.x86_64.rpm [done]
+Retrieving package kbproto-devel-1.0.7-4.2.x86_64 (4/71), 130.7 KiB (1018.9 KiB unpacked)
+Retrieving: kbproto-devel-1.0.7-4.2.x86_64.rpm [done]
+Retrieving package libdrm-devel-2.4.68-1.4.x86_64 (5/71), 110.8 KiB (416.2 KiB unpacked)
+Retrieving: libdrm-devel-2.4.68-1.4.x86_64.rpm [done]
+Retrieving package libglut3-2.8.1-6.5.x86_64 (6/71),  80.0 KiB (308.7 KiB unpacked)
+Retrieving: libglut3-2.8.1-6.5.x86_64.rpm [done]
+Retrieving package pthread-stubs-devel-0.3-4.2.x86_64 (7/71),   4.2 KiB (  1.4 KiB unpacked)
+Retrieving: pthread-stubs-devel-0.3-4.2.x86_64.rpm [done]
+Retrieving package xextproto-devel-7.3.0-4.2.x86_64 (8/71), 108.4 KiB (655.3 KiB unpacked)
+Retrieving: xextproto-devel-7.3.0-4.2.x86_64.rpm [done]
+Retrieving package xf86vidmodeproto-devel-2.3.1-9.2.x86_64 (9/71),   7.0 KiB ( 20.2 KiB unpacked)
+Retrieving: xf86vidmodeproto-devel-2.3.1-9.2.x86_64.rpm [done]
+Retrieving package xproto-devel-7.0.28-4.2.x86_64 (10/71), 150.0 KiB (  1.1 MiB unpacked)
+Retrieving: xproto-devel-7.0.28-4.2.x86_64.rpm [done]
+Retrieving package fixesproto-devel-5.0-9.2.x86_64 (11/71),  13.9 KiB ( 40.1 KiB unpacked)
+Retrieving: fixesproto-devel-5.0-9.2.x86_64.rpm [done]
+Retrieving package libXau-devel-1.0.8-7.4.x86_64 (12/71),  10.2 KiB (  6.1 KiB unpacked)
+Retrieving: libXau-devel-1.0.8-7.4.x86_64.rpm [done]
+Retrieving package libstdc++48-devel-4.8.5-23.3.2.x86_64 (13/71),   2.8 MiB ( 23.5 MiB unpacked)
+Retrieving: libstdc++48-devel-4.8.5-23.3.2.x86_64.rpm [done]
+Retrieving package libxcb-res0-1.11.1-3.7.1.x86_64 (14/71),  13.0 KiB ( 14.2 KiB unpacked)
+Retrieving: libxcb-res0-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package libxcb-screensaver0-1.11.1-3.7.1.x86_64 (15/71),  12.3 KiB ( 10.2 KiB unpacked)
+Retrieving: libxcb-screensaver0-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package libxcb-xevie0-1.11.1-3.7.1.x86_64 (16/71),  12.1 KiB ( 10.2 KiB unpacked)
+Retrieving: libxcb-xevie0-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package libxcb-xf86dri0-1.11.1-3.7.1.x86_64 (17/71),  13.1 KiB ( 18.2 KiB unpacked)
+Retrieving: libxcb-xf86dri0-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package libxcb-xprint0-1.11.1-3.7.1.x86_64 (18/71),  16.6 KiB ( 30.3 KiB unpacked)
+Retrieving: libxcb-xprint0-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package libxcb-xtest0-1.11.1-3.7.1.x86_64 (19/71),  12.0 KiB ( 10.2 KiB unpacked)
+Retrieving: libxcb-xtest0-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package libxcb-xv0-1.11.1-3.7.1.x86_64 (20/71),  15.7 KiB ( 26.3 KiB unpacked)
+Retrieving: libxcb-xv0-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package libxcb-xvmc0-1.11.1-3.7.1.x86_64 (21/71),  13.1 KiB ( 14.2 KiB unpacked)
+Retrieving: libxcb-xvmc0-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package libICE-devel-1.0.9-5.3.1.x86_64 (22/71),  43.4 KiB (261.5 KiB unpacked)
+Retrieving: libICE-devel-1.0.9-5.3.1.x86_64.rpm [done]
+Retrieving package gcc48-c++-4.8.5-23.3.2.x86_64 (23/71),   5.6 MiB ( 14.6 MiB unpacked)
+Retrieving: gcc48-c++-4.8.5-23.3.2.x86_64.rpm [.done]
+Retrieving package libxcb-devel-1.11.1-3.7.1.x86_64 (24/71), 162.7 KiB (  2.0 MiB unpacked)
+Retrieving: libxcb-devel-1.11.1-3.7.1.x86_64.rpm [done]
+Retrieving package cuda-license-9-0-9.0.176-1.x86_64 (25/71),  28.0 KiB ( 80.1 KiB unpacked)
+Retrieving package cuda-nvrtc-9-0-9.0.176-1.x86_64 (26/71),   8.5 MiB ( 25.0 MiB unpacked)
+Retrieving package cuda-nvml-dev-9-0-9.0.176-1.x86_64 (27/71),  62.6 KiB (330.7 KiB unpacked)
+Retrieving package cuda-nvgraph-9-0-9.0.176-1.x86_64 (28/71),   8.8 MiB ( 22.1 MiB unpacked)
+Retrieving package cuda-npp-9-0-9.0.176-1.x86_64 (29/71),  91.0 MiB (136.0 MiB unpacked)
+Retrieving package cuda-misc-headers-9-0-9.0.176-1.x86_64 (30/71),   1.1 MiB ( 10.6 MiB unpacked)
+Retrieving package cuda-driver-dev-9-0-9.0.176-1.x86_64 (31/71),  18.4 KiB ( 41.4 KiB unpacked)
+Retrieving package cuda-cusparse-9-0-9.0.176-1.x86_64 (32/71),  35.7 MiB ( 53.3 MiB unpacked)
+Retrieving package cuda-cusolver-9-0-9.0.176-1.x86_64 (33/71),  38.0 MiB ( 73.9 MiB unpacked)
+Retrieving package cuda-curand-9-0-9.0.176-1.x86_64 (34/71),  41.8 MiB ( 56.3 MiB unpacked)
+Retrieving package cuda-cufft-9-0-9.0.176-1.x86_64 (35/71),  97.9 MiB (126.7 MiB unpacked)
+Retrieving package cuda-cudart-9-0-9.0.176-1.x86_64 (36/71), 143.2 KiB (468.4 KiB unpacked)
+Retrieving package cuda-cublas-9-0-9.0.176-1.x86_64 (37/71),  33.1 MiB ( 50.7 MiB unpacked)
+Retrieving package cuda-nvrtc-dev-9-0-9.0.176-1.x86_64 (38/71),  14.4 KiB ( 25.3 KiB unpacked)
+Retrieving package cuda-nvgraph-dev-9-0-9.0.176-1.x86_64 (39/71),   8.9 MiB ( 52.1 MiB unpacked)
+Retrieving package cuda-npp-dev-9-0-9.0.176-1.x86_64 (40/71),  91.4 MiB (165.6 MiB unpacked)
+Retrieving package cuda-cusparse-dev-9-0-9.0.176-1.x86_64 (41/71),  72.2 MiB (115.2 MiB unpacked)
+Retrieving package cuda-cusolver-dev-9-0-9.0.176-1.x86_64 (42/71),  10.8 MiB ( 33.6 MiB unpacked)
+Retrieving package cuda-curand-dev-9-0-9.0.176-1.x86_64 (43/71),  64.7 MiB (121.7 MiB unpacked)
+Retrieving package cuda-cufft-dev-9-0-9.0.176-1.x86_64 (44/71),  91.0 MiB (131.1 MiB unpacked)
+Retrieving package cuda-cudart-dev-9-0-9.0.176-1.x86_64 (45/71),   1.2 MiB (  4.1 MiB unpacked)
+Retrieving package cuda-libraries-9-0-9.0.176-1.x86_64 (46/71),   6.0 KiB (    0   B unpacked)
+Retrieving package cuda-cublas-dev-9-0-9.0.176-1.x86_64 (47/71),  74.9 MiB (123.5 MiB unpacked)
+Retrieving package cuda-runtime-9-0-9.0.176-1.x86_64 (48/71),   5.9 KiB (    0   B unpacked)
+Retrieving package cuda-libraries-dev-9-0-9.0.176-1.x86_64 (49/71),   6.2 KiB (    0   B unpacked)
+Retrieving package cuda-demo-suite-9-0-9.0.176-1.x86_64 (50/71),   4.7 MiB ( 10.6 MiB unpacked)
+Retrieving package libSM-devel-1.2.2-6.3.x86_64 (51/71),  35.6 KiB (225.3 KiB unpacked)
+Retrieving: libSM-devel-1.2.2-6.3.x86_64.rpm [done]
+Retrieving package gcc-c++-4.8-9.61.x86_64 (52/71),   4.8 KiB (    0   B unpacked)
+Retrieving: gcc-c++-4.8-9.61.x86_64.rpm [done]
+Retrieving package libX11-devel-1.6.3-7.1.x86_64 (53/71),   1.5 MiB (  7.6 MiB unpacked)
+Retrieving: libX11-devel-1.6.3-7.1.x86_64.rpm [done]
+Retrieving package libXt-devel-1.1.5-2.19.x86_64 (54/71), 412.6 KiB (  1.6 MiB unpacked)
+Retrieving: libXt-devel-1.1.5-2.19.x86_64.rpm [.done (16.0 KiB/s)]
+Retrieving package libXfixes-devel-5.0.1-8.1.x86_64 (55/71),   9.0 KiB (  9.0 KiB unpacked)
+Retrieving: libXfixes-devel-5.0.1-8.1.x86_64.rpm [done]
+Retrieving package libXext-devel-1.3.3-4.19.x86_64 (56/71),  89.7 KiB (220.7 KiB unpacked)
+Retrieving: libXext-devel-1.3.3-4.19.x86_64.rpm [done]
+Retrieving package libXdamage-devel-1.1.4-10.3.x86_64 (57/71),   5.3 KiB (  2.5 KiB unpacked)
+Retrieving: libXdamage-devel-1.1.4-10.3.x86_64.rpm [done]
+Retrieving package libXxf86vm-devel-1.1.4-2.3.x86_64 (58/71),  13.8 KiB ( 11.3 KiB unpacked)
+Retrieving: libXxf86vm-devel-1.1.4-2.3.x86_64.rpm [done]
+Retrieving package libXmu-devel-1.1.2-6.19.x86_64 (59/71),  35.2 KiB (217.9 KiB unpacked)
+Retrieving: libXmu-devel-1.1.2-6.19.x86_64.rpm [done]
+Retrieving package cuda-core-9-0-9.0.176-1.x86_64 (60/71),  21.6 MiB ( 53.8 MiB unpacked)
+Retrieving package cuda-command-line-tools-9-0-9.0.176-1.x86_64 (61/71),  30.5 MiB ( 60.4 MiB unpacked)
+Retrieving package cuda-visual-tools-9-0-9.0.176-1.x86_64 (62/71), 385.9 MiB (418.5 MiB unpacked)
+Retrieving package libXi-devel-1.7.5-5.3.1.x86_64 (63/71), 132.4 KiB (409.6 KiB unpacked)
+Retrieving: libXi-devel-1.7.5-5.3.1.x86_64.rpm [.done]
+Retrieving package Mesa-libGL-devel-11.2.2-166.1.x86_64 (64/71), 541.2 KiB (  1.6 MiB unpacked)
+Retrieving: Mesa-libGL-devel-11.2.2-166.1.x86_64.rpm [done]
+Retrieving package glu-devel-9.0.0-16.4.x86_64 (65/71),   8.8 KiB ( 20.3 KiB unpacked)
+Retrieving: glu-devel-9.0.0-16.4.x86_64.rpm [done]
+Retrieving package freeglut-devel-2.8.1-6.5.x86_64 (66/71), 129.9 KiB (259.9 KiB unpacked)
+Retrieving: freeglut-devel-2.8.1-6.5.x86_64.rpm [done]
+Retrieving package cuda-samples-9-0-9.0.176-1.x86_64 (67/71),  97.4 MiB (209.2 MiB unpacked)
+Retrieving package cuda-documentation-9-0-9.0.176-1.x86_64 (68/71), 116.1 MiB (203.0 MiB unpacked)
+Retrieving package cuda-toolkit-9-0-9.0.176-1.x86_64 (69/71),   6.5 KiB (    0   B unpacked)
+Retrieving package cuda-9-0-9.0.176-1.x86_64 (70/71),   5.9 KiB (    0   B unpacked)
+Retrieving package cuda-9.0.176-1.x86_64 (71/71),   5.8 KiB (    0   B unpacked)
+Checking for file conflicts: [...........done]
+( 1/71) Installing: xbitmaps-devel-1.1.1-13.2.noarch [....done]
+( 2/71) Installing: damageproto-devel-1.2.1-9.2.x86_64 [......done]
+( 3/71) Installing: inputproto-devel-2.3.1-9.2.x86_64 [......done]
+( 4/71) Installing: kbproto-devel-1.0.7-4.2.x86_64 [...........done]
+( 5/71) Installing: libdrm-devel-2.4.68-1.4.x86_64 [...........done]
+( 6/71) Installing: libglut3-2.8.1-6.5.x86_64 [........done]
+( 7/71) Installing: pthread-stubs-devel-0.3-4.2.x86_64 [.....done]
+( 8/71) Installing: xextproto-devel-7.3.0-4.2.x86_64 [...........done]
+( 9/71) Installing: xf86vidmodeproto-devel-2.3.1-9.2.x86_64 [.....done]
+(10/71) Installing: xproto-devel-7.0.28-4.2.x86_64 [...........done]
+(11/71) Installing: fixesproto-devel-5.0-9.2.x86_64 [......done]
+(12/71) Installing: libXau-devel-1.0.8-7.4.x86_64 [......done]
+(13/71) Installing: libstdc++48-devel-4.8.5-23.3.2.x86_64 [............done]
+(14/71) Installing: libxcb-res0-1.11.1-3.7.1.x86_64 [.....done]
+(15/71) Installing: libxcb-screensaver0-1.11.1-3.7.1.x86_64 [.....done]
+(16/71) Installing: libxcb-xevie0-1.11.1-3.7.1.x86_64 [.....done]
+(17/71) Installing: libxcb-xf86dri0-1.11.1-3.7.1.x86_64 [....done]
+(18/71) Installing: libxcb-xprint0-1.11.1-3.7.1.x86_64 [....done]
+(19/71) Installing: libxcb-xtest0-1.11.1-3.7.1.x86_64 [.....done]
+(20/71) Installing: libxcb-xv0-1.11.1-3.7.1.x86_64 [....done]
+(21/71) Installing: libxcb-xvmc0-1.11.1-3.7.1.x86_64 [.....done]
+(22/71) Installing: libICE-devel-1.0.9-5.3.1.x86_64 [........done]
+(23/71) Installing: gcc48-c++-4.8.5-23.3.2.x86_64 [............done]
+(24/71) Installing: libxcb-devel-1.11.1-3.7.1.x86_64 [............done]
+(25/71) Installing: cuda-license-9-0-9.0.176-1.x86_64 [......done]
+Additional rpm output:
+*** LICENSE AGREEMENT ***
+By using this software you agree to fully comply with the terms and 
+conditions of the EULA (End User License Agreement). The EULA is located
+at /usr/local/cuda-9.0/doc/EULA.txt. The EULA can also be found at
+http://docs.nvidia.com/cuda/eula/index.html. If you do not agree to the
+terms and conditions of the EULA, do not use the software.
+
+
+(26/71) Installing: cuda-nvrtc-9-0-9.0.176-1.x86_64 [............done]
+(27/71) Installing: cuda-nvml-dev-9-0-9.0.176-1.x86_64 [.........done]
+(28/71) Installing: cuda-nvgraph-9-0-9.0.176-1.x86_64 [............done]
+(29/71) Installing: cuda-npp-9-0-9.0.176-1.x86_64 [............done]
+(30/71) Installing: cuda-misc-headers-9-0-9.0.176-1.x86_64 [............done]
+(31/71) Installing: cuda-driver-dev-9-0-9.0.176-1.x86_64 [.....done]
+(32/71) Installing: cuda-cusparse-9-0-9.0.176-1.x86_64 [............done]
+(33/71) Installing: cuda-cusolver-9-0-9.0.176-1.x86_64 [............done]
+(34/71) Installing: cuda-curand-9-0-9.0.176-1.x86_64 [............done]
+(35/71) Installing: cuda-cufft-9-0-9.0.176-1.x86_64 [............done]
+(36/71) Installing: cuda-cudart-9-0-9.0.176-1.x86_64 [..........done]
+(37/71) Installing: cuda-cublas-9-0-9.0.176-1.x86_64 [............done]
+(38/71) Installing: cuda-nvrtc-dev-9-0-9.0.176-1.x86_64 [......done]
+(39/71) Installing: cuda-nvgraph-dev-9-0-9.0.176-1.x86_64 [............done]
+(40/71) Installing: cuda-npp-dev-9-0-9.0.176-1.x86_64 [............done]
+(41/71) Installing: cuda-cusparse-dev-9-0-9.0.176-1.x86_64 [............done]
+(42/71) Installing: cuda-cusolver-dev-9-0-9.0.176-1.x86_64 [............done]
+(43/71) Installing: cuda-curand-dev-9-0-9.0.176-1.x86_64 [............done]
+(44/71) Installing: cuda-cufft-dev-9-0-9.0.176-1.x86_64 [............done]
+(45/71) Installing: cuda-cudart-dev-9-0-9.0.176-1.x86_64 [............done]
+(46/71) Installing: cuda-libraries-9-0-9.0.176-1.x86_64 [...done]
+(47/71) Installing: cuda-cublas-dev-9-0-9.0.176-1.x86_64 [............done]
+(48/71) Installing: cuda-runtime-9-0-9.0.176-1.x86_64 [...done]
+(49/71) Installing: cuda-libraries-dev-9-0-9.0.176-1.x86_64 [...done]
+(50/71) Installing: cuda-demo-suite-9-0-9.0.176-1.x86_64 [............done]
+(51/71) Installing: libSM-devel-1.2.2-6.3.x86_64 [.......done]
+(52/71) Installing: gcc-c++-4.8-9.61.x86_64 [.......done]
+(53/71) Installing: libX11-devel-1.6.3-7.1.x86_64 [............done]
+(54/71) Installing: libXt-devel-1.1.5-2.19.x86_64 [............done]
+(55/71) Installing: libXfixes-devel-5.0.1-8.1.x86_64 [......done]
+(56/71) Installing: libXext-devel-1.3.3-4.19.x86_64 [............done]
+(57/71) Installing: libXdamage-devel-1.1.4-10.3.x86_64 [......done]
+(58/71) Installing: libXxf86vm-devel-1.1.4-2.3.x86_64 [.......done]
+(59/71) Installing: libXmu-devel-1.1.2-6.19.x86_64 [........done]
+(60/71) Installing: cuda-core-9-0-9.0.176-1.x86_64 [............done]
+(61/71) Installing: cuda-command-line-tools-9-0-9.0.176-1.x86_64 [............done]
+(62/71) Installing: cuda-visual-tools-9-0-9.0.176-1.x86_64 [............done]
+(63/71) Installing: libXi-devel-1.7.5-5.3.1.x86_64 [..........done]
+(64/71) Installing: Mesa-libGL-devel-11.2.2-166.1.x86_64 [............done]
+(65/71) Installing: glu-devel-9.0.0-16.4.x86_64 [.....done]
+(66/71) Installing: freeglut-devel-2.8.1-6.5.x86_64 [.........done]
+(67/71) Installing: cuda-samples-9-0-9.0.176-1.x86_64 [............done]
+(68/71) Installing: cuda-documentation-9-0-9.0.176-1.x86_64 [............done]
+(69/71) Installing: cuda-toolkit-9-0-9.0.176-1.x86_64 [...done]
+(70/71) Installing: cuda-9-0-9.0.176-1.x86_64 [...done]
+(71/71) Installing: cuda-9.0.176-1.x86_64 [...done]
++ '[' 0 -ne 0 ']'
+++ date +%s
++ end_cuda=1536897098
++ time_cuda=2017
++ echo '******install cuda begin time: 1536895081, end time 1536897098, use time 2017 s'
+******install cuda begin time: 1536895081, end time 1536897098, use time 2017 s
+******install kernel-devel use time 1 s
+******install nvidia driver use time 5 s
+******install nvidia cuda use time 2017 s
+add auto enable Persistence Mode when start vm...
+reboot......
