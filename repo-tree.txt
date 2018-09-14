@@ -1,4 +1,4 @@
-ecs/
+/var/www/html/ecs/
 └── linux
     ├── apt
     │   ├── conf
@@ -112,33 +112,63 @@ ecs/
     │                   ├── f784943ffb0f55795060a7647b1e81876bbab6c86986c42a0f4511fda5f16167-filelists.xml.gz
     │                   └── repomd.xml
     └── zypper
-        ├── cuda
-        │   ├── 9.0.176
-        │   │   ├── cuda-repo-sles122-9-0-local-9.0.176-1.x86_64.rpm
-        │   │   ├── cuda-repo-sles122-9-0-local-cublas-performance-update-1.0-1.x86_64.rpm
-        │   │   └── cuda-repo-sles122-9-0-local-cublas-performance-update-2-1.0-1.x86_64.rpm
-        │   └── repodata
-        │       ├── 34cec24f9e6f7903913f2a09ab663d55b400542a98f6d2d18e0d63a3f523190b-primary.sqlite.bz2
-        │       ├── 800118b6cf8143e6e5eba721d0192b8cbdce961765273e690285d6c5da6fc5d6-primary.xml.gz
-        │       ├── 80ed0262b1096dc3c9e375625bcc6793e344bf26f5c65b4b6e7ea87f232d1d23-filelists.xml.gz
-        │       ├── 8c25c9a3658aa704ce18d65617ff0fa4b9470b8e601b99d71661f638b8ebad0e-other.sqlite.bz2
-        │       ├── b96c5a8216bb7b9f2bca000171c5990685ab209c6bb8041f576eca5d79e27527-other.xml.gz
-        │       ├── e96225e79242e3b8020e94898311e3d26478e8e398669b96a941ef205e30b37e-filelists.sqlite.bz2
-        │       └── repomd.xml
-        ├── driver
-        │   ├── 384.111
-        │   │   └── nvidia-diag-driver-local-repo-sles122-384.111-1.0-1.x86_64.rpm
-        │   ├── 384.125
-        │   │   └── nvidia-diag-driver-local-repo-sles122-384.125-1.0-1.x86_64.rpm
-        │   └── repodata
-        │       ├── 095e7ccfe2d7840fd7dd8ad96de0a733e2c9b62bc7c0719f6dd493989d4a2161-filelists.sqlite.bz2
-        │       ├── 3313ab680c6aade17c405edd7a4055d31cb609cf7754c013d48c3074b39d5561-primary.xml.gz
-        │       ├── 60c6900179822a77cd33d585a0808ebf08a38001987b2bac7beef1af954147e5-primary.sqlite.bz2
-        │       ├── 8352a55d307cf9ffecbb110d3403d101ce844aa00f08cd3382f83cda7f8920d4-other.xml.gz
-        │       ├── 9406a9b13dc6a69f39c93b2a5adcf21773efbfabc180e7c7b0e26c0f7939ed55-filelists.xml.gz
-        │       ├── c8583a40a251eacfc97c53271a476cdada0ae6ea50b27283b2cc2856cb1ae661-other.sqlite.bz2
-        │       └── repomd.xml
-        ├── kernel-default-devel-4.12.14-64.1.ga0b2a80.x86_64.rpm
-        └── kernel-default-devel-4.4.154-2.1.g0224ad2.x86_64.rpm
+        ├── opensuse422
+        │   ├── cuda
+        │   │   ├── 9.0.176
+        │   │   │   ├── cuda-repo-opensuse422-9-0-176-local-patch-4-1.0-1.x86_64.rpm
+        │   │   │   ├── cuda-repo-opensuse422-9-0-local-9.0.176-1.x86_64.rpm
+        │   │   │   ├── cuda-repo-opensuse422-9-0-local-cublas-performance-update-1.0-1.x86_64.rpm
+        │   │   │   ├── cuda-repo-opensuse422-9-0-local-cublas-performance-update-2-1.0-1.x86_64.rpm
+        │   │   │   └── cuda-repo-opensuse422-9-0-local-cublas-performance-update-3-1.0-1.x86_64.rpm
+        │   │   └── repodata
+        │   │       ├── 0ea2898a6019ddc9d623d352bf6f81392ab6eee737c042c916d8195ab2c0fe8b-primary.xml.gz
+        │   │       ├── 3ae73ccca118016336ed210af9f8b580ea38ce37efbab31c4d20079889b1a7e3-other.sqlite.bz2
+        │   │       ├── 510ea0b36e40986b8a7ae974b845ac5f0587284b2c186601f0d0bdb95b3a563f-filelists.sqlite.bz2
+        │   │       ├── 6b22d0c5330d9b014a8a36c2b66bd975c57de1f023dd38e425cf5e5fbaf2f939-other.xml.gz
+        │   │       ├── 82750388d7870dc772735b3f7566b8835d9421d5cee4792af01c1e6578e635e2-primary.sqlite.bz2
+        │   │       ├── 8edd569769fd6a9999f0d44fe1a14c7e7b4fb7e1db85f1dbb216b242a00e3f5d-filelists.xml.gz
+        │   │       └── repomd.xml
+        │   └── driver
+        │       ├── 384.145
+        │       │   └── nvidia-diag-driver-local-repo-opensuse422-384.145-1.0-1.x86_64.rpm
+        │       ├── 396.66
+        │       │   └── nvidia-diag-driver-local-repo-opensuse422-384.66-1.0-1.x86_64.rpm
+        │       └── repodata
+        │           ├── 38ead72e60cd02d23aab45fc81f2291233cef571fb19a897bac4906620ab5497-primary.xml.gz
+        │           ├── 926d91f235725aa3aa695bec8158f8c0a07e08996973f76665812ad962bee71c-other.sqlite.bz2
+        │           ├── 9e70319f56e681a697b0e34d66b48a9f40edbbbe9006cc1bb77c4a0e1353a3fb-filelists.sqlite.bz2
+        │           ├── aebc91b80ea02c312ea2a796d25ba9d1759a395ddd3110a595016dd18e23ca8f-primary.sqlite.bz2
+        │           ├── b328bf7aee662e35ef2fe5585e35c67bd4494992b0059379256a62f9ce0aa0eb-other.xml.gz
+        │           ├── c7c9a19d12a61c45df08e6f40c6fc9c4de467dca9a235ab580f4ec329e4a0a93-filelists.xml.gz
+        │           └── repomd.xml
+        └── opensuse423
+            ├── cuda
+            │   ├── 9.1.85
+            │   │   └── cuda-repo-opensuse423-9.1.85-1.x86_64.rpm
+            │   ├── 9.2.148
+            │   │   └── cuda-repo-opensuse423-9.2.148-1.x86_64.rpm
+            │   ├── 9.2.88
+            │   │   └── cuda-repo-opensuse423-9.2.88-1.x86_64.rpm
+            │   └── repodata
+            │       ├── 0eed312983802b7dc563cc85937c3e632924a118171eb2c20af6cdd0e8e9d471-primary.xml.gz
+            │       ├── 125a11d5e22b0555deff06c132c1b2a831897ba45fd11706ee021edbb75753ee-primary.sqlite.bz2
+            │       ├── 290974699df3b02cefbacec2fbcf5437d31b3f6314e937f85be62f1b014dbbbc-filelists.sqlite.bz2
+            │       ├── 46bb6ad4cdba172cd5dcd21e0c97c1a6e692ee9e73a9934130c0c4b04623b10c-other.sqlite.bz2
+            │       ├── 92a2b5f10ac674508f5c26fa3080a3012f8d14d02fc6b47d9364734ce38190cd-other.xml.gz
+            │       ├── e479df8a79d36e7c3fce66a7202aa133fa94e18c5c7f68cafad3c32af19592d3-filelists.xml.gz
+            │       └── repomd.xml
+            └── driver
+                ├── 390.30
+                │   └── nvidia-diag-driver-local-repo-opensuse423-390.30-1.0-1.x86_64.rpm
+                ├── 396.44
+                │   └── nvidia-diag-driver-local-repo-opensuse423-396.44-1.0-1.x86_64.rpm
+                └── repodata
+                    ├── 51cb1bfb41d6c9f2bbcc6e72c7e736dfcea776f82cecb173463971559baba889-primary.xml.gz
+                    ├── 69b30033ca021f3fd9dc82aa9f3f8bd3fa2c6b0f397585ff757cce8276a7a2a2-primary.sqlite.bz2
+                    ├── 73069ab3e9083cdc2ee5fbb92116f8c5a0475f6f463d8e74f792660174c870bc-other.xml.gz
+                    ├── 8a9a8977180dc36859375479baa741d887bbf5c4b59bc02cc9362212392d8763-filelists.sqlite.bz2
+                    ├── e0173b5c3c659c924512bff4762d136b345d37c852401ed4c891b2a728d99ddd-filelists.xml.gz
+                    ├── ff920316fa565a319b21ecfd9e20bd7eb9540cb12921ac9d77a84219b223c488-other.sqlite.bz2
+                    └── repomd.xml
 
-40 directories, 101 files
+51 directories, 120 files
