@@ -3,12 +3,12 @@
 
 #### Nvidia cuda toolkit and driver supporting with the OS verison.
 
-### Centos7.x|RHEL7.x|EulerOS2.x-cuda*driver
+### Centos7.x | RHEL7.x | EulerOS2.x-cuda*driver
   - {9.1.85}*{390.46}
   - {9.0.176}*{390.46,384.125,384.111}
   - {8.0.61}*{390.46,384.125,384.111}
 
-### Centos6.x|RHEL6.x-cuda*driver
+### Centos6.x | RHEL6.x-cuda*driver
   - {9.1.85}*{390.46}
   - {9.0.176}*{390.46,384.125,384.111}
   - {8.0.61}*{390.46,384.125,384.111}
