@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 log="/var/log/nvidia_install.log"
 
@@ -105,7 +105,6 @@ install_nvidia_cuda_suse()
     time_cuda_unpack=$((end_cuda_unpack-begin_cuda))
     echo "******download and unpack cuda file end, end time: $end_cuda_unpack, use time $time_cuda_unpack s"
 
-
     echo "******exec \"zypper se cuda | grep $release | grep $cuda_big_version | grep update | awk -F'|' '{print \$2}'\" "
     cuda_patch_filelist=$(zypper se cuda | grep $release | grep $cuda_big_version | grep update | awk -F'|' '{print $2}')
 
@@ -128,7 +127,6 @@ install_nvidia_cuda_suse()
     time_cuda=$((end_cuda-begin_cuda))
     echo "******install cuda begin time: $begin_cuda, end time $end_cuda, use time $time_cuda s"
 }
-
 
 enable_pm()
 {
@@ -177,7 +175,7 @@ else
     exit 1
 fi
 
-create_nvidia_repo_opensuse
+create_nvidia_repo_opensuse >> $log 2>&1 
 
 begin=$(date '+%s')
 install_kernel_devel_opensuse >> $log 2>&1 
@@ -188,7 +186,6 @@ fi
 end=$(date '+%s')
 time_kernel=$((end-begin))
 echo "******install kernel-devel begin time: $begin, end time: $end, use time: $time_kernel s" >> $log 2>&1
-
 
 begin_driver=$(date '+%s')
 install_nvidia_driver_suse >> $log 2>&1 
@@ -206,7 +203,6 @@ if [ $? -ne 0 ]; then
     echo "error: cuda install fail!!!" >> $log 2>&1
     exit 1
 fi
-
 
 echo "******install kernel-devel use time $time_kernel s" >> $log 2>&1
 echo "******install nvidia driver use time $time_driver s" >> $log 2>&1
