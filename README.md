@@ -2,8 +2,7 @@
 ------------------------------------------
 Nvidia cuda toolkit and driver automatically install with cloud-init user-data.
 
-#### Nvidia cuda toolkit and driver supporting with the OS verison.
-
+#### Nvidia cuda toolkit and driver supporting with the OS verison:
 #### Centos7.x | RHEL7.x | EulerOS2.x - cuda*driver
   - {9.1.85}*{390.46}
   - {9.0.176}*{390.46,384.125,384.111}
