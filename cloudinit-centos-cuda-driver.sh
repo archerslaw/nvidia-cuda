@@ -99,10 +99,10 @@ install_nvidia_driver_centos()
 install_nvidia_cuda_centos()
 {
     begin_cuda=$(date '+%s')
-    cuda_file_num=$(yum list | grep cuda | grep $release | grep $cuda_version |grep -v update | wc -l)
+    cuda_file_num=$(yum list | grep cuda | grep $release | grep $cuda_big_version | grep -v update | grep -v patch | wc -l)
     if [ $cuda_file_num -eq 1 ];then
-        cuda_file=$(yum list | grep cuda | grep $release | grep $cuda_version | grep -v update | awk -F' ' '{print $1}')
-        echo "******exec \"yum list |grep cuda |grep $release |grep $cuda_version|grep -v update| awk -F' ' '{print \$1}'\":"
+        cuda_file=$(yum list | grep cuda | grep $release | grep $cuda_big_version | grep -v update | grep -v patch | awk -F' ' '{print $1}')
+        echo "******exec \"yum list |grep cuda |grep $release |grep $cuda_version|grep -v update | grep -v patch | awk -F' ' '{print \$1}'\":"
         echo $cuda_file
     else
         echo "error: cuda_file_num = $cuda_file_num , get cuda file failed, exit"
