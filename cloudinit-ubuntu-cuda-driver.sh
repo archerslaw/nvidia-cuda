@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 log="/var/log/nvidia_install.log"
 
@@ -26,6 +26,7 @@ create_nvidia_repo_ubuntu()
     wget -O - http://119.3.60.246/ecs/linux/huaweicloud.ubuntu.gpg.key | apt-key add -
     apt update >> $log 2>&1
 }
+
 update_ubuntu1404_apt_source()
 {
     echo -e "\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m"
@@ -44,6 +45,7 @@ update_ubuntu1404_apt_source()
     deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
 EOF
 }
+
 update_ubuntu1604_apt_source()
 {
     echo -e "\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m"
@@ -109,7 +111,6 @@ install_nvidia_driver_ubuntu()
     fi
 }
 
-
 install_nvidia_cuda_ubuntu()
 {
     begin_cuda=$(date '+%s')
@@ -140,7 +141,6 @@ install_nvidia_cuda_ubuntu()
     do
         echo "******exec \"apt-get install -y --allow-unauthenticated $cuda_patch_file\" "
         apt-get install -y --allow-unauthenticated $cuda_patch_file
-
     done
 
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda\" "
@@ -215,7 +215,6 @@ end=$(date '+%s')
 time_kernel=$((end-begin))
 echo "******install kernel-devel begin time: $begin, end time: $end, use time: $time_kernel s" >> $log 2>&1
 
-
 begin_driver=$(date '+%s')
 install_nvidia_driver_ubuntu >> $log 2>&1 
 if [ $? -ne 0 ]; then
@@ -233,7 +232,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-
 echo "******install kernel-devel use time $time_kernel s" >> $log 2>&1
 echo "******install nvidia driver use time $time_driver s" >> $log 2>&1
 echo "******install nvidia cuda use time $time_cuda s" >> $log 2>&1
@@ -242,4 +240,4 @@ echo "add auto enable Persistence Mode when start vm..." >> $log 2>&1
 enable_pm
 
 echo "reboot......" >> $log 2>&1
-#reboot
+reboot
