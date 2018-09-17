@@ -1,6 +1,6 @@
 'https://www.jb51.net/article/36613.htm'
-'在CMD中输入：cscript.exe download.vbs http://xxxxxxx.exe'
 'download.vbs:'
+'在CMD中输入：cscript.exe download.vbs http://xxxxxxx.exe'
 
 if (lcase(right(wscript.fullname,11))="wscript.exe") then
 die("Script host must be CScript.exe.")
