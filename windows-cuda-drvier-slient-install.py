@@ -1,4 +1,4 @@
-rem
+rem cmd
 set PATH=C:\Program Files\Cloudbase Solutions\Cloudbase-Init\Python
 
 echo import urllib2 >C:\download.py
