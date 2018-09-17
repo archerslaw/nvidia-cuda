@@ -46,4 +46,4 @@ Nvidia cuda toolkit and driver automatically install with cloud-init user-data.
   - {9.0.176}*{385.08，386.45，391.29，398.75}
  
 #### Resutls for Widows2k8R2:
-![image](https://github.com/archerslaw/nvidia-cuda/blob/master/windows-nvidia-cuda-driver-install.JPG)
+![image](https://github.com/archerslaw/nvidia-cuda/blob/master/windows2k8r2-nvidia-cuda-driver-install-result.JPG)
