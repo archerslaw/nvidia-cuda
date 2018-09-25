@@ -14,7 +14,7 @@ echo "cuda version: $cuda_version" >> $log 2>&1
 ##OpenSUSE42.x
 create_nvidia_repo_opensuse()
 {
-    baseurl="http://119.3.60.246"
+    baseurl="http://mirrors.myhuaweicloud.com"
     echo "baseurl: $baseurl" >> $log 2>&1
     zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/${release}/driver HWnvidia-driver
     zypper addrepo -G -f ${baseurl}/ecs/linux/zypper/${release}/cuda HWnvidia-cuda
