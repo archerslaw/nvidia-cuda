@@ -20,13 +20,13 @@ echo         if chunk: >>C:\nvidia-driver-download.py
 echo             downloadfile.write(chunk) >>C:\nvidia-driver-download.py
 python C:\nvidia-driver-download.py
 start /wait C:\398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe /s /v
-start /wait C:\NVIDIA\398.75\international\setup.exe /s /v
+start /wait C:\NVIDIA\DisplayDriver\398.75\Win8_Win7_64\international\setup.exe /s /v
 
 rem "remove the file"
-del C:\cuda_8.0.61_windows.exe
-del C:\398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe
-del C:\nvidia-cuda-download.py
+del /a/f C:\nvidia-cuda-download.py
 del /a/f C:\nvidia-driver-download.py
+del /a/f C:\cuda_8.0.61_windows.exe
+del /a/f C:\398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe
 rmdir /s/q C:\NVIDIA
 
 rem "install nvidia cuda and driver success"
