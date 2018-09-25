@@ -16,7 +16,7 @@ create_nvidia_repo_euleros()
 {
     curl -o /etc/yum.repos.d/hwEulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_${eulerversion}_${eulercode}_base.repo
     curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
-    url="http://119.3.60.246"
+    url="http://mirrors.myhuaweicloud.com"
     cudaurl=$url"/ecs/linux/rpm/cuda/${version}/x86_64/"
     driverurl=$url"/ecs/linux/rpm/driver/${version}/x86_64/"
     packageurl=$url"/ecs/linux/rpm/package/${version}/x86_64/"
