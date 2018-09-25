@@ -28,6 +28,6 @@ del C:\398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe
 del C:\nvidia-cuda-download.py
 del /a/f C:\nvidia-driver-download.py
 rmdir /s/q C:\NVIDIA
-echo "install nvidia cuda and driver success"
 
+rem "install nvidia cuda and driver success"
 exit 0
