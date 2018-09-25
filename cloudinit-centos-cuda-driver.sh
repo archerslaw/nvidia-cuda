@@ -16,7 +16,7 @@ create_nvidia_repo_centos()
 {
     curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
     curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
-    url="http://119.3.60.246"
+    url="http://mirrors.myhuaweicloud.com"
     cudaurl=$url"/ecs/linux/rpm/cuda/${version}/\$basearch/"
     driverurl=$url"/ecs/linux/rpm/driver/${version}/\$basearch/"
     packageurl=$url"/ecs/linux/rpm/package/${version}/\$basearch/"
