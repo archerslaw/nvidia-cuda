@@ -14,7 +14,7 @@ echo "cuda version: $cuda_version" >> $log 2>&1
 ######Ubuntu##########
 create_nvidia_repo_ubuntu()
 {
-    url="http://119.3.60.246"
+    url="http://mirrors.myhuaweicloud.com"
     repo_file="/etc/apt/sources.list"
     url1="deb $url/ecs/linux/apt/ ecs cuda"
     url2="deb $url/ecs/linux/apt/ ecs driver"
@@ -23,7 +23,7 @@ create_nvidia_repo_ubuntu()
     echo $url1 >> $repo_file
     echo $url2 >> $repo_file
     
-    wget -O - http://119.3.60.246/ecs/linux/huaweicloud.ubuntu.gpg.key | apt-key add -
+    wget -O - http://mirrors.myhuaweicloud.com/ecs/linux/huaweicloud.ubuntu.gpg.key | apt-key add -
     apt update >> $log 2>&1
 }
 
