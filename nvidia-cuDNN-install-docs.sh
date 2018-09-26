@@ -16,6 +16,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/usr/local/cuda/lib64/:$LIBRARY_PATH
 
 # install pip
+# centos6.x+7.x|rhel6.x+7.x|ubuntu14.x+16.x|opensuse42.x
 yum install python*pip -y
 pip install --upgrade pip
 
