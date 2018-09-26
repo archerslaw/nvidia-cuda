@@ -15,9 +15,15 @@ rm -fr cudnn-9.0-linux-x64-v7*
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/usr/local/cuda/lib64/:$LIBRARY_PATH
 
-# install pip
-# centos6.x+7.x|rhel6.x+7.x|ubuntu14.x+16.x|opensuse42.x
+# install pip for centos6.x+7.x|rhel6.x+7.x
 yum install python*pip -y
+
+# install pip for ubuntu14.x+16.x
+apt-get install python-pip python-dev build-essential -y
+
+# install pip for opensuse42.x
+zypper install python-pip -y
+
 pip install --upgrade pip
 
 # install tensorflow-gpu
