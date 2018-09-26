@@ -1,33 +1,28 @@
 rem cmd
 
 set PATH="C:\Program Files\Cloudbase Solutions\Cloudbase-Init\Python"
-echo import requests >C:\nvidia-cuda-download.py
-echo file_url = "http://mirrors.myhuaweicloud.com/ecs/windows/exe/win2008r2/cuda/cuda_8.0.61_windows.exe" >>C:\nvidia-cuda-download.py
-echo r = requests.get(file_url, stream=True) >>C:\nvidia-cuda-download.py
-echo with open("C:\cuda_8.0.61_windows.exe", "wb") as downloadfile: >>C:\nvidia-cuda-download.py
-echo     for chunk in r.iter_content(chunk_size=1024): >>C:\nvidia-cuda-download.py
-echo         if chunk: >>C:\nvidia-cuda-download.py
-echo             downloadfile.write(chunk) >>C:\nvidia-cuda-download.py
-python C:\nvidia-cuda-download.py
-start /wait C:\cuda_8.0.61_windows.exe /s /v
-  
-echo import requests >C:\nvidia-driver-download.py
-echo file_url = "http://mirrors.myhuaweicloud.com/ecs/windows/exe/win2008r2/driver/398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe" >>C:\nvidia-driver-download.py
-echo r = requests.get(file_url, stream=True) >>C:\nvidia-driver-download.py
-echo with open("C:\398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe", "wb") as downloadfile: >>C:\nvidia-driver-download.py
-echo     for chunk in r.iter_content(chunk_size=1024): >>C:\nvidia-driver-download.py
-echo         if chunk: >>C:\nvidia-driver-download.py
-echo             downloadfile.write(chunk) >>C:\nvidia-driver-download.py
-python C:\nvidia-driver-download.py
-start /wait C:\398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe /s /v
-start /wait C:\NVIDIA\DisplayDriver\398.75\Win8_Win7_64\international\setup.exe /s /v
+echo cuda_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/win2008r2/cuda/cuda_8.0.61_windows.exe" >C:\nvidia-download.py
+echo driver_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/win2008r2/driver/398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe" >>C:\nvidia-download.py
+echo import requests >>C:\nvidia-download.py
+echo def nvidia_download(file_url, localfile_name): >>C:\nvidia-download.py
+echo 	r = requests.get(file_url, stream=True) >>C:\nvidia-download.py
+echo 	with open(localfile_name, "wb") as downloadfile: >>C:\nvidia-download.py
+echo 		for chunk in r.iter_content(chunk_size=10240): >>C:\nvidia-download.py
+echo 			if chunk: >>C:\nvidia-download.py
+echo 				downloadfile.write(chunk) >>C:\nvidia-download.py
+echo nvidia_download(cuda_url, "C:\\nvidia_cuda.exe") >>C:\nvidia-download.py
+echo nvidia_download(driver_url, "C:\\nvidia_driver.exe") >>C:\nvidia-download.py
+python C:\nvidia-download.py
+
+rem "install nvidia driver"
+start /wait C:\nvidia_driver.exe /s /v
+rem "install nvidia cuda"
+start /wait C:\nvidia_cuda.exe /s /v
 
 rem "remove the file"
-del /a/f C:\nvidia-cuda-download.py
-del /a/f C:\nvidia-driver-download.py
-del /a/f C:\cuda_8.0.61_windows.exe
-del /a/f C:\398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe
-rmdir /s/q C:\NVIDIA
+del /a/f C:\nvidia-download.py
+del /a/f C:\nvidia_cuda.exe
+del /a/f C:\nvidia_driver.exe
 
-rem "install nvidia cuda and driver success"
+rem "install nvidia driver and cuda success"
 exit 0
