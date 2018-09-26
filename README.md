@@ -2,6 +2,8 @@
 ------------------------------------------
 Nvidia cuda toolkit and driver automatically install with cloud-init user-data.
 
+Install CUDA and cuDNN on Red Hat
+http://kehang.github.io/tools/2017/03/31/install-CUDA-cuDNN-on-Red-Hat/
 
 #### Nvidia cuda toolkit and driver supporting with the OS verison:
 
