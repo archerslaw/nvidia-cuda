@@ -15,7 +15,7 @@ echo nvidia_download(driver_url, "C:\\nvidia_driver.exe") >>C:\nvidia-download.p
 python C:\nvidia-download.py
 
 rem "install nvidia driver"
-start /wait C:\nvidia_driver.exe /s /v
+start /wait C:\nvidia_driver.exe -s
 rem "install nvidia cuda"
 start /wait C:\nvidia_cuda.exe /s /v
 
