@@ -10,7 +10,7 @@ echo     with open(localfile_name, 'wb') as downloadfile:>>C:\nvidia-download.py
 echo         for chunk in r.iter_content(chunk_size=10240):>>C:\nvidia-download.py
 echo             if chunk:>>C:\nvidia-download.py
 echo                 downloadfile.write(chunk)>>C:\nvidia-download.py
-echo nvidia_download(cuda_url, 'C:\\nvidia_cuda.exe')>C:\nvidia-download.py
+echo nvidia_download(cuda_url, 'C:\\nvidia_cuda.exe')>>C:\nvidia-download.py
 echo nvidia_download(driver_url, 'C:\\nvidia_driver.exe')>>C:\nvidia-download.py
 
 "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\Python\python.exe" C:\nvidia-download.py>>C:\nvidia_install_log.txt
