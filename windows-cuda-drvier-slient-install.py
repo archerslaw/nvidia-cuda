@@ -6,11 +6,11 @@ echo set mirrorsurl="http://mirrors.myhuaweicloud.com/ecs/windows/exe">>C:\nvidi
 echo set Cloudbase-Init-Url="C:\Program Files\Cloudbase Solutions\Cloudbase-Init">>C:\nvidia-download.py
 echo import requests>>C:\nvidia-download.py
 echo def nvidia_download(file_url, localfile_name):>>C:\nvidia-download.py
-echo 	r = requests.get(file_url, stream=True)>>C:\nvidia-download.py
+echo     r = requests.get(file_url, stream=True)>>C:\nvidia-download.py
 echo     with open(localfile_name, "wb") as downloadfile:>>C:\nvidia-download.py
-echo 	    for chunk in r.iter_content(chunk_size=10240):>>C:\nvidia-download.py
-echo  		    if chunk:>>C:\nvidia-download.py
-echo  			    downloadfile.write(chunk)>>C:\nvidia-download.py
+echo 	       for chunk in r.iter_content(chunk_size=10240):>>C:\nvidia-download.py
+echo  		       if chunk:>>C:\nvidia-download.py
+echo  			         downloadfile.write(chunk)>>C:\nvidia-download.py
 echo nvidia_download(cuda_url, "C:\\nvidia_cuda.exe")>>C:\nvidia-download.py
 echo nvidia_download(driver_url, "C:\\nvidia_driver.exe")>>C:\nvidia-download.py
 
