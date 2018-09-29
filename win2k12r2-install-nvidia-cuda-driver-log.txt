@@ -1,0 +1,9 @@
+Sat 09/29/2018 17:16:06.43 Logs: Start to download nvidia cuda and driver package
+Sat 09/29/2018 17:16:23.97 Logs: Download nvidia cuda and driver package success
+Sat 09/29/2018 17:16:25.29 Logs: Install nvidia driver package
+Sat 09/29/2018 17:16:59.62 Logs: Install nvidia cuda package
+Sat 09/29/2018 17:54:00.10 Logs: Install nvidia driver and cuda package success
+Sat 09/29/2018 17:54:00.10 Logs: Remove nvidia-download.py script
+Sat 09/29/2018 17:54:00.24 Logs: Remove nvidia cuda package
+Sat 09/29/2018 17:54:00.27 Logs: Remove nvidia driver package
+Sat 09/29/2018 17:54:00.27 Logs: Remove nvidia cuda and driver package success
