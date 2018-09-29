@@ -16,7 +16,7 @@ echo nvidia_download(driver_url, 'C:\\nvidia_driver.exe')>>C:\nvidia-download.py
 "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\Python\python.exe" C:\nvidia-download.py>>C:\nvidia_install_log.txt
 echo %date%/%time% Logs: Download nvidia cuda and driver package success>C:\nvidia_install_log.txt
 
-echo rem cmd>""C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
+echo rem cmd>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo 'echo %date%/%time% Logs: Install nvidia driver package>>C:\nvidia_install_log.txt'>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts""\nvidia-install.cmd
 echo start /wait C:\nvidia_driver.exe -s>>C:\nvidia_install_log.txt>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo ping 127.0.0.1 -n 1 >nul>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
