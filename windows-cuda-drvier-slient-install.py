@@ -16,21 +16,22 @@ echo nvidia_download(driver_url, 'C:\\nvidia_driver.exe')>>C:\nvidia-download.py
 "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\Python\python.exe" C:\nvidia-download.py>>C:\nvidia_install_log.txt
 echo %date%/%time% Logs: Download nvidia cuda and driver package success>C:\nvidia_install_log.txt
 
-echo rem cmd>""C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts""\nvidia-install.cmd
-echo "echo %date%/%time% Logs: Install nvidia driver package>>C:\nvidia_install_log.txt">>""C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts""\nvidia-install.cmd
+echo rem cmd>""C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
+echo 'echo %date%/%time% Logs: Install nvidia driver package>>C:\nvidia_install_log.txt'>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts""\nvidia-install.cmd
 echo start /wait C:\nvidia_driver.exe -s>>C:\nvidia_install_log.txt>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo ping 127.0.0.1 -n 1 >nul>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
-echo "echo %date%/%time% Logs: Install nvidia cuda package>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
+echo 'echo %date%/%time% Logs: Install nvidia cuda package>>C:\nvidia_install_log.txt'>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo start /wait C:\nvidia_cuda.exe -s>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo ping 127.0.0.1 -n 1 >nul>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
-echo "echo %date%/%time% Logs: Install nvidia driver and cuda package success>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
-echo "echo %date%/%time% Logs: Remove nvidia cuda and driver echo package>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
+echo 'echo %date%/%time% Logs: Install nvidia driver and cuda package success>>C:\nvidia_install_log.txt'>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
+echo 'echo %date%/%time% Logs: Remove nvidia cuda and driver echo package>>C:\nvidia_install_log.txt'>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo del /a/f >>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
-echo "echo %date%/%time% Logs: Remove nvidia-download.py script>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
+echo 'echo %date%/%time% Logs: Remove nvidia-download.py script>>C:\nvidia_install_log.txt'>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo del /a/f C:\nvidia-download.py">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
-echo "echo %date%/%time% Logs: Remove nvidia cuda package.>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
+echo 'echo %date%/%time% Logs: Remove nvidia cuda package.>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo del /a/f C:\nvidia_cuda.exe>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
-echo "echo %date%/%time% Logs: Remove nvidia driver package.>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
+echo 'echo %date%/%time% Logs: Remove nvidia driver package.>>C:\nvidia_install_log.txt'>>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo del /a/f C:\nvidia_driver.exe>>C:\nvidia_install_log.txt">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 echo exit 0">>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\LocalScripts"\nvidia-install.cmd
 exit 0
+
