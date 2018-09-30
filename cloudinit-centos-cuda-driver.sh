@@ -186,7 +186,7 @@ yum install epel-release -y >> $log 2>&1
 #cp /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/hwepel-testing.repo
 #sed -e 's!^mirrorlist=!#mirrorlist=!g' -e 's!^#baseurl=!baseurl=!g' -e 's!//download\.fedoraproject\.org/pub!//mirrors.myhuaweicloud.com!g' -i /etc/yum.repos.d/hwepel.repo /etc/yum.repos.d/hwepel-testing.repo
 curl -o /etc/yum.repos.d/epel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
-curl -o /etc/yum.repos.d/epel-testing.repo http://mirrors.myhuaweicloud.com/repo/epel-testing-${version}.repo
+rm -fr /etc/yum.repos.d/epel-testing.repo
 
 yum clean all >> $log 2>&1
 yum makecache >> $log 2>&1
