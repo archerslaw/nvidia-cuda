@@ -14,8 +14,8 @@ echo "cuda version: $cuda_version" >> $log 2>&1
 ##Centos
 create_nvidia_repo_centos()
 {
-    curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
-    curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
+    curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
+    #curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
     url="http://mirrors.myhuaweicloud.com"
     cudaurl=$url"/ecs/linux/rpm/cuda/${version}/\$basearch/"
     driverurl=$url"/ecs/linux/rpm/driver/${version}/\$basearch/"
@@ -181,13 +181,12 @@ echo "version:$version" >> $log 2>&1
 
 create_nvidia_repo_centos >> $log 2>&1
 
-#curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-7.repo
-#curl -o /etc/yum.repos.d/hwCentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-7.repo
-
 yum install epel-release -y >> $log 2>&1
 #cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/hwepel.repo
 #cp /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/hwepel-testing.repo
 #sed -e 's!^mirrorlist=!#mirrorlist=!g' -e 's!^#baseurl=!baseurl=!g' -e 's!//download\.fedoraproject\.org/pub!//mirrors.myhuaweicloud.com!g' -i /etc/yum.repos.d/hwepel.repo /etc/yum.repos.d/hwepel-testing.repo
+curl -o /etc/yum.repos.d/epel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
+curl -o /etc/yum.repos.d/epel-testing.repo http://mirrors.myhuaweicloud.com/repo/epel-testing-${version}.repo
 
 yum clean all >> $log 2>&1
 yum makecache >> $log 2>&1
