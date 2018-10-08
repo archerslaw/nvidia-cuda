@@ -1,4 +1,4 @@
-/var/www/html/ecs/
+/opt/mirrors/ecs
 ├── linux
 │   ├── apt
 │   │   ├── conf
@@ -61,6 +61,25 @@
 │   │                   └── nvidia-diag-driver-local-repo-ubuntu1604-390.46_1.0-1_amd64.deb
 │   ├── rpm
 │   │   ├── cuda
+│   │   │   ├── 6
+│   │   │   │   └── x86_64
+│   │   │   │       ├── cuda-repo-rhel6-8-0-local-cublas-performance-update-8.0.61-1.x86_64.rpm
+│   │   │   │       ├── cuda-repo-rhel6-8-0-local-ga2-8.0.61-1.x86_64.rpm
+│   │   │   │       ├── cuda-repo-rhel6-9-0-local-9.0.176-1.x86_64.rpm
+│   │   │   │       ├── cuda-repo-rhel6-9-0-local-cublas-performance-update-1.0-1.x86_64.rpm
+│   │   │   │       ├── cuda-repo-rhel6-9-0-local-cublas-performance-update-2-1.0-1.x86_64.rpm
+│   │   │   │       ├── cuda-repo-rhel6-9-1-local-9.1.85-1.x86_64.rpm
+│   │   │   │       ├── cuda-repo-rhel6-9-1-local-compiler-update-1-1.0-1.x86_64.rpm
+│   │   │   │       ├── cuda-repo-rhel6-9-1-local-cublas-performance-update-1-1.0-1.x86_64.rpm
+│   │   │   │       ├── cuda-repo-rhel6-9-1-local-cublas-performance-update-3-1.0-1.x86_64.rpm
+│   │   │   │       └── repodata
+│   │   │   │           ├── 0c6f8878a5dc1425c6c549c40cba1b834deba6732aa3f8e9e6715138c16e4e6c-primary.xml.gz
+│   │   │   │           ├── 5370e4f6a67c2f93410f1b848d56d5641f9748111773f3f763f2432a06b75af3-primary.sqlite.bz2
+│   │   │   │           ├── 79afecbd6e545bf7758379c2f372bc9b6f2ab83777704e081d2138f43935db8e-other.xml.gz
+│   │   │   │           ├── 801b959637a174b29e7359767eaf8da1a540dd2545a58b2d688d904a9b6e16a4-filelists.xml.gz
+│   │   │   │           ├── c3c133cb821dc42143dce1d442fe4f70d86605238c70b5db5980e0af63198cb8-other.sqlite.bz2
+│   │   │   │           ├── f3a00a359f6aeb03c9541455b53eb748d7d8a7e08d079ef9ca85690dcb276135-filelists.sqlite.bz2
+│   │   │   │           └── repomd.xml
 │   │   │   └── 7
 │   │   │       └── x86_64
 │   │   │           ├── cuda-repo-rhel7-8-0-local-cublas-performance-update-8.0.61-1.x86_64.rpm
@@ -81,6 +100,23 @@
 │   │   │               ├── fce9af3839eb3e8232679c80d3972f471b5e1c61ee9eac3506ec381b7f0e169b-filelists.xml.gz
 │   │   │               └── repomd.xml
 │   │   ├── driver
+│   │   │   ├── 6
+│   │   │   │   └── x86_64
+│   │   │   │       ├── kernel-devel-2.6.32-696.10.1.el6.x86_64.rpm
+│   │   │   │       ├── kernel-devel-2.6.32-696.16.1.el6.x86_64.rpm
+│   │   │   │       ├── kernel-devel-2.6.32-696.6.3.el6.x86_64.rpm
+│   │   │   │       ├── nvidia-diag-driver-local-repo-rhel6-384.111-1.0-1.x86_64.rpm
+│   │   │   │       ├── nvidia-diag-driver-local-repo-rhel6-384.125-1.0-1.x86_64.rpm
+│   │   │   │       ├── nvidia-diag-driver-local-repo-rhel6-384.66-1.0-1.x86_64.rpm
+│   │   │   │       ├── nvidia-diag-driver-local-repo-rhel6-390.46-1.0-1.x86_64.rpm
+│   │   │   │       └── repodata
+│   │   │   │           ├── 15be7e9e1fbaff82ca4c7d8309c17d87b4fb4347c26c74ccb757b37cfde59f56-other.sqlite.bz2
+│   │   │   │           ├── 3430873380f4c7f80f45e365e350187f6f25934f40f98c566039583b18273c6a-filelists.sqlite.bz2
+│   │   │   │           ├── 4a5a4d7cdd928029c37f59c1ed93375f67b522f41fc6af4b07094a5320bc5bef-filelists.xml.gz
+│   │   │   │           ├── 6374a193eaa81abdec60a4c4b959548c05a241d778bd0c70eae40d42f36e592f-other.xml.gz
+│   │   │   │           ├── 8390022375c4b563fe0c6784ba58db67af8ce2710abede49c1cb11a305b7de33-primary.xml.gz
+│   │   │   │           ├── fc02af84f12263727380840cd0830d9f9e5d9d41d51cdc7b6347b926cfbc0b15-primary.sqlite.bz2
+│   │   │   │           └── repomd.xml
 │   │   │   └── 7
 │   │   │       └── x86_64
 │   │   │           ├── kernel-devel-3.10.0-514.26.2.el7.x86_64.rpm
@@ -99,15 +135,26 @@
 │   │   │               ├── f625257f4ce08ed3c20b8df71ac45b693ef267ac3f953db9ee1313c2139e4036-primary.sqlite.bz2
 │   │   │               └── repomd.xml
 │   │   └── package
+│   │       ├── 6
+│   │       │   └── x86_64
+│   │       │       ├── epel-release-latest-6.noarch.rpm
+│   │       │       └── repodata
+│   │       │           ├── 375afb0863ab0002698afe63975121560db48ccdcb35598b0cea247225143426-primary.sqlite.bz2
+│   │       │           ├── 432ac97666613108cb35de09196e1ef36227ef7a368e5a599865ae229c421d10-primary.xml.gz
+│   │       │           ├── 4e91f2efeb1e71d5021e7e3307dbb8989490112ef9201fea45df085cd7cf7944-filelists.xml.gz
+│   │       │           ├── 7edb25f9ec9982ba30e041042f071fd6d8b5a5b6402996269f17ec609ff63ee2-other.sqlite.bz2
+│   │       │           ├── bf168adf50e92ce2b6b519ec88b0b6f5ec9eb1fa3b4120b7dbd32d055950e219-other.xml.gz
+│   │       │           ├── dfa11acf19179cafc20dfb64732db96b146e44a349b979b8fbad180015f12d43-filelists.sqlite.bz2
+│   │       │           └── repomd.xml
 │   │       └── 7
 │   │           └── x86_64
 │   │               ├── epel-release-latest-7.noarch.rpm
 │   │               ├── libvdpau-1.1.1-3.el7.x86_64.rpm
 │   │               └── repodata
 │   │                   ├── 036ebe6b35c67f0f1fbe8bbaf7e300d1e2dba26b6c18d92eaeba0378868295a1-other.sqlite.bz2
-│   │                   ├── 364f8befd1f9e5255f14f30286147fa5f154625cb93d858bd79de015aea8de37-primary.xml.gz
-│   │                   ├── 3debed978be8ca457b6b820bef8afc53425b527b607ab88de29a32992dc58aa1-primary.sqlite.bz2
+│   │                   ├── d77849aedaa3038d96a8baa9d1e1b0f41fe4dd380619fee4ed52072db4130f14-primary.sqlite.bz2
 │   │                   ├── e2071f4124a84494407c8f5b41d5d223197d0dd9dcb8aaf7aea8354be3b80c89-other.xml.gz
+│   │                   ├── e5d7b81c96c6dbc458c2e8769eadb2f2db3ae27839bd783b0f118087d6467000-primary.xml.gz
 │   │                   ├── ed73add25b469715e9f082e3cffb5ca7b46b3d1e91c8defceac563275fe3bbd6-filelists.sqlite.bz2
 │   │                   ├── f784943ffb0f55795060a7647b1e81876bbab6c86986c42a0f4511fda5f16167-filelists.xml.gz
 │   │                   └── repomd.xml
@@ -121,41 +168,43 @@
 │       │   │   │   ├── cuda-repo-opensuse422-9-0-local-cublas-performance-update-2-1.0-1.x86_64.rpm
 │       │   │   │   └── cuda-repo-opensuse422-9-0-local-cublas-performance-update-3-1.0-1.x86_64.rpm
 │       │   │   └── repodata
-│       │   │       ├── 0ea2898a6019ddc9d623d352bf6f81392ab6eee737c042c916d8195ab2c0fe8b-primary.xml.gz
 │       │   │       ├── 3ae73ccca118016336ed210af9f8b580ea38ce37efbab31c4d20079889b1a7e3-other.sqlite.bz2
+│       │   │       ├── 4755c7fd7fccbc9cb4972ae600cb253eceb45ba50e9be3b14c63e6d8baa8b1f6-primary.sqlite.bz2
 │       │   │       ├── 510ea0b36e40986b8a7ae974b845ac5f0587284b2c186601f0d0bdb95b3a563f-filelists.sqlite.bz2
 │       │   │       ├── 6b22d0c5330d9b014a8a36c2b66bd975c57de1f023dd38e425cf5e5fbaf2f939-other.xml.gz
-│       │   │       ├── 82750388d7870dc772735b3f7566b8835d9421d5cee4792af01c1e6578e635e2-primary.sqlite.bz2
+│       │   │       ├── 8c328767878ca24d429423b8b0c7290c6485c7b10d3c97e2ad647177b9b3177c-primary.xml.gz
 │       │   │       ├── 8edd569769fd6a9999f0d44fe1a14c7e7b4fb7e1db85f1dbb216b242a00e3f5d-filelists.xml.gz
 │       │   │       └── repomd.xml
 │       │   └── driver
 │       │       ├── 384.145
-│       │       │   └── nvidia-diag-driver-local-repo-opensuse422-384.145-1.0-1.x86_64.rpm
-│       │       ├── 396.66
 │       │       │   └── nvidia-diag-driver-local-repo-opensuse422-384.66-1.0-1.x86_64.rpm
+│       │       ├── 396.66
+│       │       │   └── nvidia-diag-driver-local-repo-opensuse422-384.145-1.0-1.x86_64.rpm
 │       │       └── repodata
-│       │           ├── 38ead72e60cd02d23aab45fc81f2291233cef571fb19a897bac4906620ab5497-primary.xml.gz
-│       │           ├── 926d91f235725aa3aa695bec8158f8c0a07e08996973f76665812ad962bee71c-other.sqlite.bz2
-│       │           ├── 9e70319f56e681a697b0e34d66b48a9f40edbbbe9006cc1bb77c4a0e1353a3fb-filelists.sqlite.bz2
-│       │           ├── aebc91b80ea02c312ea2a796d25ba9d1759a395ddd3110a595016dd18e23ca8f-primary.sqlite.bz2
-│       │           ├── b328bf7aee662e35ef2fe5585e35c67bd4494992b0059379256a62f9ce0aa0eb-other.xml.gz
-│       │           ├── c7c9a19d12a61c45df08e6f40c6fc9c4de467dca9a235ab580f4ec329e4a0a93-filelists.xml.gz
+│       │           ├── 0b15f786259c2cab0caaa12b8f22a987a914d5f2cc2747285a34c5a1f493d3f2-filelists.sqlite.bz2
+│       │           ├── 359cf025c79322db6117e8d875b850811bb2839962cc44c768c5bf668397d7eb-primary.xml.gz
+│       │           ├── 53ba63ef6e42582d7db79d31d7cee626c59f59b7227da4a51a21a544cd5e2cbd-primary.sqlite.bz2
+│       │           ├── 856cdc58f0ec01e628f878017d974b9a6c4815a8ca5cca9cc5abbc17a2f97320-filelists.xml.gz
+│       │           ├── ad9acc74eb7f0727d46bc85e3e7a5349cf51086a1ba27056e4ecb240a6af1522-other.sqlite.bz2
+│       │           ├── c048277e754af36b03362b4ef550a7ad7ca8a4089bdf081d09c9ae1039de143c-other.xml.gz
 │       │           └── repomd.xml
 │       └── opensuse423
 │           ├── cuda
 │           │   ├── 9.1.85
-│           │   │   └── cuda-repo-opensuse423-9.1.85-1.x86_64.rpm
+│           │   │   ├── cuda-repo-opensuse423-9-1-local-9.1.85-1.x86_64.rpm
+│           │   │   ├── cuda-repo-opensuse423-9-1-local-compiler-update-1-1.0-1.x86_64.rpm
+│           │   │   ├── cuda-repo-opensuse423-9-1-local-cublas-performance-update-1-1.0-1.x86_64.rpm
+│           │   │   └── cuda-repo-opensuse423-9-1-local-cublas-performance-update-3-1.0-1.x86_64.rpm
 │           │   ├── 9.2.148
-│           │   │   └── cuda-repo-opensuse423-9.2.148-1.x86_64.rpm
-│           │   ├── 9.2.88
-│           │   │   └── cuda-repo-opensuse423-9.2.88-1.x86_64.rpm
+│           │   │   ├── cuda-repo-opensuse423-9-2-148-local-patch-1-1.0-1.x86_64.rpm
+│           │   │   └── cuda-repo-opensuse423-9-2-local-9.2.148-1.x86_64.rpm
 │           │   └── repodata
-│           │       ├── 0eed312983802b7dc563cc85937c3e632924a118171eb2c20af6cdd0e8e9d471-primary.xml.gz
-│           │       ├── 125a11d5e22b0555deff06c132c1b2a831897ba45fd11706ee021edbb75753ee-primary.sqlite.bz2
-│           │       ├── 290974699df3b02cefbacec2fbcf5437d31b3f6314e937f85be62f1b014dbbbc-filelists.sqlite.bz2
-│           │       ├── 46bb6ad4cdba172cd5dcd21e0c97c1a6e692ee9e73a9934130c0c4b04623b10c-other.sqlite.bz2
-│           │       ├── 92a2b5f10ac674508f5c26fa3080a3012f8d14d02fc6b47d9364734ce38190cd-other.xml.gz
-│           │       ├── e479df8a79d36e7c3fce66a7202aa133fa94e18c5c7f68cafad3c32af19592d3-filelists.xml.gz
+│           │       ├── 24fcdc287b65749a69e325c570b65430968eb96dfbf21d205c029104a30df3f1-filelists.sqlite.bz2
+│           │       ├── 2776591efd67cd9a10f90865377be6363b0b98fc2aec04f6dee819a771768f6a-other.xml.gz
+│           │       ├── 504d1a6ba57c1b430376e637022699a00928db078be3c079e0bc1b6e773945aa-primary.sqlite.bz2
+│           │       ├── 6815e3492ab4ea06c1f8762becf4345ea428dd99d212d61fa63e4ef7ba4a34e8-primary.xml.gz
+│           │       ├── bbdf48cef359e747adf8f170db9bea594e8b6f81aceec9d096051ff889bf0a9c-other.sqlite.bz2
+│           │       ├── e769cc92be1cdc25ff4386d64f14df2a16b95df196c4f2f01703c5e0cfabee25-filelists.xml.gz
 │           │       └── repomd.xml
 │           └── driver
 │               ├── 390.30
@@ -163,25 +212,44 @@
 │               ├── 396.44
 │               │   └── nvidia-diag-driver-local-repo-opensuse423-396.44-1.0-1.x86_64.rpm
 │               └── repodata
-│                   ├── 51cb1bfb41d6c9f2bbcc6e72c7e736dfcea776f82cecb173463971559baba889-primary.xml.gz
-│                   ├── 69b30033ca021f3fd9dc82aa9f3f8bd3fa2c6b0f397585ff757cce8276a7a2a2-primary.sqlite.bz2
 │                   ├── 73069ab3e9083cdc2ee5fbb92116f8c5a0475f6f463d8e74f792660174c870bc-other.xml.gz
 │                   ├── 8a9a8977180dc36859375479baa741d887bbf5c4b59bc02cc9362212392d8763-filelists.sqlite.bz2
+│                   ├── 94d58e62ce6e9f6f1c344e9d4fefd366adc7e9382e63d87938b27310e77c7b64-primary.xml.gz
 │                   ├── e0173b5c3c659c924512bff4762d136b345d37c852401ed4c891b2a728d99ddd-filelists.xml.gz
+│                   ├── f983e90f9ef78815db82f3008a891c6629c2a61b9b519f8341b3960928c768d8-primary.sqlite.bz2
 │                   ├── ff920316fa565a319b21ecfd9e20bd7eb9540cb12921ac9d77a84219b223c488-other.sqlite.bz2
 │                   └── repomd.xml
 └── windows
     └── exe
         ├── win2008r2
         │   ├── cuda
+        │   │   ├── cuda_7.5.18_windows.exe
+        │   │   ├── cuda_8.0.44_windows.exe
         │   │   └── cuda_8.0.61_windows.exe
         │   └── driver
-        │       └── 385.08-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       ├── 385.08-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       ├── 386.45-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       ├── 391.29-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       └── 398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe
         ├── win2012r2
         │   ├── cuda
+        │   │   ├── cuda_9.0.176_windows.exe
+        │   │   ├── cuda_9.1.85_windows.exe
+        │   │   └── cuda_9.2.148_windows.exe
         │   └── driver
+        │       ├── 385.08-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       ├── 386.45-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       ├── 391.29-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       └── 398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe
         └── win2016
             ├── cuda
+            │   ├── cuda_9.0.176_win10.exe
+            │   ├── cuda_9.1.85_win10.exe
+            │   └── cuda_9.2.148_win10.exe
             └── driver
+                ├── 385.08-tesla-desktop-winserver2016-international.exe
+                ├── 386.45-tesla-desktop-winserver2016-international.exe
+                ├── 391.29-tesla-desktop-winserver2016-international.exe
+                └── 398.75-tesla-desktop-winserver2016-international.exe
 
-62 directories, 122 files
+70 directories, 183 files
