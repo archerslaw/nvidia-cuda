@@ -1,7 +1,9 @@
 rem cmd
 
-echo cuda_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/win2012r2/cuda/cuda_9.2.148_windows.exe">C:\nvidia-download.py
-echo driver_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/win2012r2/driver/398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe">>C:\nvidia-download.py
+echo set driver_version="398.75">C:\nvidia-download.py
+echo set cuda_version="9.2.148">>C:\nvidia-download.py
+echo cuda_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/win2012r2/cuda/cuda_%cuda_version%_windows.exe">>C:\nvidia-download.py
+echo driver_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/win2012r2/driver/%driver_version%-tesla-desktop-winserver2008-2012r2-64bit-international.exe">>C:\nvidia-download.py
 rem ===================================
 echo import requests>>C:\nvidia-download.py
 echo def nvidia_download(file_url, localfile_name):>>C:\nvidia-download.py
