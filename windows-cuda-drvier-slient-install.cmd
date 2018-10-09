@@ -1,4 +1,6 @@
+'https://www.leavesongs.com/PYTHON/resume-download-from-break-point-tool-by-python.html'
 'https://www.jb51.net/article/36613.htm'
+
 'download.vbs:'
 '在CMD中输入：cscript.exe download.vbs http://xxxxxxx.exe'
 
