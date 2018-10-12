@@ -209,7 +209,7 @@ echo "******install nvidia driver use time $time_driver s" >> $log 2>&1
 echo "******install nvidia cuda use time $time_cuda s" >> $log 2>&1
 
 echo "add auto enable Persistence Mode when start vm..."  >> $log 2>&1
-enable_pm
+enable_pm >> $log 2>&1
 
 echo "reboot......"  >> $log 2>&1
 reboot
