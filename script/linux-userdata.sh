@@ -12,4 +12,3 @@ sed -i 's/^driver_version=.*/driver_version='${driver_version}'/g' ${script_file
 sed -i 's/^cuda_version=.*/cuda_version='${cuda_version}'/g' ${script_file}
 chmod +x ${script_file}
 bash ${script_file} &
-
