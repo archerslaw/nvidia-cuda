@@ -5,7 +5,7 @@ set cuda_version=9.2.148
 set os_version=windows2016
 
 echo cuda_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/%os_version%/cuda/cuda_%cuda_version%_windows.exe">C:\nvidia-download.py
-echo driver_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/%os_version%/driver/%driver_version%-tesla-desktop-international.exe">>C:\nvidia-download.py
+echo driver_url="http://mirrors.myhuaweicloud.com/ecs/windows/exe/%os_version%/driver/%driver_version%-tesla-desktop-winserver-international.exe">>C:\nvidia-download.py
 
 rem ===================================
 echo import requests>>C:\nvidia-download.py
