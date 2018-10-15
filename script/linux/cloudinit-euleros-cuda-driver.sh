@@ -170,8 +170,8 @@ elif echo "grep EulerOS /etc/*release | grep 'EulerOS release 2.0(SP3)'" >> $log
     mv /etc/yum.repos.d/*.repo /tmp/
     curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_3_base.repo
 else
-    os_release=""
-    echo "$os_release" >> $log 2>&1
+    echo "ERROR: There is no any Repo match the OS."
+    exit 1
 fi
 yum clean all >> $log 2>&1
 yum makecache >> $log 2>&1
