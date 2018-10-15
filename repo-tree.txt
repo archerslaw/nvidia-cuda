@@ -158,6 +158,12 @@
 │   │                   ├── ed73add25b469715e9f082e3cffb5ca7b46b3d1e91c8defceac563275fe3bbd6-filelists.sqlite.bz2
 │   │                   ├── f784943ffb0f55795060a7647b1e81876bbab6c86986c42a0f4511fda5f16167-filelists.xml.gz
 │   │                   └── repomd.xml
+│   ├── script
+│   │   ├── cloudinit-centos-cuda-driver.sh
+│   │   ├── cloudinit-euleros-cuda-driver.sh
+│   │   ├── cloudinit-opensuse-cuda-driver.sh
+│   │   ├── cloudinit-rhel-cuda-driver.sh
+│   │   └── cloudinit-ubuntu-cuda-driver.sh
 │   └── zypper
 │       ├── opensuse422
 │       │   ├── cuda
@@ -227,29 +233,29 @@
         │   │   ├── cuda_8.0.44_windows.exe
         │   │   └── cuda_8.0.61_windows.exe
         │   └── driver
-        │       ├── 385.08-tesla-desktop-winserver2008-2012r2-64bit-international.exe
-        │       ├── 386.45-tesla-desktop-winserver2008-2012r2-64bit-international.exe
-        │       ├── 391.29-tesla-desktop-winserver2008-2012r2-64bit-international.exe
-        │       └── 398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       ├── 385.08-tesla-desktop-winserver-international.exe
+        │       ├── 386.45-tesla-desktop-winserver-international.exe
+        │       ├── 391.29-tesla-desktop-winserver-international.exe
+        │       └── 398.75-tesla-desktop-winserver-international.exe
         ├── win2012r2
         │   ├── cuda
         │   │   ├── cuda_9.0.176_windows.exe
         │   │   ├── cuda_9.1.85_windows.exe
         │   │   └── cuda_9.2.148_windows.exe
         │   └── driver
-        │       ├── 385.08-tesla-desktop-winserver2008-2012r2-64bit-international.exe
-        │       ├── 386.45-tesla-desktop-winserver2008-2012r2-64bit-international.exe
-        │       ├── 391.29-tesla-desktop-winserver2008-2012r2-64bit-international.exe
-        │       └── 398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe
+        │       ├── 385.08-tesla-desktop-winserver-international.exe
+        │       ├── 386.45-tesla-desktop-winserver-international.exe
+        │       ├── 391.29-tesla-desktop-winserver-international.exe
+        │       └── 398.75-tesla-desktop-winserver-international.exe
         └── win2016
             ├── cuda
-            │   ├── cuda_9.0.176_win10.exe
-            │   ├── cuda_9.1.85_win10.exe
-            │   └── cuda_9.2.148_win10.exe
+            │   ├── cuda_9.0.176_windows.exe
+            │   ├── cuda_9.1.85_windows.exe
+            │   └── cuda_9.2.148_windows.exe
             └── driver
-                ├── 385.08-tesla-desktop-winserver2016-international.exe
-                ├── 386.45-tesla-desktop-winserver2016-international.exe
-                ├── 391.29-tesla-desktop-winserver2016-international.exe
-                └── 398.75-tesla-desktop-winserver2016-international.exe
+                ├── 385.08-tesla-desktop-winserver-international.exe
+                ├── 386.45-tesla-desktop-winserver-international.exe
+                ├── 391.29-tesla-desktop-winserver-international.exe
+                └── 398.75-tesla-desktop-winserver-international.exe
 
-70 directories, 183 files
+71 directories, 187 files
