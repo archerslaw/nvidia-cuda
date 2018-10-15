@@ -14,7 +14,7 @@ echo "cuda version: $cuda_version" >> $log 2>&1
 ##Centos
 create_nvidia_repo_centos()
 {
-    curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
+    #curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
     #curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
     url="http://mirrors.myhuaweicloud.com"
     cudaurl=$url"/ecs/linux/rpm/cuda/${version}/\$basearch/"
@@ -159,6 +159,8 @@ enable_pm()
 }
 
 if [ ! -f "/usr/bin/lsb_release" ]; then
+    ver=$(uname -r | awk -F'el' '{print $2}' | awk -F'x86_64' '{print $1}')
+    curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${ver}repo
     pkgname=$(yum provides /usr/bin/lsb_release |grep centos|grep x86_64 |head -1 |awk -F: '{print $1}')
     yum install -y $pkgname
 fi
