@@ -209,7 +209,7 @@ create_nvidia_repo_euleros >> $log 2>&1
 #curl -o /etc/yum.repos.d/hwEulerOS-base.repo http://mirrors.myhuaweicloud.com/repo/EulerOS_2_2_base.repo
 #curl -o /etc/yum.repos.d/nvidia-CentOS.repo http://119.3.60.246/ecs/linux/nvidia-EulerOS.repo
 
-yum install epel-release -y >> $log 2>&1
+yum install http://mirrors.myhuaweicloud.com/epel/epel-release-latest-${version}.noarch.rpm -y >> $log 2>&1
 #cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/hwepel.repo
 #cp /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/hwepel-testing.repo
 #sed -e 's!^mirrorlist=!#mirrorlist=!g' -e 's!^#baseurl=!baseurl=!g' -e 's!//download\.fedoraproject\.org/pub!//mirrors.myhuaweicloud.com!g' -i /etc/yum.repos.d/hwepel.repo /etc/yum.repos.d/hwepel-testing.repo
