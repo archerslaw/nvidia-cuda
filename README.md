@@ -47,14 +47,14 @@ http://kehang.github.io/tools/2017/03/31/install-CUDA-cuDNN-on-Red-Hat/
   - {9.1.85}*{385.08，386.45，391.29，398.75}
   - {9.0.176}*{385.08，386.45，391.29，398.75}
  
-CUDA+Driver install script for Linux：
-https://github.com/archerslaw/nvidia-cuda/tree/master/script/linux/
+#### CUDA+Driver install script for Linux：
+  - https://github.com/archerslaw/nvidia-cuda/tree/master/script/linux/
 	
-CentOS  ====> cloudinit-centos-cuda-driver.sh
-EulerOS ====> cloudinit-euleros-cuda-driver.sh
-OpenSUSE====> cloudinit-opensuse-cuda-driver.sh
-RHEL    ====> cloudinit-rhel-cuda-driver.sh
-Ubuntu  ====> cloudinit-ubuntu-cuda-driver.sh
+  - CentOS  ====> cloudinit-centos-cuda-driver.sh
+  - EulerOS ====> cloudinit-euleros-cuda-driver.sh
+  - OpenSUSE====> cloudinit-opensuse-cuda-driver.sh
+  - RHEL    ====> cloudinit-rhel-cuda-driver.sh
+  - Ubuntu  ====> cloudinit-ubuntu-cuda-driver.sh
 
 #### Results for Widows2k8R2:
 ![image](https://github.com/archerslaw/nvidia-cuda/blob/master/windows2k8r2-nvidia-cuda-driver-install-result.JPG)
