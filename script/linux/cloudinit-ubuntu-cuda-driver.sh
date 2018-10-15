@@ -225,6 +225,8 @@ else
     exit 1
 fi
 
+echo "os:$os release:$release version:$version" >> $log 2>&1
+
 create_nvidia_repo_ubuntu >> $log 2>&1
 
 begin=$(date '+%s')
