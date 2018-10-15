@@ -14,7 +14,7 @@ echo "cuda version: $cuda_version" >> $log 2>&1
 ##EulerOS
 create_nvidia_repo_euleros()
 {
-    curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_${eulerversion}_${eulercode}_base.repo
+    #curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_${eulerversion}_${eulercode}_base.repo
     #curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
     url="http://mirrors.myhuaweicloud.com"
     cudaurl=$url"/ecs/linux/rpm/cuda/${version}/x86_64/"
@@ -157,6 +157,24 @@ enable_pm()
     fi
     chmod +x $filename
 }
+
+if echo "grep EulerOS /etc/*release | grep 'EulerOS release 2.0(SP1)'" >> $log 2>&1
+then
+    mv /etc/yum.repos.d/*.repo /tmp/
+    curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_1_base.repo
+elif echo "grep EulerOS /etc/*release | grep 'EulerOS release 2.0(SP2)'" >> $log 2>&1
+then
+    mv /etc/yum.repos.d/*.repo /tmp/
+    curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_2_base.repo
+elif echo "grep EulerOS /etc/*release | grep 'EulerOS release 2.0(SP3)'" >> $log 2>&1
+    mv /etc/yum.repos.d/*.repo /tmp/
+    curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_3_base.repo
+else
+    os_release=""
+    echo "$os_release" >> $log 2>&1
+fi
+yum clean all >> $log 2>&1
+yum makecache >> $log 2>&1
 
 if [ ! -f "/usr/bin/lsb_release" ]; then
     pkgname=$(yum provides /usr/bin/lsb_release |grep euleros|grep x86_64 |head -1 |awk -F: '{print $1}')
