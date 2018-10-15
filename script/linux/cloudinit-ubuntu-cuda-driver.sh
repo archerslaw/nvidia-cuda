@@ -65,6 +65,25 @@ update_ubuntu1604_apt_source()
 EOF
 }
 
+update_ubuntu1804_apt_source()
+{
+    echo -e "\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m"
+    cp -fp /etc/apt/sources.list /etc/apt/sources.list.back
+    cat > /etc/apt/sources.list <<EOF
+    #18.04
+    deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic main restricted universe multiverse
+    deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic-security main restricted universe multiverse
+    deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic-updates main restricted universe multiverse
+    deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic-proposed main restricted universe multiverse
+    deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic-backports main restricted universe multiverse
+    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic main restricted universe multiverse
+    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-security main restricted universe multiverse
+    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-updates main restricted universe multiverse
+    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-proposed main restricted universe multiverse
+    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-backports main restricted universe multiverse
+EOF
+}
+
 install_kernel_devel_ubuntu()
 {
     #install linux-headers
@@ -174,6 +193,21 @@ enable_pm()
     chmod +x $filename
 }
 
+os_release=$(grep -i "ubuntu" /etc/issue 2>/dev/null)
+os_release_2=$(grep -i "ubuntu" /etc/lsb-release 2>/dev/null)
+if [ "$os_release" ] && [ "$os_release_2" ]
+then
+if echo "$os_release"|grep "Ubuntu 14.04"; then
+    update_ubuntu1404_apt_source >> $log 2>&1
+elif echo "$os_release"|grep "Ubuntu 16.04"; then
+    update_ubuntu1604_apt_source >> $log 2>&1
+elif echo "$os_release"|grep "Ubuntu 18.04"; then
+    update_ubuntu1804_apt_source >> $log 2>&1
+else
+    echo "ERROR: There is no any Repo match the OS."
+    exit 1
+fi
+
 if [ ! -f "/usr/bin/lsb_release" ]; then
     apt-get install -y lsb-release
 fi
@@ -190,17 +224,6 @@ else
     echo "ERROR: OS ($os) is invalid!" >> $log 2>&1
     exit 1
 fi
-
-echo "os:$os release:$release version:$version" >> $log 2>&1
-
-if [ "$release" = "ubuntu1404" ]; then
-    update_ubuntu1404_apt_source >> $log 2>&1
-elif [ "$release" = "ubuntu1604" ]; then
-    update_ubuntu1604_apt_source >> $log 2>&1
-else
-    echo "ERROR: There is no any Repo match the OS."
-    exit 1
-fi   
 
 create_nvidia_repo_ubuntu >> $log 2>&1
 
