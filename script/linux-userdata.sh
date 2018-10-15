@@ -5,7 +5,7 @@ driver_version=390.46
 cuda_version=9.0.176
 os_type=centos
 
-cuda_driver_url=http://mirrors.myhuaweicloud.com/ecs/script/linux/cloudinit-${os_type}-cuda-driver.sh
+cuda_driver_url=http://mirrors.myhuaweicloud.com/ecs/linux/script/cloudinit-${os_type}-cuda-driver.sh
 script_file=/var/nvidia-cuda-driver-install.sh
 curl -o ${script_file} ${cuda_driver_url}
 sed -i 's/^driver_version=.*/driver_version='${driver_version}'/g' ${script_file}
