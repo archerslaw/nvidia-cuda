@@ -26,7 +26,7 @@ http://kehang.github.io/tools/2017/03/31/install-CUDA-cuDNN-on-Red-Hat/
   - {8.0.61}*{384.111，384.66}
 
 #### OpenSUSE42.2 - cuda*driver
-  - {9.0.176}*{384.145，396.66}
+  - {9.0.176}*{384.145，384.66}
 
 #### OpenSUSE42.3 - cuda*driver
   - {9.1.85}*{396.44，390.30}
