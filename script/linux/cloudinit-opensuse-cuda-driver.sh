@@ -215,5 +215,6 @@ echo "******install nvidia cuda use time $time_cuda s" >> $log 2>&1
 echo "add auto enable Persistence Mode when start vm..."  >> $log 2>&1
 enable_pm >> $log 2>&1
 
+sed -i 's/^DISPLAYMANAGER=.*/DISPLAYMANAGER="console"/g' /etc/sysconfig/displaymanager
 echo "reboot......"  >> $log 2>&1
 reboot
