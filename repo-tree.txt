@@ -182,9 +182,9 @@
 │       │   │       ├── 8edd569769fd6a9999f0d44fe1a14c7e7b4fb7e1db85f1dbb216b242a00e3f5d-filelists.xml.gz
 │       │   │       └── repomd.xml
 │       │   └── driver
-│       │       ├── 384.145
+│       │       ├── 384.66
 │       │       │   └── nvidia-diag-driver-local-repo-opensuse422-384.66-1.0-1.x86_64.rpm
-│       │       ├── 396.66
+│       │       ├── 384.145
 │       │       │   └── nvidia-diag-driver-local-repo-opensuse422-384.145-1.0-1.x86_64.rpm
 │       │       └── repodata
 │       │           ├── 0b15f786259c2cab0caaa12b8f22a987a914d5f2cc2747285a34c5a1f493d3f2-filelists.sqlite.bz2
