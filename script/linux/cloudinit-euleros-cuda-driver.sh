@@ -177,10 +177,10 @@ fi
 yum clean all >> $log 2>&1
 yum makecache >> $log 2>&1
 
-if [ ! -f "/usr/bin/lsb_release" ]; then
-    pkgname=$(yum provides /usr/bin/lsb_release |grep euleros|grep x86_64 |head -1 |awk -F: '{print $1}')
-    yum install -y $pkgname
-fi
+#if [ ! -f "/usr/bin/lsb_release" ]; then
+#    pkgname=$(yum provides /usr/bin/lsb_release |grep euleros|grep x86_64 |head -1 |awk -F: '{print $1}')
+#    yum install -y $pkgname
+#fi
 
 if [ "$os_release_2" ]; then
     os="EulerOS"
