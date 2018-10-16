@@ -149,15 +149,15 @@ enable_pm()
 
 os_release=$(grep -i "opensuse" /etc/issue 2>/dev/null)
 os_release_2=$(grep -i "opensuse" /etc/*release 2>/dev/null)
-if [ "$os_release" ] && [ "$os_release_2" ]
-then
-if echo "$os_release"|grep "openSUSE 42.2" >/dev/null 2>&1 || echo "$os_release_2"|grep "openSUSE 42.2"; then
-    update_opensuse_source4202 >> $log 2>&1
-elif echo "$os_release"|grep "openSUSE 42.3" >/dev/null 2>&1 || echo "$os_release_2"|grep "openSUSE 42.3"; then
-    update_opensuse_source4203 >> $log 2>&1
-else
-    echo "ERROR: There is no any Repo match the OS."
-    exit 1
+if [ "$os_release" ] && [ "$os_release_2" ];then
+    if echo "$os_release"|grep "openSUSE 42.2" >/dev/null 2>&1 || echo "$os_release_2"|grep "openSUSE 42.2"; then
+        update_opensuse_source4202 >> $log 2>&1
+    elif echo "$os_release"|grep "openSUSE 42.3" >/dev/null 2>&1 || echo "$os_release_2"|grep "openSUSE 42.3"; then
+        update_opensuse_source4203 >> $log 2>&1
+    else
+        echo "ERROR: There is no any Repo match the OS."
+        exit 1
+    fi
 fi
 
 if [ ! -f "/usr/bin/lsb_release" ]; then
