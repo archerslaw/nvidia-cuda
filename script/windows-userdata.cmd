@@ -3,7 +3,7 @@ rem cmd
 set driver_version=398.75
 set cuda_version=9.2.148
 set os_version=win2016
-repo_url=http://mirrors.myhuaweicloud.com
+set repo_url=http://mirrors.myhuaweicloud.com
 
 echo cuda_url="%repo_url%/ecs/windows/exe/%os_version%/cuda/cuda_%cuda_version%_windows.exe">C:\nvidia-download.py
 echo driver_url="%repo_url%/ecs/windows/exe/%os_version%/driver/%driver_version%-tesla-desktop-winserver-international.exe">>C:\nvidia-download.py
