@@ -158,20 +158,21 @@ enable_pm()
     chmod +x $filename
 }
 
-if echo "grep EulerOS /etc/*release | grep 'EulerOS release 2.0(SP1)'" >> $log 2>&1
-then
-    mv /etc/yum.repos.d/*.repo /tmp/
-    curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_1_base.repo
-elif echo "grep EulerOS /etc/*release | grep 'EulerOS release 2.0(SP2)'" >> $log 2>&1
-then
-    mv /etc/yum.repos.d/*.repo /tmp/
-    curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_2_base.repo
-elif echo "grep EulerOS /etc/*release | grep 'EulerOS release 2.0(SP3)'" >> $log 2>&1
-    mv /etc/yum.repos.d/*.repo /tmp/
-    curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_3_base.repo
-else
-    echo "ERROR: There is no any Repo match the OS."
-    exit 1
+os_release_2=$(grep "EulerOS" /etc/*release 2>/dev/null)
+if [ "$os_release_2" ]; then
+    if echo "$os_release_2" | grep "EulerOS release 2.0 (SP1)"; then
+        mv /etc/yum.repos.d/*.repo /tmp/
+        curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_1_base.repo
+    elif echo "$os_release_2" | grep "EulerOS release 2.0 (SP2)"; then
+        mv /etc/yum.repos.d/*.repo /tmp/
+        curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_2_base.repo
+    elif echo "$os_release_2" | grep "EulerOS release 2.0 (SP3)"; then
+        mv /etc/yum.repos.d/*.repo /tmp/
+        curl -o /etc/yum.repos.d/EulerOS-Base.repo http://mirrors.myhuaweicloud.com/repo/euler/EulerOS_2_3_base.repo
+    else
+        echo "ERROR: There is no any Repo match the OS."
+        exit 1
+    fi
 fi
 yum clean all >> $log 2>&1
 yum makecache >> $log 2>&1
