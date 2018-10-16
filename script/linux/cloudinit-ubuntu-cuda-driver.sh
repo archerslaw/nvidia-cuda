@@ -195,17 +195,17 @@ enable_pm()
 
 os_release=$(grep -i "ubuntu" /etc/issue 2>/dev/null)
 os_release_2=$(grep -i "ubuntu" /etc/lsb-release 2>/dev/null)
-if [ "$os_release" ] && [ "$os_release_2" ]
-then
-if echo "$os_release"|grep "Ubuntu 14.04"; then
-    update_ubuntu1404_apt_source >> $log 2>&1
-elif echo "$os_release"|grep "Ubuntu 16.04"; then
-    update_ubuntu1604_apt_source >> $log 2>&1
-elif echo "$os_release"|grep "Ubuntu 18.04"; then
-    update_ubuntu1804_apt_source >> $log 2>&1
-else
-    echo "ERROR: There is no any Repo match the OS."
-    exit 1
+if [ "$os_release" ] && [ "$os_release_2" ]; then
+    if echo "$os_release"|grep "Ubuntu 14.04"; then
+        update_ubuntu1404_apt_source >> $log 2>&1
+    elif echo "$os_release"|grep "Ubuntu 16.04"; then
+        update_ubuntu1604_apt_source >> $log 2>&1
+    elif echo "$os_release"|grep "Ubuntu 18.04"; then
+        update_ubuntu1804_apt_source >> $log 2>&1
+    else
+        echo "ERROR: There is no any Repo match the OS."
+        exit 1
+    fi
 fi
 
 if [ ! -f "/usr/bin/lsb_release" ]; then
