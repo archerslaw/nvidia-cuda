@@ -182,20 +182,11 @@ if [ ! -f "/usr/bin/lsb_release" ]; then
     yum install -y $pkgname
 fi
 
-str=$(lsb_release -i | awk -F':' '{print $2}')
-os=$(echo $str | sed 's/ //g')
-if [ "$os" = "EulerOS" ]; then
+if [ "$os_release_2" ]; then
     os="EulerOS"
-    #str=$(lsb_release -r | awk -F'[:.]' '{print $2}')
-    #version=$(echo $str | sed 's/ //g')
     version=7
     release="rhel${version}"
     filename="/etc/rc.d/rc.local"
-    rstr=$(lsb_release -r | awk -F'[:.]' '{print $2}')
-    eulerversion=$(echo $rstr | sed 's/ //g')
-    cstr=$(lsb_release -c | awk -F'[:.]' '{print $2}')
-    newcstr=$(echo $cstr | sed 's/ //g')
-    eulercode=$(echo ${newcstr: -1})
 else
     echo "ERROR: OS ($os) is invalid!" >> $log 2>&1
     exit 1
