@@ -26,6 +26,7 @@ create_nvidia_repo_ubuntu()
     wget -O - http://mirrors.myhuaweicloud.com/ecs/linux/apt/huaweicloud.ubuntu.gpg.key | apt-key add -
     rm -fr /var/cache/apt/archives/lock
     rm -fr /var/lib/dpkg/lock
+    rm -fr /var/lib/apt/lists/lock
     apt-get update --fix-missing >> $log 2>&1
 }
 
