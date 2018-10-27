@@ -27,7 +27,6 @@ create_nvidia_repo_ubuntu()
     rm -fr /var/cache/apt/archives/lock
     rm -fr /var/lib/dpkg/lock
     rm -fr /var/lib/apt/lists/lock
-    dpkg --configure -a
     apt-get update --fix-missing >> $log 2>&1
 }
 
@@ -112,6 +111,7 @@ install_kernel_devel_ubuntu()
 install_nvidia_driver_ubuntu()
 {
     #install driver
+    dpkg --configure -a
     driver_file_num=$(apt-cache search nvidia | grep driver | grep $release | grep $driver_version | wc -l)
     if [ $driver_file_num -eq 1 ];then
         driver_file=$(apt-cache search nvidia | grep driver | grep $release | grep $driver_version | awk -F' ' '{print $1}')
