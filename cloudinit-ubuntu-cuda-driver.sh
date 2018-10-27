@@ -29,40 +29,62 @@ create_nvidia_repo_ubuntu()
 
 update_ubuntu1404_apt_source()
 {
-    echo -e "\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m"
-    cp -fp /etc/apt/sources.list /etc/apt/sources.list.back
-    cat > /etc/apt/sources.list <<EOF
-    #14.04
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty main restricted universe multiverse
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security main restricted universe multiverse
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates main restricted universe multiverse
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty-proposed main restricted universe multiverse
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-proposed main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
+echo -e "\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m"
+cp -fp /etc/apt/sources.list /etc/apt/sources.list.back
+cat > /etc/apt/sources.list <<EOF
+#14.04
+deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
 EOF
+apt-get update
 }
 
 update_ubuntu1604_apt_source()
 {
-    echo -e "\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m"
-    cp -fp /etc/apt/sources.list /etc/apt/sources.list.back
-    cat > /etc/apt/sources.list <<EOF
-    #16.04
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial main restricted universe multiverse
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial-security main restricted universe multiverse
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial-updates main restricted universe multiverse
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial-proposed main restricted universe multiverse
-    deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial-backports main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-security main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-updates main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-proposed main restricted universe multiverse
-    deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-backports main restricted universe multiverse
+echo -e "\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m"
+cp -fp /etc/apt/sources.list /etc/apt/sources.list.back
+cat > /etc/apt/sources.list <<EOF
+#16.04
+deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-backports main restricted universe multiverse
 EOF
+apt-get update
+}
+
+update_ubuntu1804_apt_source()
+{
+echo -e "\033[40;32mBackup the original configuration file,new name and path is /etc/apt/sources.list.back.\n\033[40;37m"
+cp -fp /etc/apt/sources.list /etc/apt/sources.list.back
+cat > /etc/apt/sources.list <<EOF
+#18.04
+deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.myhuaweicloud.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-backports main restricted universe multiverse
+EOF
+apt-get update
 }
 
 install_kernel_devel_ubuntu()
@@ -197,6 +219,8 @@ if [ "$release" = "ubuntu1404" ]; then
     update_ubuntu1404_apt_source >> $log 2>&1
 elif [ "$release" = "ubuntu1604" ]; then
     update_ubuntu1604_apt_source >> $log 2>&1
+elif [ "$release" = "ubuntu1804" ]; then
+    update_ubuntu1804_apt_source >> $log 2>&1
 else
     echo "ERROR: There is no any Repo match the OS."
     exit 1
