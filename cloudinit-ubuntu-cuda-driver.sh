@@ -23,8 +23,10 @@ create_nvidia_repo_ubuntu()
     echo $url1 >> $repo_file
     echo $url2 >> $repo_file
     
-    wget -O - http://mirrors.myhuaweicloud.com/ecs/linux/huaweicloud.ubuntu.gpg.key | apt-key add -
-    apt update >> $log 2>&1
+    wget -O - http://mirrors.myhuaweicloud.com/ecs/linux/apt/huaweicloud.ubuntu.gpg.key | apt-key add -
+    rm -fr /var/cache/apt/archives/lock
+    rm -fr /var/lib/dpkg/lock
+    apt-get update --fix-missing >> $log 2>&1
 }
 
 update_ubuntu1404_apt_source()
@@ -44,7 +46,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
 EOF
-apt-get update
+apt-get update --fix-missing
 }
 
 update_ubuntu1604_apt_source()
@@ -64,7 +66,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-backports main restricted universe multiverse
 EOF
-apt-get update
+apt-get update --fix-missing
 }
 
 update_ubuntu1804_apt_source()
@@ -84,7 +86,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-backports main restricted universe multiverse
 EOF
-apt-get update
+apt-get update --fix-missing
 }
 
 install_kernel_devel_ubuntu()
@@ -196,6 +198,21 @@ enable_pm()
     chmod +x $filename
 }
 
+os_release=$(grep -i "ubuntu" /etc/issue 2>/dev/null)
+os_release_2=$(grep -i "ubuntu" /etc/lsb-release 2>/dev/null)
+if [ "$os_release" ] && [ "$os_release_2" ]; then
+    if echo "$os_release"|grep "Ubuntu 14.04"; then
+        update_ubuntu1404_apt_source >> $log 2>&1
+    elif echo "$os_release"|grep "Ubuntu 16.04"; then
+        update_ubuntu1604_apt_source >> $log 2>&1
+    elif echo "$os_release"|grep "Ubuntu 18.04"; then
+        update_ubuntu1804_apt_source >> $log 2>&1
+    else
+        echo "ERROR: There is no any Repo match the OS."
+        exit 1
+    fi
+fi
+
 if [ ! -f "/usr/bin/lsb_release" ]; then
     apt-get install -y lsb-release
 fi
@@ -214,17 +231,6 @@ else
 fi
 
 echo "os:$os release:$release version:$version" >> $log 2>&1
-
-if [ "$release" = "ubuntu1404" ]; then
-    update_ubuntu1404_apt_source >> $log 2>&1
-elif [ "$release" = "ubuntu1604" ]; then
-    update_ubuntu1604_apt_source >> $log 2>&1
-elif [ "$release" = "ubuntu1804" ]; then
-    update_ubuntu1804_apt_source >> $log 2>&1
-else
-    echo "ERROR: There is no any Repo match the OS."
-    exit 1
-fi   
 
 create_nvidia_repo_ubuntu >> $log 2>&1
 
