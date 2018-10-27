@@ -152,7 +152,7 @@ install_nvidia_cuda_ubuntu()
 
     #install cuda
     echo "******exec \"apt-get install -y --allow-unauthenticated $cuda_file\" "
-    apt-get install -y --allow-unauthenticated $cuda_file
+    apt-get install -f -y --allow-unauthenticated $cuda_file
 
     end_cuda_unpack=$(date '+%s')
     time_cuda_unpack=$((end_cuda_unpack-begin_cuda))
@@ -166,7 +166,7 @@ install_nvidia_cuda_ubuntu()
     for cuda_patch_file in $cuda_patch_filelist
     do
         echo "******exec \"apt-get install -y --allow-unauthenticated $cuda_patch_file\" "
-        apt-get install -y --allow-unauthenticated $cuda_patch_file
+        apt-get install -f -y --allow-unauthenticated $cuda_patch_file
     done
 
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda\" "
