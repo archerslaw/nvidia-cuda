@@ -27,7 +27,7 @@ create_nvidia_repo_ubuntu()
     rm -fr /var/cache/apt/archives/lock
     rm -fr /var/lib/dpkg/lock
     rm -fr /var/lib/apt/lists/lock
-    #apt-get update --fix-missing >> $log 2>&1
+    apt-get update --fix-missing >> $log 2>&1
 }
 
 update_ubuntu1404_apt_source()
