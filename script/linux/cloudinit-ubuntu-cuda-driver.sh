@@ -27,7 +27,7 @@ create_nvidia_repo_ubuntu()
     rm -fr /var/cache/apt/archives/lock
     rm -fr /var/lib/dpkg/lock
     rm -fr /var/lib/apt/lists/lock
-    apt-get update --fix-missing >> $log 2>&1
+    #apt-get update --fix-missing >> $log 2>&1
 }
 
 update_ubuntu1404_apt_source()
@@ -47,7 +47,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
 EOF
-apt-get update --fix-missing
+#apt-get update --fix-missing
 }
 
 update_ubuntu1604_apt_source()
@@ -67,7 +67,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-backports main restricted universe multiverse
 EOF
-apt-get update --fix-missing
+#apt-get update --fix-missing
 }
 
 update_ubuntu1804_apt_source()
@@ -87,7 +87,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-backports main restricted universe multiverse
 EOF
-apt-get update --fix-missing
+#apt-get update --fix-missing
 }
 
 install_kernel_devel_ubuntu()
@@ -129,7 +129,7 @@ install_nvidia_driver_ubuntu()
     apt-key add /var/nvidia*driver*$driver_version/*.pub
 
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda-drivers\" "
-    apt-get update && apt-get install -f -y --allow-unauthenticated cuda-drivers
+    apt-get install -f -y --allow-unauthenticated cuda-drivers
 
     if [ $? -ne 0 ]; then
         echo "error: driver install fail!!!"
@@ -170,7 +170,7 @@ install_nvidia_cuda_ubuntu()
     done
 
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda\" "
-    apt-get update && apt-get install -f -y --allow-unauthenticated cuda
+    apt-get install -f -y --allow-unauthenticated cuda
     if [ $? -ne 0 ]; then
         echo "error: cuda install fail!!!"
         return 1
