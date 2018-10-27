@@ -24,7 +24,9 @@ create_nvidia_repo_ubuntu()
     echo $url2 >> $repo_file
     
     wget -O - http://mirrors.myhuaweicloud.com/ecs/linux/apt/huaweicloud.ubuntu.gpg.key | apt-key add -
-    apt update >> $log 2>&1
+    rm -fr /var/cache/apt/archives/lock
+    rm -fr /var/lib/dpkg/lock
+    apt-get update --fix-missing >> $log 2>&1
 }
 
 update_ubuntu1404_apt_source()
@@ -44,7 +46,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ trusty-backports main restricted universe multiverse
 EOF
-apt-get update
+apt-get update --fix-missing
 }
 
 update_ubuntu1604_apt_source()
@@ -64,7 +66,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ xenial-backports main restricted universe multiverse
 EOF
-apt-get update
+apt-get update --fix-missing
 }
 
 update_ubuntu1804_apt_source()
@@ -84,7 +86,7 @@ deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-updates main restricted 
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-proposed main restricted universe multiverse
 deb-src http://mirrors.myhuaweicloud.com/ubuntu/ bionic-backports main restricted universe multiverse
 EOF
-apt-get update
+apt-get update --fix-missing
 }
 
 install_kernel_devel_ubuntu()
