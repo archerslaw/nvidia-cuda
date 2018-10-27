@@ -23,7 +23,7 @@ create_nvidia_repo_ubuntu()
     echo $url1 >> $repo_file
     echo $url2 >> $repo_file
     
-    wget -O - http://mirrors.myhuaweicloud.com/ecs/linux/huaweicloud.ubuntu.gpg.key | apt-key add -
+    wget -O - http://mirrors.myhuaweicloud.com/ecs/linux/apt/huaweicloud.ubuntu.gpg.key | apt-key add -
     apt update >> $log 2>&1
 }
 
