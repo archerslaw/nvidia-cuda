@@ -100,7 +100,7 @@ install_kernel_devel_ubuntu()
     echo "******linux_headers_num=$linux_headers_num"
     if [ $linux_headers_num -eq 0 ];then
         echo "******exec \"apt-get install -y --allow-unauthenticated linux-headers-$kernel_version\""
-        apt-get install -y --allow-unauthenticated linux-headers-$kernel_version
+        apt-get install -f -y --allow-unauthenticated linux-headers-$kernel_version
         if [ $? -ne 0 ]; then
             echo "error: install linux-headers fail!!!"
             return 1
@@ -170,7 +170,7 @@ install_nvidia_cuda_ubuntu()
     done
 
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda\" "
-    apt-get update && apt-get install -y --allow-unauthenticated cuda
+    apt-get update && apt-get install -f -y --allow-unauthenticated cuda
     if [ $? -ne 0 ]; then
         echo "error: cuda install fail!!!"
         return 1
@@ -216,7 +216,7 @@ if [ "$os_release" ] && [ "$os_release_2" ]; then
 fi
 
 if [ ! -f "/usr/bin/lsb_release" ]; then
-    apt-get install -y lsb-release
+    apt-get install -f -y lsb-release
 fi
 
 str=$(lsb_release -i | awk -F':' '{print $2}')
