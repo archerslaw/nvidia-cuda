@@ -129,7 +129,7 @@ install_nvidia_driver_ubuntu()
     apt-key add /var/nvidia*driver*$driver_version/*.pub
 
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda-drivers\" "
-    apt-get update &&  apt-get install -f -y --allow-unauthenticated cuda-drivers
+    apt-get update && apt-get install -f -y --allow-unauthenticated cuda-drivers
 
     if [ $? -ne 0 ]; then
         echo "error: driver install fail!!!"
