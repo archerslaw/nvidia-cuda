@@ -93,7 +93,7 @@ apt update --fix-missing
 install_kernel_devel_ubuntu()
 {
     #install linux-headers
-    apt-get upgrade -y
+    apt-get install dictionaries-common -y
     kernel_version=$(uname -r)
     echo "******exec \"uname -r\": $kernel_version"
     echo "******exec \"dpkg --list |grep linux-headers | grep $kernel_version | wc -l\""
