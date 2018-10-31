@@ -272,5 +272,9 @@ echo "******install nvidia cuda use time $time_cuda s" >> $log 2>&1
 echo "add auto enable Persistence Mode when start vm..." >> $log 2>&1
 enable_pm >> $log 2>&1
 
+sed -i 's/^#GRUB_TERMINAL=.*/GRUB_TERMINAL=console/g' /etc/default/grub
+sed -i 's/^GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="net.ifnames=0 nospectre_v2 nopti noibrs noibpb text"/g' /etc/default/grub
+update-grub
+
 echo "reboot......" >> $log 2>&1
 reboot
