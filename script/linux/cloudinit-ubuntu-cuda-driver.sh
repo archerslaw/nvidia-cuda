@@ -274,6 +274,8 @@ enable_pm >> $log 2>&1
 
 sed -i 's/^#GRUB_TERMINAL=.*/GRUB_TERMINAL=console/g' /etc/default/grub
 sed -i 's/^GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="net.ifnames=0 nospectre_v2 nopti noibrs noibpb text"/g' /etc/default/grub
+service lightdm stop
+systemctl disable lightdm
 cat > /etc/lightdm/lightdm.conf.d/50-no-guest.conf <<EOF
 [SeatDefaults]
 allow-guest=false
