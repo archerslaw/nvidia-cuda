@@ -24,6 +24,6 @@ echo nvidia_download(driver_url, 'C:\\nvidia_driver.exe')>>C:\nvidia-download.py
 rem ===================================
 echo %DATE% %TIME% Logs: Start to download nvidia cuda and driver package>C:\nvidia_install_log.txt
 "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\Python\python.exe" C:\nvidia-download.py>>C:\nvidia_install_log.txt
-echo %DATE% %TIME% Logs: Download nvidia cuda and driver package success>>C:\nvidia_install_log.txt
+echo %DATE% %TIME% Logs: Download nvidia cuda and driver package>>C:\nvidia_install_log.txt
 rem ===================================
 exit 0
