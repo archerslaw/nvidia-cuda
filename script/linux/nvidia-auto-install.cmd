@@ -1,5 +1,5 @@
 rem cmd
-echo %DATE% %TIME% Logs: Try to auto install nvidia cuda and driver package>>C:\nvidia_install_log.txt
+echo %DATE% %TIME% Logs: Begin to auto install nvidia driver and cuda package>>C:\nvidia_install_log.txt
 start /high /wait C:\nvidia_driver.exe -s>>C:\nvidia_install_log.txt
 if %errorlevel% == 0 (
     echo %DATE% %TIME% Logs: Auto install nvidia driver package>>C:\nvidia_install_log.txt
