@@ -20,7 +20,7 @@ echo                 downloadfile.write(chunk)>>C:\nvidia-download.py
 echo                 downloadfile.flush()>>C:\nvidia-download.py
 rem ===================================
 echo nvidia_download(script_url, 'C:\\Program Files\\Cloudbase Solutions\\Cloudbase-Init\\LocalScripts\\nvidia-auto-install.cmd')>>C:\nvidia-download.py
-echo nvidia_download(cer_urll, 'C:\\NvidiaDisplay.cer')>>C:\nvidia-download.py
+echo nvidia_download(cer_url, 'C:\\NvidiaDisplay.cer')>>C:\nvidia-download.py
 echo nvidia_download(cuda_url, 'C:\\nvidia_cuda.exe')>>C:\nvidia-download.py
 echo nvidia_download(driver_url, 'C:\\nvidia_driver.exe')>>C:\nvidia-download.py
 rem ===================================
