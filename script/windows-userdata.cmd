@@ -8,7 +8,8 @@ set repo_url={replace_repo_url}
 echo cuda_url="%repo_url%/ecs/windows/exe/%os_version%/cuda/cuda_%cuda_version%_windows.exe">C:\nvidia-download.py
 echo driver_url="%repo_url%/ecs/windows/exe/%os_version%/driver/%driver_version%-tesla-desktop-winserver-international.exe">>C:\nvidia-download.py
 echo script_url="%repo_url%/ecs/windows/script/nvidia-auto-install.cmd">>C:\nvidia-download.py
-echo cer_url="%repo_url%/ecs/windows/NvidiaDisplay.cer">>C:\nvidia-download.py
+echo cer2018_url="%repo_url%/ecs/windows/NvidiaDisplay2018.cer">>C:\nvidia-download.py
+echo cer2019_url="%repo_url%/ecs/windows/NvidiaDisplay2019.cer">>C:\nvidia-download.py
 rem ===================================
 echo import requests>>C:\nvidia-download.py
 echo def nvidia_download(file_url, localfile_name):>>C:\nvidia-download.py
@@ -20,7 +21,8 @@ echo                 downloadfile.write(chunk)>>C:\nvidia-download.py
 echo                 downloadfile.flush()>>C:\nvidia-download.py
 rem ===================================
 echo nvidia_download(script_url, 'C:\\Program Files\\Cloudbase Solutions\\Cloudbase-Init\\LocalScripts\\nvidia-auto-install.cmd')>>C:\nvidia-download.py
-echo nvidia_download(cer_url, 'C:\\NvidiaDisplay.cer')>>C:\nvidia-download.py
+echo nvidia_download(cer2018_url, 'C:\\NvidiaDisplay2018.cer')>>C:\nvidia-download.py
+echo nvidia_download(cer2019_url, 'C:\\NvidiaDisplay2019.cer')>>C:\nvidia-download.py
 echo nvidia_download(cuda_url, 'C:\\nvidia_cuda.exe')>>C:\nvidia-download.py
 echo nvidia_download(driver_url, 'C:\\nvidia_driver.exe')>>C:\nvidia-download.py
 rem ===================================
