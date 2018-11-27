@@ -1,6 +1,7 @@
 rem cmd
 echo %DATE% %TIME% Logs: Begin to import the nvidia certificate>>C:\nvidia_install_log.txt
-certutil -addstore -f "TrustedPublisher" C:\NvidiaDisplay.cer>>C:\nvidia_install_log.txt
+certutil -addstore -f "TrustedPublisher" C:\NvidiaDisplay2018.cer>>C:\nvidia_install_log.txt
+certutil -addstore -f "TrustedPublisher" C:\NvidiaDisplay2019.cer>>C:\nvidia_install_log.txt
 if %errorlevel%==0 (
     echo %DATE% %TIME% Logs: End to import the nvidia certificate>>C:\nvidia_install_log.txt
     del /a/f C:\NvidiaDisplay*.cer>>C:\nvidia_install_log.txt
