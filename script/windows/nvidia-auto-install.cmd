@@ -3,7 +3,7 @@ echo %DATE% %TIME% Logs: Begin to import the nvidia certificate>>C:\nvidia_insta
 certutil -addstore -f "TrustedPublisher" C:\NvidiaDisplay.cer>>C:\nvidia_install_log.txt
 if %errorlevel%==0 (
     echo %DATE% %TIME% Logs: End to import the nvidia certificate>>C:\nvidia_install_log.txt
-    del /a/f C:\NvidiaDisplay.cer>>C:\nvidia_install_log.txt
+    del /a/f C:\NvidiaDisplay*.cer>>C:\nvidia_install_log.txt
     echo %DATE% %TIME% Logs: Remove the nvidia certificate>>C:\nvidia_install_log.txt
 ) else (
     echo %DATE% %TIME% Logs: Fail to import the nvidia certificate, you could install the C:\nvidia_driver.exe and C:\nvidia_cuda.exe manually>>C:\nvidia_install_log.txt
