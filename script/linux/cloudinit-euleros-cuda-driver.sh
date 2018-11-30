@@ -109,12 +109,15 @@ install_nvidia_cuda_centos()
 
     #install cuda
     echo "******exec \"yum install -y $cuda_file\" "
-    yum install -y $cuda_file
+    #yum install -y $cuda_file
+    cuda_file_new=$(echo $cuda_file | awk -F'.x86_64' '{print $1}')
+    wget -O /tmp/cuda-repo-rhel7-file.rpm http://mirrors.myhuaweicloud.com/ecs/linux/rpm/cuda/7/x86_64/${cuda_file_new}-${cuda_version}-1.x86_64.rpm
+    rpm -ivh /tmp/cuda-repo-rhel7-file.rpm
+    rm -fr /tmp/cuda-repo-rhel7-file.rpm
 
     end_cuda_unpack=$(date '+%s')
     time_cuda_unpack=$((end_cuda_unpack-begin_cuda))
     echo "******download and unpack cuda file end, end time: $end_cuda_unpack, use time $time_cuda_unpack s"
-
 
     echo "******exec \"yum list | grep cuda | grep $release | grep $cuda_big_version | grep update | awk -F' ' '{print \$1}'\" "
     cuda_patch_filelist=$(yum list | grep cuda | grep $release | grep $cuda_big_version | grep update | awk -F' ' '{print $1}')
