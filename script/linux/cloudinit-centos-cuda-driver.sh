@@ -14,7 +14,8 @@ echo "cuda version: $cuda_version" >> $log 2>&1
 ##Centos
 create_nvidia_repo_centos()
 {
-    #curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
+    mv /etc/yum.repos.d/*.repo /tmp/
+    curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.myhuaweicloud.com/repo/CentOS-Base-${version}.repo
     #curl -o /etc/yum.repos.d/hwepel.repo http://mirrors.myhuaweicloud.com/repo/epel-${version}.repo
     url="http://mirrors.myhuaweicloud.com"
     cudaurl=$url"/ecs/linux/rpm/cuda/${version}/\$basearch/"
