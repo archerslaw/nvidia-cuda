@@ -236,9 +236,7 @@ fi
 echo "os:$os release:$release version:$version" >> $log 2>&1
 
 create_nvidia_repo_ubuntu >> $log 2>&1
-apt-get autoremove -y
-apt-get autoclean -y
-dpkg --configure -a
+apt-get autoremove -y && apt-get autoclean -y && dpkg --configure -a >> $log 2>&1
 
 begin=$(date '+%s')
 install_kernel_devel_ubuntu >> $log 2>&1 
