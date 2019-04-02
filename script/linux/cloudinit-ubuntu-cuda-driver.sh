@@ -171,7 +171,10 @@ install_nvidia_cuda_ubuntu()
         echo "******exec \"apt-get install -y --allow-unauthenticated $cuda_patch_file\" "
         DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated $cuda_patch_file
     done
-
+    
+    echo "******exec \"apt-key add /var/cuda-repo-*/*.pub\""
+    apt-key add /var/cuda-repo-*/*.pub
+    
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda\" "
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated cuda
     if [ $? -ne 0 ]; then
