@@ -125,17 +125,19 @@ install_nvidia_driver_ubuntu()
 
     echo "******exec \"apt-get install -y --allow-unauthenticated $driver_file\" "
     DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated $driver_file
-
+    
     echo "******exec \"apt-key add /var/nvidia*driver*$driver_version/*.pub\""
     apt-key add /var/nvidia*driver*$driver_version/*.pub
-
+    
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda-drivers\" "
+    sed -i 's/.*-updates.*/#&/g' /etc/apt/sources.list & apt-get update --fix-missing >> $log 2>&1
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated cuda-drivers
-
+    
     if [ $? -ne 0 ]; then
         echo "error: driver install fail!!!"
         return 1
     fi
+    sed -i 's/^#\(.*-updates.*\)/\1/' /etc/apt/sources.list & apt-get update --fix-missing >> $log 2>&1
 }
 
 install_nvidia_cuda_ubuntu()
