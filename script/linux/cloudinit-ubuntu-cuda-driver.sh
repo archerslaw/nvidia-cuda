@@ -101,7 +101,7 @@ install_kernel_devel_ubuntu()
     echo "******linux_headers_num=$linux_headers_num"
     if [ $linux_headers_num -eq 0 ];then
         echo "******exec \"apt-get install -y --allow-unauthenticated linux-headers-$kernel_version\""
-        DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated linux-headers-$kernel_version
+        apt-get install -f -y --allow-unauthenticated linux-headers-$kernel_version
         if [ $? -ne 0 ]; then
             echo "error: install linux-headers fail!!!"
             return 1
@@ -124,14 +124,14 @@ install_nvidia_driver_ubuntu()
     fi
 
     echo "******exec \"apt-get install -y --allow-unauthenticated $driver_file\" "
-    DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated $driver_file
+    apt-get install -f -y --allow-unauthenticated $driver_file
     
     echo "******exec \"apt-key add /var/nvidia*driver*$driver_version*/*.pub\""
     apt-key add /var/nvidia*driver*$driver_version*/*.pub
     
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda-drivers\" "
     #sed -i 's/.*-updates.*/#&/g' /etc/apt/sources.list & apt-get update --fix-missing >> $log 2>&1
-    apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated cuda-drivers
+    apt-get update && apt-get install -f -y --allow-unauthenticated cuda-drivers
     
     if [ $? -ne 0 ]; then
         echo "error: driver install fail!!!"
@@ -155,7 +155,7 @@ install_nvidia_cuda_ubuntu()
 
     #install cuda
     echo "******exec \"apt-get install -y --allow-unauthenticated $cuda_file\" "
-    DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated $cuda_file
+    apt-get install -f -y --allow-unauthenticated $cuda_file
 
     end_cuda_unpack=$(date '+%s')
     time_cuda_unpack=$((end_cuda_unpack-begin_cuda))
@@ -169,14 +169,14 @@ install_nvidia_cuda_ubuntu()
     for cuda_patch_file in $cuda_patch_filelist
     do
         echo "******exec \"apt-get install -y --allow-unauthenticated $cuda_patch_file\" "
-        DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated $cuda_patch_file
+        apt-get install -f -y --allow-unauthenticated $cuda_patch_file
     done
     
     echo "******exec \"apt-key add /var/cuda-repo-*/*.pub\""
     apt-key add /var/cuda-repo-*/*.pub
     
     echo "******exec \"apt-get update && apt-get install -y --allow-unauthenticated cuda\" "
-    apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -f -y --allow-unauthenticated cuda
+    apt-get update && apt-get install -f -y --allow-unauthenticated cuda
     if [ $? -ne 0 ]; then
         echo "error: cuda install fail!!!"
         return 1
@@ -206,6 +206,7 @@ enable_pm()
     chmod +x $filename
 }
 
+export DEBIAN_FRONTEND=noninteractive
 os_release=$(grep -i "ubuntu" /etc/issue 2>/dev/null)
 os_release_2=$(grep -i "ubuntu" /etc/lsb-release 2>/dev/null)
 if [ "$os_release" ] && [ "$os_release_2" ]; then
@@ -222,7 +223,7 @@ if [ "$os_release" ] && [ "$os_release_2" ]; then
 fi
 
 if [ ! -f "/usr/bin/lsb_release" ]; then
-    DEBIAN_FRONTEND=noninteractive apt-get install -f -y lsb-release
+    apt-get install -f -y lsb-release
 fi
 
 str=$(lsb_release -i | awk -F':' '{print $2}')
