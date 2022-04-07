@@ -227,8 +227,8 @@
 │                   └── repomd.xml
 └── windows
     ├──NvidiaDisplay2008.cer
-	├──NvidiaDisplay2012.cer
-	├──NvidiaDisplay2016.cer
+    ├──NvidiaDisplay2012.cer
+    ├──NvidiaDisplay2016.cer
     └── exe
         ├── win2008r2
         │   ├── cuda
